@@ -55,6 +55,7 @@
 \RequirePackage{hyperxmp} % For pdf metadata
 \RequirePackage[font=small,justification=centering]{caption}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% SI setup %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -201,13 +202,13 @@
 %% Numbering of captions  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{caption}[numbered] %Gives basic numbering to captions
-\numberwithin{figure}{part} %Allows for \part.\figure style numbering
+\numberwithin{figure}{section} %Allows for \part.\figure style numbering
 \renewcommand\figurename{Fig.}
-\numberwithin{equation}{part} %Allows for \part.\equation style numbering
-\numberwithin{table}{part} %Allows for \part.\table style numbering
+\numberwithin{equation}{section} %Allows for \part.\equation style numbering
+\numberwithin{table}{section} %Allows for \part.\table style numbering
 \renewcommand\tablename{Tab.}
 \renewcommand{\algorithmcfname}{Algo.} %Algorithm-Name
-\numberwithin{algocf}{part} %Allows for \part.\algo style numbering
+\numberwithin{algocf}{section} %Allows for \part.\algo style numbering
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
