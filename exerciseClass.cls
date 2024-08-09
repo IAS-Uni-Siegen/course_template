@@ -1,23 +1,24 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{exerciseClass}[2024/04/16 EMD exercise LaTeX class]
+\ProvidesClass{exerciseClass}[IAS exercise LaTeX class]
+\LoadClass[a4paper, 12pt, notitlepage, oneside]{article}
 
-\LoadClass[a4paper,12pt,notitlepage,oneside]{article}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Class options %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifsolution
-
 \DeclareOption{solution}{\solutiontrue}
 \ProcessOptions\relax
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Packages %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{geometry}
-\geometry{left=1.5cm, right=1.5cm, top=1.5cm, bottom=1.5cm}
-
-
-%---Allgemeine Packages---
 \RequirePackage{tabularx}
 \RequirePackage{caption}
 \RequirePackage{siunitx}
+\RequirePackage{titling}
 \RequirePackage[obeyspaces, spaces]{url}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[english]{babel}
@@ -47,35 +48,33 @@
 \RequirePackage{mathtools}
 \RequirePackage{placeins}
 
-%% Tikz
-\pgfplotsset{compat=1.18}
-\usetikzlibrary{shapes, arrows, positioning, fit, calc, patterns, decorations.pathmorphing,decorations.pathreplacing,decorations.shapes,decorations.text}
-\usepgfplotslibrary{groupplots}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Graphic path %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\graphicspath{ {./fig/} }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%$ Setup page geometry %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{left=1.5cm, right=1.5cm, top=1.5cm, bottom=1.5cm}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0pt}
+\setlength{\headheight}{15mm}
+\setlength{\headsep}{8mm}
+\setlength{\textheight}{250mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Header and footer %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 
-% Caption
-\DeclareCaptionFont{blue}{\color{blue}}
-
-
-%---Grafiken---
-\graphicspath{ {./fig/} }
-
-
-% Setup page geometry
-\setlength{\parindent}{0em}
-\setlength{\parskip}{0pt}
-\setlength{\headheight}{15mm}
-\setlength{\headsep}{8mm}
-%\setlength{\textheight}{674pt}
-\setlength{\textheight}{250mm}
-
-
 \fancyhead[L]{
-    \textbf{\large{Electrical Machines and Drives}}\\
+    \textbf{\large{\thetitle}}\\
     Prof. Dr.-Ing. Oliver Wallscheid
 }
 
@@ -84,7 +83,6 @@
 }
 
 \fancyfoot[C]{\thepage}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -110,13 +108,11 @@
 \captionsetup[solutiontable]{name=Solution Table, labelfont={color=blue},textfont={color=blue}}
 \renewcommand{\thesolutiontable}{\arabic{exerciseCount}.\arabic{solutiontable}}
 
-
 % Change autorefname of table to Tab.
 \addto\extrasenglish{%
     \renewcommand{\tableautorefname}{Tab.}%
 }
     
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Solution figure %%
@@ -126,28 +122,15 @@
 \captionsetup[solutionfigure]{name=Solution Figure, labelfont={color=blue},textfont={color=blue}}
 \renewcommand{\thesolutionfigure}{\arabic{exerciseCount}.\arabic{solutionfigure}}
 
-
 % Change autorefname of figure to Fig.
 \addto\extrasenglish{%
     \renewcommand{\figureautorefname}{Fig.}%
 }
 
 
-
-
-
-
-
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Counter and space %%
+%% exercise %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%% exercise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcounter{exerciseCount}
 \setcounter{exerciseCount}{0}
 
@@ -168,7 +151,8 @@
 \titleformat*{\section}{\normalfont}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%% task %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% task %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcounter{taskCount}[exerciseCount]
 \setcounter{taskCount}{0}
 
@@ -185,7 +169,8 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%% subtask %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% subtask %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcounter{subtaskCount}[taskCount]
 \setcounter{subtaskCount}{0}
 
@@ -198,14 +183,12 @@
 
 }
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Numbering of equations %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \numberwithin{equation}{exerciseCount}
 \numberwithin{figure}{exerciseCount}
 \numberwithin{table}{exerciseCount}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% SI units %%
@@ -222,11 +205,17 @@
 % allow fraction for values
 \sisetup{parse-numbers = false}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Tikz %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{shapes, arrows, positioning, fit, calc, patterns, decorations.pathmorphing,decorations.pathreplacing,decorations.shapes,decorations.text}
+\usepgfplotslibrary{groupplots}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Tabular %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% define specific tabular rules
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{L}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
