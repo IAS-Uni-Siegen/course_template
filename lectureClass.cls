@@ -5,12 +5,217 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Very basic document style settings %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetheme{Madrid}
 \usefonttheme{professionalfonts}
 \setbeamertemplate{itemize items}[triangle]
 \setbeamertemplate{section in toc}[ball]
+\beamertemplatenavigationsymbolsempty %deactivate beamer class navigator bar
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% logo & author information for the entire slide set %%
-\titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{fig/IAS.pdf}}\hspace{2cm} \href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[height=1cm]{../course_template//CC-BY.pdf}}}
-\author{Oliver Wallscheid}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{../course_template/IAS.pdf}}\hspace{2cm} \href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[height=1cm]{../course_template/CC-BY.pdf}}}
+\author{Oliver Wallscheid}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Packages %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage[boxed, noend, noline]{algorithm2e}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{amsmath}
+\RequirePackage{booktabs}
+\RequirePackage{amsfonts}
+\RequirePackage{subcaption}
+\RequirePackage{ragged2e}
+\RequirePackage{array}
+\RequirePackage{hhline}
+\RequirePackage{xcolor}
+\RequirePackage{bm}
+\RequirePackage{multirow}
+\RequirePackage{animate}
+\RequirePackage{nicefrac}
+\RequirePackage{multimedia}
+\RequirePackage[automake, toc = false]{glossaries-extra}
+\RequirePackage{siunitx}
+\RequirePackage{hyperxmp} % For pdf metadata
+\RequirePackage[font=small,justification=centering]{caption}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% SI setup %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\sisetup{
+  per-mode=fraction,
+  fraction-function=\tfrac,
+  input-digits = 0123456789\pi,
+  exponent-product=\ensuremath{\cdot},
+  inter-unit-product = {}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Hyperref setup %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{colorlinks,
+            linkcolor=,
+            urlcolor=links,
+            pdfcopyright={Creative Commons BY 4.0},
+            pdflicenseurl={https://creativecommons.org/licenses/by/4.0/},
+            pdfauthor={Oliver Wallscheid},
+            pdfcontacturl={https://www.eti.uni-siegen.de/ias/},
+            pdftitle={Lecture slides}
+            }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Color Definitions %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{uniblue}{HTML}{00385F}
+\definecolor{unilightblue}{HTML}{009ED4}
+\definecolor{unigrey}{HTML}{64727f}
+\definecolor{links}{HTML}{2A1B81}
+\newcommand{\hl}[1]{\textcolor{red}{#1}} %Highlights in text
+\newcommand{\hlh}[1]{\textbf{#1}} %Highlights in sub-headings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% New footnote command without numbering %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% check- and x-mark %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Centered p-box & m-box in table env. using array package %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Blocks and tikz %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[listings,theorems]{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,positioning,shadows,trees}
+\tikzset{
+  basic/.style  = {draw, text width=3cm, drop shadow, rectangle},
+  root/.style   = {basic, rounded corners=2pt, thin, align=center,
+                   fill=uniblue, text=white},
+  level 2/.style = {basic, rounded corners=4pt, thin,align=center, fill=unilightblue,
+                   text width=8em},
+  level 3/.style = {basic, thin, align=left, fill=gray!25, text width=3cm}
+}
+
+% General blocks
+\setbeamercolor{block title}{fg=white,bg=black!60}
+\setbeamercolor{block body}{fg=black,bg=gray!15} 
+
+% Centered block with adjustable width
+\newenvironment<>{varblock}[2][.9\textwidth]{
+\begin{center}
+  \begin{minipage}{#1}
+    \begin{actionenv}#3%
+      \def\insertblocktitle{#2}%
+      \par%
+      \usebeamertemplate{block begin}}
+    {\par%
+      \usebeamertemplate{block end}%
+    \end{actionenv}
+  \end{minipage}
+\end{center}
+}
+
+% Math. definitions
+\newtcbtheorem[number within=part, reset counter on overlays=true]{defi}{Definition}{grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colframe = black!60}{defi}
+
+% Math. theorems		
+\newtcbtheorem[number within=part, reset counter on overlays=true]{theo}{Theorem}{grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colframe = black!60}{theo}
+
+% Algorithms	
+\newtcbtheorem[number within=part, reset counter on overlays=true]{algo}{Algorithm}{grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colframe = black!60}{algo}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ensure that section numbering per part is starting at one   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\AtBeginPart{%
+ \beamer@tocsectionnumber=0\relax
+  \setcounter{section}{0}
+}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Delete absolute page number depiction since \inserttotalframenumber is not updated to zero when using \part command  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\setbeamertemplate{footline}{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor\expandafter\ifblank\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{5em}
+    \insertframenumber{}%/\inserttotalframenumber
+    \hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% References %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\figref}[1]{\figurename~\ref{#1}}
+\newcommand{\satzref}[1]{Theo.~\ref{#1}}
+\newcommand{\defref}[1]{Def.~\ref{#1}}
+\newcommand{\theoref}[1]{Theo.~\ref{#1}}
+\newcommand{\tabref}[1]{\tablename~\ref{#1}}
+\newcommand{\capref}[1]{\capname~\ref{#1}}
+\newcommand{\apref}[1]{\apname~\ref{#1}}
+\newcommand{\algname}{Algo.}
+\newcommand{\algoref}[1]{\algname~\ref{#1}}
+\setbeamertemplate{caption}{\raggedright\centering\insertcaption\par}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Numbering of captions  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{caption}[numbered] %Gives basic numbering to captions
+\numberwithin{figure}{part} %Allows for \part.\figure style numbering
+\renewcommand\figurename{Fig.}
+\numberwithin{equation}{part} %Allows for \part.\equation style numbering
+\numberwithin{table}{part} %Allows for \part.\table style numbering
+\renewcommand\tablename{Tab.}
+\renewcommand{\algorithmcfname}{Algo.} %Algorithm-Name
+\numberwithin{algocf}{part} %Allows for \part.\algo style numbering
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Math short commands  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\E}[1]{\mathbb{E}\left[#1\right]} %Expected value
+\newcommand{\Var}[1]{\mathrm{Var}\left[#1\right]} %Variance value
+\newcommand{\El}[2]{\mathbb{E}_{#2}\left[#1\right]} %Expected value with lower index
+\newcommand{\Pb}[1]{\mathbb{P}\left[#1\right]} %Propability
+\newcommand{\T}{^{\mkern-1.5mu\mathsf{T}}} %Transpose
+\newcommand{\iu}{\mathrm{j}\mkern1mu} %imaginary unit
+\DeclareMathOperator*{\argmax}{arg\,max} % arg max
+\DeclareMathOperator*{\argmin}{arg\,min} % arg min
