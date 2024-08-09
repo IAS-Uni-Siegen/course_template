@@ -80,7 +80,7 @@
 }
 
 \fancyhead[R]{
-    \includegraphics[width=\textwidth,height=10mm, keepaspectratio]{fig/IAS.pdf}
+    \includegraphics[width=\textwidth,height=10mm, keepaspectratio]{../course_template/IAS.pdf}
 }
 
 \fancyfoot[C]{\thepage}
