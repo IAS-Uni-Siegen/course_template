@@ -3,7 +3,7 @@
 
 \LoadClass[a4paper,12pt,notitlepage,oneside]{article}
 
-
+% test
 \newif\ifsolution
 
 \DeclareOption{solution}{\solutiontrue}
