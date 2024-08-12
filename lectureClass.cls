@@ -48,12 +48,14 @@
 \RequirePackage{bm}
 \RequirePackage{multirow}
 \RequirePackage{animate}
+\RequirePackage{xparse}
 \RequirePackage{nicefrac}
 \RequirePackage{multimedia}
 \RequirePackage[automake, toc = false]{glossaries-extra}
 \RequirePackage{siunitx}
 \RequirePackage{hyperxmp} % For pdf metadata
 \RequirePackage[font=small,justification=centering]{caption}
+\RequirePackage{tikz, pgfplots}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -90,6 +92,13 @@
 \definecolor{links}{HTML}{2A1B81}
 \newcommand{\hl}[1]{\textcolor{red}{#1}} %Highlights in text
 \newcommand{\hlh}[1]{\textbf{#1}} %Highlights in sub-headings
+\definecolor{signalred}{rgb}{0.9047, 0.1918, 0.1988}
+\definecolor{signalblue}{rgb}{0.2941, 0.5447, 0.7494}
+\definecolor{signalgreen}{rgb}{0.3718, 0.7176, 0.3612}
+\definecolor{signalorange}{rgb}{1.0000, 0.5482, 0.1000}
+\definecolor{signalyellow}{rgb}{0.8650, 0.8110, 0.4330}
+\definecolor{signalbrown}{rgb}{0.6859, 0.4035, 0.2412}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% New footnote command without numbering %%
@@ -144,8 +153,9 @@
 %% Blocks and tikz %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[listings,theorems]{tcolorbox}
-\usepackage{tikz}
-\usetikzlibrary{arrows,shapes,positioning,shadows,trees}
+\usepackage{sankey}
+\usetikzlibrary{arrows,arrows.meta, shapes,positioning,shadows,trees,matrix, backgrounds, fit, calc}
+% Layered tree diagram
 \tikzset{
   basic/.style  = {draw, text width=3cm, drop shadow, rectangle},
   root/.style   = {basic, rounded corners=2pt, thin, align=center,
@@ -155,9 +165,23 @@
   level 3/.style = {basic, thin, align=left, fill=gray!25, text width=3cm}
 }
 
+% Block diagram
+\tikzset{%
+	block/.style    = {draw, thick, rectangle, minimum height = 3em,
+	  minimum width = 4em},
+    bubble/.style = {draw, ellipse, thick, minimum height = 3em,
+    minimum width = 5em, fill = uniblue, text = white},
+	dot/.style = {circle, draw, fill=black, minimum size=3pt, inner sep=0pt, outer sep=0pt},
+	input/.style    = {coordinate}, % Input
+	output/.style   = {coordinate}, % Output
+  >={Latex[scale=1.25]} % Make the arrow heads larger
+  }
+\pgfplotsset{compat=1.18}
+
 % General blocks
-\setbeamercolor{block title}{fg=white,bg=black!60}
 \setbeamercolor{block body}{fg=black,bg=gray!15} 
+\setbeamercolor{block title}{fg=white,bg=uniblue}
+
 
 % Centered block with adjustable width
 \newenvironment<>{varblock}[2][.9\textwidth]{
