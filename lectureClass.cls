@@ -56,6 +56,8 @@
 \RequirePackage{hyperxmp} % For pdf metadata
 \RequirePackage[font=small,justification=centering]{caption}
 \RequirePackage{tikz, pgfplots}
+\RequirePackage{eurosym}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -68,6 +70,7 @@
   exponent-product=\ensuremath{\cdot},
   inter-unit-product = {}
 }
+\DeclareSIUnit{\EUR}{\text{\euro}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
