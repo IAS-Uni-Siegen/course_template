@@ -54,9 +54,12 @@
 \RequirePackage[automake, toc = false]{glossaries-extra}
 \RequirePackage{siunitx}
 \RequirePackage{hyperxmp} % For pdf metadata
+\RequirePackage{hyperref}
 \RequirePackage[font=small,justification=centering]{caption}
 \RequirePackage{tikz, pgfplots}
+\RequirePackage[european, smartlabels]{circuitikz}
 \RequirePackage{eurosym}
+\usepackage[listings,theorems]{tcolorbox}
 
 
 
@@ -93,7 +96,7 @@
 \definecolor{unilightblue}{HTML}{009ED4}
 \definecolor{unigrey}{HTML}{64727f}
 \definecolor{links}{HTML}{2A1B81}
-\newcommand{\hl}[1]{\textcolor{red}{#1}} %Highlights in text
+\newcommand{\hl}[1]{\textcolor{signalred}{#1}} %Highlights in text
 \newcommand{\hlh}[1]{\textbf{#1}} %Highlights in sub-headings
 \definecolor{signalred}{rgb}{0.9047, 0.1918, 0.1988}
 \definecolor{signalblue}{rgb}{0.2941, 0.5447, 0.7494}
@@ -153,10 +156,9 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Blocks and tikz %%
+%% tikz and circuittikz%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[listings,theorems]{tcolorbox}
-\usepackage{sankey}
+
 \usetikzlibrary{arrows,arrows.meta, shapes,positioning,shadows,trees,matrix, backgrounds, fit, calc}
 % Layered tree diagram
 \tikzset{
@@ -180,6 +182,12 @@
   >={Latex[scale=1.25]} % Make the arrow heads larger
   }
 \pgfplotsset{compat=1.18}
+
+\ctikzset{bipoles/cuteswitch/thickness=0.15}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Blocks / tcolorboxes %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % General blocks
 \setbeamercolor{block body}{fg=black,bg=gray!15} 
@@ -231,6 +239,7 @@
 \setbeamertemplate{caption}[numbered] %Gives basic numbering to captions
 \numberwithin{figure}{section} %Allows for \part.\figure style numbering
 \renewcommand\figurename{Fig.}
+\renewcommand{\thetable}{\arabic{table}}
 \numberwithin{equation}{section} %Allows for \part.\equation style numbering
 \numberwithin{table}{section} %Allows for \part.\table style numbering
 \renewcommand\tablename{Tab.}
@@ -249,3 +258,8 @@
 \newcommand{\iu}{\mathrm{j}\mkern1mu} %imaginary unit
 \DeclareMathOperator*{\argmax}{arg\,max} % arg max
 \DeclareMathOperator*{\argmin}{arg\,min} % arg min
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Misc. %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\let\footnoterule\relax % Removes the horizontal line above footnotes
