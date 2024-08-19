@@ -57,7 +57,7 @@
 \RequirePackage{hyperref}
 \RequirePackage[font=small,justification=centering]{caption}
 \RequirePackage{tikz, pgfplots}
-\RequirePackage[european, smartlabels]{circuitikz}
+\RequirePackage[european, smartlabels, americaninductor]{circuitikz}
 \RequirePackage{eurosym}
 \usepackage[listings,theorems]{tcolorbox}
 
