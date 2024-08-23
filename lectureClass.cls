@@ -12,7 +12,9 @@
 
 % toc style
 \setbeamertemplate{section in toc}[ball]
+\setbeamertemplate{subsection in toc}[square]
 \setbeamercolor{section number projected}{fg = white, bg = uniblue}
+\setbeamercolor{subsection number projected}{fg = white, bg = uniblue}
 
 %itemize / enumerate style
 \setbeamertemplate{itemize items}[triangle]
