@@ -8,20 +8,29 @@
 \usetheme{Madrid}
 \usecolortheme{dove}
 \usefonttheme{professionalfonts}
-\setbeamertemplate{itemize items}[triangle]
-\setbeamertemplate{section in toc}[ball]
 \beamertemplatenavigationsymbolsempty % deactivate beamer class navigator bar
 
+% toc style
+\setbeamertemplate{section in toc}[ball]
+\setbeamercolor{section number projected}{fg = white, bg = uniblue}
+
+%itemize / enumerate style
+\setbeamertemplate{itemize items}[triangle]
+\setbeamercolor{item}{fg = uniblue}
+\setbeamercolor{subitem}{fg = uniblue}
+\setbeamertemplate{itemize/enumerate body begin}{\vspace{0.5em}} % vertical space before itemize/enumerate
+\setbeamertemplate{itemize/enumerate body end}{\vspace{0.5em}} % vertical space after itemize/enumerate
+
 % Set title slide color to uniblue
-\setbeamercolor{titlelike}{parent=structure,fg=uniblue}
-\setbeamercolor{title}{parent=structure,fg=uniblue}
-\setbeamercolor{author}{parent=structure,fg=uniblue}
-\setbeamercolor{date}{parent=structure,fg=uniblue}
+\setbeamercolor{titlelike}{parent = structure, fg = uniblue}
+\setbeamercolor{title}{parent = structure, fg = uniblue}
+\setbeamercolor{author}{parent = structure, fg = uniblue}
+\setbeamercolor{date}{parent = structure, fg = uniblue}
 
 % set font color of footer information to uniblue
-\setbeamercolor{title in head/foot}{fg=uniblue}
-\setbeamercolor{author in head/foot}{fg=uniblue}
-\setbeamercolor{page number in head/foot}{fg=uniblue}
+\setbeamercolor{title in head/foot}{fg = uniblue}
+\setbeamercolor{author in head/foot}{fg = uniblue}
+\setbeamercolor{page number in head/foot}{fg = uniblue}
 
 
 
@@ -59,8 +68,7 @@
 \RequirePackage{tikz, pgfplots}
 \RequirePackage[european, smartlabels, americaninductor]{circuitikz}
 \RequirePackage{eurosym}
-\usepackage[listings,theorems]{tcolorbox}
-
+\RequirePackage[listings,theorems]{tcolorbox}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -159,7 +167,7 @@
 %% tikz and circuittikz%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usetikzlibrary{arrows,arrows.meta, shapes,positioning,shadows,trees,matrix, backgrounds, fit, calc}
+\usetikzlibrary{arrows,arrows.meta, shapes, shapes.symbols, positioning,shadows,trees,matrix, backgrounds, fit, calc}
 % Layered tree diagram
 \tikzset{
   basic/.style  = {draw, text width=3cm, drop shadow, rectangle},
@@ -192,7 +200,7 @@
 % General blocks
 \setbeamercolor{block body}{fg=black,bg=gray!15} 
 \setbeamercolor{block title}{fg=white,bg=uniblue}
-
+\addtobeamertemplate{block begin}{}{\justifying} % justification of block content
 
 % Centered block with adjustable width
 \newenvironment<>{varblock}[2][.9\textwidth]{
@@ -260,6 +268,15 @@
 \DeclareMathOperator*{\argmin}{arg\,min} % arg min
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Glossaries %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newglossary{nomen}{nom}{nomc}{Nomnclature}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Misc. %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \let\footnoterule\relax % Removes the horizontal line above footnotes
+
+
+
