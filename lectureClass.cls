@@ -195,7 +195,10 @@
 \pgfplotsset{compat=1.18}
 \usepgfplotslibrary{groupplots} 
 
-\ctikzset{bipoles/cuteswitch/thickness=0.15}
+\ctikzset{bipoles/cuteswitch/thickness=0.15} % Thickness of cute switch
+\ctikzset{diodes/scale=0.65} % Scale of diodes
+\ctikzset{tripoles/nigbt/bodydiode scale=.5} % Scale of body diode
+\ctikzset{tripoles/nigfete/bodydiode scale=.5} % Scale of body diode
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Blocks / tcolorboxes %%
