@@ -114,6 +114,7 @@
 \definecolor{signalorange}{rgb}{1.0000, 0.5482, 0.1000}
 \definecolor{signalyellow}{rgb}{0.8650, 0.8110, 0.4330}
 \definecolor{signalbrown}{rgb}{0.6859, 0.4035, 0.2412}
+\colorlet{shadecolor}{gray!60}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -170,7 +171,7 @@
 %% tikz and circuittikz%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usetikzlibrary{arrows,arrows.meta, shapes, shapes.symbols, positioning,shadows,trees,matrix, backgrounds, fit, calc, math}
+\usetikzlibrary{arrows,arrows.meta, shapes, shapes.symbols, positioning,shadows,trees,matrix, backgrounds, fit, calc, math, intersections}
 % Layered tree diagram
 \tikzset{
   basic/.style  = {draw, text width=3cm, drop shadow, rectangle},
@@ -193,7 +194,7 @@
   >={Latex[scale=1.25]} % Make the arrow heads larger
   }
 \pgfplotsset{compat=1.18}
-\usepgfplotslibrary{groupplots} 
+\usepgfplotslibrary{groupplots, fillbetween} 
 
 \ctikzset{bipoles/cuteswitch/thickness=0.15} % Thickness of cute switch
 \ctikzset{diodes/scale=0.65} % Scale of diodes
