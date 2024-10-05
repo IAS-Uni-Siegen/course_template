@@ -71,6 +71,7 @@
 \RequirePackage{hhline}
 \RequirePackage{xcolor}
 \RequirePackage{bm}
+\RequirePackage{calc}
 \RequirePackage{multirow}
 \RequirePackage{animate}
 \RequirePackage{xparse}
@@ -111,7 +112,7 @@
 %% Hyperref setup %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hypersetup{colorlinks,
-            linkcolor=,
+            linkcolor=uniblue,
             urlcolor=links,
             pdfcopyright={Creative Commons BY 4.0},
             pdflicenseurl={https://creativecommons.org/licenses/by/4.0/},
