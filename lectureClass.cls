@@ -50,9 +50,9 @@
 
 % Set logo and author information
 \ifmarketing
-    \titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{course_template/IAS.pdf}}}
+    \titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{IAS.pdf}}}
 \else
-    \titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{../course_template/IAS.pdf}}\hspace{2cm} \href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[height=1cm]{../course_template/CC-BY.pdf}}}
+    \titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{IAS.pdf}}\hspace{2cm} \href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[height=1cm]{CC-BY.pdf}}}
 \fi
 \author{Oliver Wallscheid}
 
@@ -306,6 +306,7 @@
 %% Misc. %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \let\footnoterule\relax % Removes the horizontal line above footnotes
+\graphicspath{{course_template/}{../course_template/}{fig/}{../fig/}} % Potential paths to figures
 
 
 
