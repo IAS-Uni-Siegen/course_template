@@ -2,6 +2,13 @@
 \ProvidesClass{lectureClass}[IAS lecture LaTeX class]
 \LoadClass[aspectratio=169, usepdftitle=false, handout]{beamer}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Class options %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newif\ifmarketing
+\DeclareOption{marketing}{\marketingtrue} % Marketing option (target audience: external partners)
+\ProcessOptions\relax
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Very basic document style settings %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -39,7 +46,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% logo & author information for the entire slide set %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{../course_template/IAS.pdf}}\hspace{2cm} \href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[height=1cm]{../course_template/CC-BY.pdf}}}
+
+
+% Set logo and author information
+\ifmarketing
+    \titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{course_template/IAS.pdf}}}
+\else
+    \titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{../course_template/IAS.pdf}}\hspace{2cm} \href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[height=1cm]{../course_template/CC-BY.pdf}}}
+\fi
 \author{Oliver Wallscheid}
 
 
@@ -62,7 +76,11 @@
 \RequirePackage{xparse}
 \RequirePackage{nicefrac}
 \RequirePackage{multimedia}
-\RequirePackage[automake, toc = false]{glossaries-extra}
+\ifmarketing
+  \RequirePackage[toc = false]{glossaries-extra}
+\else 
+  \RequirePackage[automake, toc = false]{glossaries-extra} % automake option causes error if \makeglossaries is not used in main file 
+\fi
 \RequirePackage{siunitx}
 \RequirePackage{hyperxmp} % For pdf metadata
 \RequirePackage{hyperref}
@@ -71,6 +89,9 @@
 \RequirePackage[european, smartlabels, americaninductor]{circuitikz}
 \RequirePackage{eurosym}
 \RequirePackage[listings,theorems]{tcolorbox}
+\RequirePackage[parent]{currfile}
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
