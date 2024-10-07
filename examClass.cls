@@ -76,7 +76,7 @@
 
 
 \fancyhead[L]{
-    \textbf{\large{Electrical Machines and Drives}}\\
+    \textbf{\large{\@title}}\\
     Prof. Dr.-Ing. Oliver Wallscheid
 }
 
