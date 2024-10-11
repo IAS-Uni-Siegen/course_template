@@ -54,7 +54,7 @@
 \else
     \titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{IAS.pdf}}\hspace{2cm} \href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[height=1cm]{CC-BY.pdf}}}
 \fi
-\author{Oliver Wallscheid}
+\author{N.N.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
