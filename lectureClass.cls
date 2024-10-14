@@ -23,6 +23,24 @@
 \setbeamercolor{section number projected}{fg = white, bg = uniblue}
 \setbeamercolor{subsection number projected}{fg = white, bg = uniblue}
 
+% toc automation
+\AtBeginSection[]
+{
+  \begin{frame}{Table of contents}
+    \tableofcontents[currentsection, hideothersubsections]
+  \end{frame}
+}
+
+\AtBeginSubsection[]
+{
+  \ifnum\value{subsection} > 1 % show toc only again after second subsection onwards  
+    \begin{frame}{Table of contents}
+      \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
+   \end{frame}
+  \fi
+}
+
+
 %itemize / enumerate style
 \setbeamertemplate{itemize items}[triangle]
 \setbeamercolor{item}{fg = uniblue}
