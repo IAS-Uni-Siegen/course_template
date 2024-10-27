@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{lectureClass}[IAS lecture LaTeX class]
-\LoadClass[aspectratio=169, usepdftitle=false]{beamer}
+\LoadClass[aspectratio=169, usepdftitle=false, handout]{beamer}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Class options %%
@@ -27,7 +27,7 @@
 \AtBeginSection[]
 {
   \begin{frame}{Table of contents}
-    \tableofcontents[currentsection, hideothersubsections]
+    \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/show/hide]
   \end{frame}
 }
 
@@ -35,7 +35,7 @@
 {
   \ifnum\value{subsection} > 1 % show toc only again after second subsection onwards  
     \begin{frame}{Table of contents}
-      \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
+      \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
    \end{frame}
   \fi
 }
