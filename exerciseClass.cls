@@ -74,7 +74,7 @@
 \renewcommand{\footrulewidth}{0.4pt}
 
 \fancyhead[L]{
-    \textbf{\large{\thetitle}}\\
+    \textbf{\large{\@title}}\\
     Prof. Dr.-Ing. Oliver Wallscheid
 }
 

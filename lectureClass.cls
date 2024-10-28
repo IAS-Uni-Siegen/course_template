@@ -9,34 +9,77 @@
 \DeclareOption{marketing}{\marketingtrue} % Marketing option (target audience: external partners)
 \ProcessOptions\relax
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Class options %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newif\ifmarketing
+\DeclareOption{marketing}{\marketingtrue} % Marketing option (target audience: external partners)
+\ProcessOptions\relax
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Very basic document style settings %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usetheme{Madrid}
 \usecolortheme{dove}
 \usefonttheme{professionalfonts}
-\setbeamertemplate{itemize items}[triangle]
-\setbeamertemplate{section in toc}[ball]
 \beamertemplatenavigationsymbolsempty % deactivate beamer class navigator bar
 
+% toc style
+\setbeamertemplate{section in toc}[ball]
+\setbeamertemplate{subsection in toc}[square]
+\setbeamercolor{section number projected}{fg = white, bg = uniblue}
+\setbeamercolor{subsection number projected}{fg = white, bg = uniblue}
+
+% toc automation
+\AtBeginSection[]
+{
+  \begin{frame}{Table of contents}
+    \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/show/hide]
+  \end{frame}
+}
+
+\AtBeginSubsection[]
+{
+  \ifnum\value{subsection} > 1 % show toc only again after second subsection onwards  
+    \begin{frame}{Table of contents}
+      \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
+   \end{frame}
+  \fi
+}
+
+
+%itemize / enumerate style
+\setbeamertemplate{itemize items}[triangle]
+\setbeamercolor{item}{fg = uniblue}
+\setbeamercolor{subitem}{fg = uniblue}
+\setbeamertemplate{itemize/enumerate body begin}{\vspace{0.5em}} % vertical space before itemize/enumerate
+\setbeamertemplate{itemize/enumerate body end}{\vspace{0.5em}} % vertical space after itemize/enumerate
+
 % Set title slide color to uniblue
-\setbeamercolor{titlelike}{parent=structure,fg=uniblue}
-\setbeamercolor{title}{parent=structure,fg=uniblue}
-\setbeamercolor{author}{parent=structure,fg=uniblue}
-\setbeamercolor{date}{parent=structure,fg=uniblue}
+\setbeamercolor{titlelike}{parent = structure, fg = uniblue}
+\setbeamercolor{title}{parent = structure, fg = uniblue}
+\setbeamercolor{author}{parent = structure, fg = uniblue}
+\setbeamercolor{date}{parent = structure, fg = uniblue}
 
 % set font color of footer information to uniblue
-\setbeamercolor{title in head/foot}{fg=uniblue}
-\setbeamercolor{author in head/foot}{fg=uniblue}
-\setbeamercolor{page number in head/foot}{fg=uniblue}
+\setbeamercolor{title in head/foot}{fg = uniblue}
+\setbeamercolor{author in head/foot}{fg = uniblue}
+\setbeamercolor{page number in head/foot}{fg = uniblue}
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% logo & author information for the entire slide set %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{../course_template/IAS.pdf}}\hspace{2cm} \href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[height=1cm]{../course_template/CC-BY.pdf}}}
-\author{Oliver Wallscheid}
+
+
+% Set logo and author information
+\ifmarketing
+    \titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{IAS.pdf}}}
+\else
+    \titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{IAS.pdf}}\hspace{2cm} \href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[height=1cm]{CC-BY.pdf}}}
+\fi
+\author{N.N.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -53,20 +96,27 @@
 \RequirePackage{hhline}
 \RequirePackage{xcolor}
 \RequirePackage{bm}
+\RequirePackage{calc}
 \RequirePackage{multirow}
 \RequirePackage{animate}
 \RequirePackage{xparse}
 \RequirePackage{nicefrac}
 \RequirePackage{multimedia}
-\RequirePackage[automake, toc = false]{glossaries-extra}
+\ifmarketing
+  \RequirePackage[toc = false]{glossaries-extra}
+\else 
+  \RequirePackage[automake, toc = false]{glossaries-extra} % automake option causes error if \makeglossaries is not used in main file 
+\fi
 \RequirePackage{siunitx}
 \RequirePackage{hyperxmp} % For pdf metadata
 \RequirePackage{hyperref}
 \RequirePackage[font=small,justification=centering]{caption}
 \RequirePackage{tikz, pgfplots}
-\RequirePackage[european, smartlabels]{circuitikz}
+\RequirePackage[european, smartlabels, americaninductor]{circuitikz}
 \RequirePackage{eurosym}
-\usepackage[listings,theorems]{tcolorbox}
+\RequirePackage[listings,theorems]{tcolorbox}
+\RequirePackage[parent]{currfile}
+
 
 
 
@@ -111,6 +161,7 @@
 \definecolor{signalorange}{rgb}{1.0000, 0.5482, 0.1000}
 \definecolor{signalyellow}{rgb}{0.8650, 0.8110, 0.4330}
 \definecolor{signalbrown}{rgb}{0.6859, 0.4035, 0.2412}
+\colorlet{shadecolor}{gray!60}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -125,12 +176,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%% Delete absolute page number depiction since \inserttotalframenumber is not updated to zero when using \part command  %%%%%
+%%%% Delete absolute page number depiction since \inserttotalframenumber is not updated to zero when using \part      command  %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \makeatletter
 \setbeamertemplate{footline}{
   \leavevmode%
   \hbox{%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex, left, leftskip=0.25cm]{author in head/foot}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex, left, leftskip=0.375cm]{author in head/foot}%
     \usebeamerfont{author in head/foot}\insertshortauthor\expandafter\ifblank\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}
   \end{beamercolorbox}%
   \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
@@ -166,7 +218,8 @@
 %% tikz and circuittikz%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usetikzlibrary{arrows,arrows.meta, shapes,positioning,shadows,trees,matrix, backgrounds, fit, calc}
+\usetikzlibrary{arrows,arrows.meta, shapes, shapes.symbols, positioning,shadows,trees,matrix, backgrounds, fit, calc, math, intersections, overlay-beamer-styles}
+
 % Layered tree diagram
 \tikzset{
   basic/.style  = {draw, text width=3cm, drop shadow, rectangle},
@@ -189,8 +242,12 @@
   >={Latex[scale=1.25]} % Make the arrow heads larger
   }
 \pgfplotsset{compat=1.18}
+\usepgfplotslibrary{groupplots, fillbetween} 
 
-\ctikzset{bipoles/cuteswitch/thickness=0.15}
+\ctikzset{bipoles/cuteswitch/thickness=0.15} % Thickness of cute switch
+\ctikzset{diodes/scale=0.65} % Scale of diodes
+\ctikzset{tripoles/nigbt/bodydiode scale=.5} % Scale of body diode
+\ctikzset{tripoles/nigfete/bodydiode scale=.5} % Scale of body diode
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Blocks / tcolorboxes %%
@@ -199,7 +256,7 @@
 % General blocks
 \setbeamercolor{block body}{fg=black,bg=gray!15} 
 \setbeamercolor{block title}{fg=white,bg=uniblue}
-
+\addtobeamertemplate{block begin}{}{\justifying} % justification of block content
 
 % Centered block with adjustable width
 \newenvironment<>{varblock}[2][.9\textwidth]{
@@ -267,6 +324,16 @@
 \DeclareMathOperator*{\argmin}{arg\,min} % arg min
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Glossaries %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newglossary{nomen}{nom}{nomc}{Nomnclature}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Misc. %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \let\footnoterule\relax % Removes the horizontal line above footnotes
+\graphicspath{{course_template/}{../course_template/}{fig/}{../fig/}} % Potential paths to figures
+
+
+
