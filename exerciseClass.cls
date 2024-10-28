@@ -42,12 +42,12 @@
 \RequirePackage{tikz}
 \RequirePackage{pgfplots}
 \RequirePackage{standalone}
-\RequirePackage{circuitikz}
+\RequirePackage{circuitikz}[european, smartlabels, americaninductor]
 \RequirePackage{multirow}
 \RequirePackage{newfloat}
 \RequirePackage{mathtools}
 \RequirePackage{placeins}
-
+\usetikzlibrary{calc,math}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Graphic path %%
@@ -205,12 +205,59 @@
 % allow fraction for values
 \sisetup{parse-numbers = false}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Color Definitions %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{signalred}{rgb}{0.9047, 0.1918, 0.1988}
+\definecolor{signalblue}{rgb}{0.2941, 0.5447, 0.7494}
+\definecolor{signalgreen}{rgb}{0.3718, 0.7176, 0.3612}
+\definecolor{signalorange}{rgb}{1.0000, 0.5482, 0.1000}
+\definecolor{signalyellow}{rgb}{0.8650, 0.8110, 0.4330}
+\definecolor{signalbrown}{rgb}{0.6859, 0.4035, 0.2412}
+\colorlet{shadecolor}{gray!60}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Tikz %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{shapes, arrows, positioning, fit, calc, patterns, decorations.pathmorphing,decorations.pathreplacing,decorations.shapes,decorations.text}
 \usepgfplotslibrary{groupplots}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% tikz and circuittikz%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \usetikzlibrary{arrows,arrows.meta, shapes, shapes.symbols, positioning,shadows,trees,matrix, backgrounds, fit, calc, math, intersections, overlay-beamer-styles}
+
+% Layered tree diagram
+\tikzset{
+  basic/.style  = {draw, text width=3cm, drop shadow, rectangle},
+  root/.style   = {basic, rounded corners=2pt, thin, align=center,
+                   fill=uniblue, text=white},
+  level 2/.style = {basic, rounded corners=4pt, thin,align=center, fill=unilightblue,
+                   text width=8em},
+  level 3/.style = {basic, thin, align=left, fill=gray!25, text width=3cm}
+}
+
+% Block diagram
+\tikzset{%
+	block/.style    = {draw, thick, rectangle, minimum height = 3em,
+	  minimum width = 4em},
+    bubble/.style = {draw, ellipse, thick, minimum height = 3em,
+    minimum width = 5em, fill = uniblue, text = white},
+	dot/.style = {circle, draw, fill=black, minimum size=3pt, inner sep=0pt, outer sep=0pt},
+	input/.style    = {coordinate}, % Input
+	output/.style   = {coordinate}, % Output
+  >={Latex[scale=1.25]} % Make the arrow heads larger
+  }
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{groupplots, fillbetween} 
+
+\ctikzset{bipoles/cuteswitch/thickness=0.15} % Thickness of cute switch
+\ctikzset{diodes/scale=0.65} % Scale of diodes
+\ctikzset{tripoles/nigbt/bodydiode scale=.5} % Scale of body diode
+\ctikzset{tripoles/nigfete/bodydiode scale=.5} % Scale of body diode
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
