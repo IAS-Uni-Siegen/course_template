@@ -1,6 +1,13 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{lectureClass}[IAS lecture LaTeX class]
-\LoadClass[aspectratio=169, usepdftitle=false, handout]{beamer}
+\LoadClass[aspectratio=169, usepdftitle=false,handout]{beamer}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Class options %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newif\ifmarketing
+\DeclareOption{marketing}{\marketingtrue} % Marketing option (target audience: external partners)
+\ProcessOptions\relax
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Very basic document style settings %%
