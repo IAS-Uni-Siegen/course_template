@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{lectureClass}[IAS lecture LaTeX class]
-\LoadClass[aspectratio=169, usepdftitle=false,handout]{beamer}
+\LoadClass[aspectratio=169, usepdftitle=false, handout]{beamer}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Class options %%
@@ -101,6 +101,7 @@
 \RequirePackage{animate}
 \RequirePackage{xparse}
 \RequirePackage{nicefrac}
+\RequirePackage{tikzpeople}
 \RequirePackage{multimedia}
 \ifmarketing
   \RequirePackage[toc = false]{glossaries-extra}
