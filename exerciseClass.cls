@@ -251,7 +251,7 @@
 	output/.style   = {coordinate}, % Output
   >={Latex[scale=1.25]} % Make the arrow heads larger
   }
-\pgfplotsset{compat=1.18}
+
 \usepgfplotslibrary{groupplots, fillbetween} 
 
 \ctikzset{bipoles/cuteswitch/thickness=0.15} % Thickness of cute switch
