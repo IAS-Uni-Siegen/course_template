@@ -48,6 +48,7 @@
 \RequirePackage{mathtools}
 \RequirePackage{placeins}
 \usetikzlibrary{calc,math}
+\RequirePackage{nicefrac}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Graphic path %%
