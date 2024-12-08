@@ -249,6 +249,7 @@
 \ctikzset{diodes/scale=0.65} % Scale of diodes
 \ctikzset{tripoles/nigbt/bodydiode scale=.5} % Scale of body diode
 \ctikzset{tripoles/nigfete/bodydiode scale=.5} % Scale of body diode
+\ctikzset{bipoles/currtap/dot size=0.3} % Scale of curr tab dot
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Blocks / tcolorboxes %%
