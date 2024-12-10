@@ -244,12 +244,15 @@
   }
 \pgfplotsset{compat=1.18}
 \usepgfplotslibrary{groupplots, fillbetween} 
+\tikzstyle{ctrlblock} = [draw, rectangle, minimum height = 2em, minimum width = 3em, thick]
 
 \ctikzset{bipoles/cuteswitch/thickness=0.15} % Thickness of cute switch
 \ctikzset{diodes/scale=0.65} % Scale of diodes
 \ctikzset{tripoles/nigbt/bodydiode scale=.5} % Scale of body diode
 \ctikzset{tripoles/nigfete/bodydiode scale=.5} % Scale of body diode
 \ctikzset{bipoles/currtap/dot size=0.3} % Scale of curr tab dot
+\ctikzset{tripoles/adder/width=0.4} % Scale of adder
+\ctikzset{tripoles/mixer/width=0.4} % Scale of adder
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Blocks / tcolorboxes %%
