@@ -1,5 +1,16 @@
 
+
+
+
+
 %Updated code
+
+
+
+
+
+
+
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{exerciseClass}[IAS exercise LaTeX class]
@@ -20,6 +31,7 @@
 \RequirePackage{geometry}
 \RequirePackage{tabularx}
 \RequirePackage{caption}
+\RequirePackage{subcaption}
 \RequirePackage{siunitx}
 \RequirePackage{titling}
 \RequirePackage[obeyspaces, spaces]{url}
@@ -38,7 +50,6 @@
 \RequirePackage{import}
 \RequirePackage{epsfig}
 \RequirePackage{upgreek}
-\RequirePackage{subcaption}
 \RequirePackage{titlesec}
 \RequirePackage{siunitx}
 \RequirePackage{bm}
@@ -96,8 +107,8 @@
     \ifsolution
     \vspace{0.2\baselineskip}
     \color{blue}
-    \setlength{\parskip}{0pt}\\
-    \noindent\underline{Answer:}\\
+    \setlength{\parskip}{0pt}~\\
+    \noindent\underline{Answer:} %if you want the actual answer to start from the next line simply add ~\\ also here.
     #1
     \fi
 }
@@ -197,7 +208,7 @@
         \subsection*{} % Display "Subtask" without numbering
         \refstepcounter{subsection}
         \label{subtask:\theexerciseCount.\thetaskCount.\thesubtaskCount}
-        %\addcontentsline{toc}{subsection*}{\protect\numberline{}#1}
+        %\addcontentsline{toc}{subsection*}{\protect\numberline{}#1} 
         \theexerciseCount.\thetaskCount.\thesubtaskCount \ #1
     }
 }
