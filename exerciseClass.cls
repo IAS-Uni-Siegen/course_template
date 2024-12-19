@@ -241,7 +241,7 @@
   level 3/.style = {basic, thin, align=left, fill=gray!25, text width=3cm}
 }
 
-% Block diagram
+% same block diagram settings as in the lecture
 \tikzset{%
 	block/.style    = {draw, thick, rectangle, minimum height = 3em,
 	  minimum width = 4em},
