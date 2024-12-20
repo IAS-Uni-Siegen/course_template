@@ -1,3 +1,17 @@
+
+
+
+
+
+%Updated code
+
+
+
+
+
+
+
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{exerciseClass}[IAS exercise LaTeX class]
 \LoadClass[a4paper, 12pt, notitlepage, oneside]{article}
@@ -17,6 +31,7 @@
 \RequirePackage{geometry}
 \RequirePackage{tabularx}
 \RequirePackage{caption}
+\RequirePackage{subcaption}
 \RequirePackage{siunitx}
 \RequirePackage{titling}
 \RequirePackage[obeyspaces, spaces]{url}
@@ -35,7 +50,6 @@
 \RequirePackage{import}
 \RequirePackage{epsfig}
 \RequirePackage{upgreek}
-\RequirePackage{subcaption}
 \RequirePackage{titlesec}
 \RequirePackage{siunitx}
 \RequirePackage{bm}
@@ -47,8 +61,8 @@
 \RequirePackage{newfloat}
 \RequirePackage{mathtools}
 \RequirePackage{placeins}
+%\usepackage{placeins}
 \usetikzlibrary{calc,math}
-\RequirePackage{nicefrac}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Graphic path %%
@@ -92,14 +106,22 @@
 \NewDocumentEnvironment{solutionblock}{+b}
 {
     \ifsolution
+    %\vspace{0.2\baselineskip}
     \color{blue}
-    %\par
-    \setlength{\parskip}{0pt}
-    \noindent \ignorespaces 
-    \underline{Answer:}\\
+    %\setlength{\parskip}{0pt}\\
+    \setlength{\parskip}{0pt}%~\\
+    \FloatBarrier
+    \noindent\underline{Answer:}%~\\ %if you want the actual answer to start from the next line simply add ~\\ also
+    %\let\oldfigure\figure
+    %\renewcommand{\figure}{\vspace{-1\baselineskip}\oldfigure}
+    \FloatBarrier
     #1
+    %\let\oldfigure\figure
+    %\renewcommand{\figure}{\vspace{-1\baselineskip}\oldfigure}
+    \FloatBarrier
     \fi
 }
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Solution table %%
@@ -134,19 +156,22 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcounter{exerciseCount}
 \setcounter{exerciseCount}{0}
+%\newcommand{\taskspacing}{\vspace{1em}} 
 
 \newcommand{\ex}[1]{
     \stepcounter{exerciseCount}
     \large
     \ifnum\value{exerciseCount} < 10
-        \textbf{Exercise~0\theexerciseCount:} #1
+        \textbf{Exercise~0\theexerciseCount:} \textbf{#1}
     \else
-        \textbf{Exercise~\theexerciseCount:} #1
+        \textbf{Exercise~\theexerciseCount:} \textbf{#1}
     \fi
     \normalsize
     \setlength{\parskip}{1em}
-    \setcounter{solutionfigure}{0}
-    \setcounter{solutiontable}{0}
+    
+    % Reset task and subtask counters
+    \setcounter{taskCount}{0}
+    \setcounter{subtaskCount}{0}
 }
 
 \titleformat*{\section}{\normalfont}
@@ -154,42 +179,83 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% task %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcounter{taskCount}[exerciseCount]
-\setcounter{taskCount}{0}
-
-\newcommand{\task}[1]{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% task %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{taskCount}[exerciseCount]                  
+%\setcounter{taskCount}{0}
+\renewcommand{\thesection}{\theexerciseCount.\thetaskCount} 
+\newcommand{\task}[1]{ 
     \stepcounter{taskCount}
-        \ifnum\value{taskCount}=1
+    %\setcounter{subtaskCount}{0} % Reset subtask counter at the start of a new task
+    \ifnum\value{taskCount}=1
         \setlength{\parskip}{-12pt}
-        \else
-        \setlength{\parskip}{12pt}
-        \fi
-    \normalsize \section*{\textbf{Task~\thetaskCount:~#1}}
-    \addcontentsline{toc}{section}{\protect\numberline{}#1}
-    \setlength{\parskip}{-12pt}
+    \else
+        \setlength{\parskip}{-12pt}
+    \fi
+    \ifnum\value{taskCount}>1
+    \vspace{1em} % Adjust the spacing value as needed
+    \fi
+    \normalsize
+    \section*{\textbf{Task~\theexerciseCount.\thetaskCount:~#1}} % Display "Subtask" without numbering
+    \refstepcounter{section} 
+    %\section{\textbf{Task:~#1}}
+    %\addcontentsline{toc}{section}{\protect\numberline{}#1}
+    \label{task:\theexerciseCount.\thetaskCount} % Unique label for each task
+}
+\addto\extrasenglish{%
+\renewcommand{\sectionautorefname}{task}
+%\renewcommand{\thesection}{} % Change to "Task" for \autoref
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% subtask %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcounter{subtaskCount}[taskCount]
-\setcounter{subtaskCount}{0}
+%\setcounter{subtaskCount}{0}
 
 \newcommand{\subtask}[1]{
     {\stepcounter{subtaskCount}
+        %\fi
+    %\ifnum\value{taskCount}>1
+    %\vspace{0.5em} % Adjust the spacing value as needed
+    %\fi 
         \normalsize
-        \setlength{\parskip}{12pt}
-        \thetaskCount.\thesubtaskCount \ #1
+        \subsection*{} % Display "Subtask" without numbering
+        \refstepcounter{subsection}
+        \label{subtask:\theexerciseCount.\thetaskCount.\thesubtaskCount}
+        %\addcontentsline{toc}{subsection*}{\protect\numberline{}#1} 
+        \theexerciseCount.\thetaskCount.\thesubtaskCount \ #1
     }
+}
 
+
+\addto\extrasenglish{%
+\renewcommand{\subsectionautorefname}{subtask}
+%\renewcommand{\thesubsection}{}
+ % Change to "Task" for \autoref
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Numbering of equations %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\numberwithin{equation}{exerciseCount}
-\numberwithin{figure}{exerciseCount}
-\numberwithin{table}{exerciseCount}
+\numberwithin{equation}{taskCount}
+\numberwithin{figure}{taskCount}
+\numberwithin{table}{taskCount}
+\numberwithin{solutionfigure}{taskCount}
+
+\renewcommand{\thefigure}{\theexerciseCount.\thetaskCount.\arabic{figure}} % Redefine figure numbering format
+\renewcommand{\thesolutionfigure}{\theexerciseCount.\thetaskCount.\arabic{solutionfigure}}
+\renewcommand{\theequation}{\theexerciseCount.\thetaskCount.\arabic{equation}}
+\renewcommand{\thetable}{\theexerciseCount.\thetaskCount.\arabic{table}}
+
+
+
+%\numberwithin{task}{exerciseCount}
+%\numberwithin{subtask}{exerciseCount}
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% SI units %%
@@ -252,7 +318,7 @@
 	output/.style   = {coordinate}, % Output
   >={Latex[scale=1.25]} % Make the arrow heads larger
   }
-
+\pgfplotsset{compat=1.18}
 \usepgfplotslibrary{groupplots, fillbetween} 
 
 \ctikzset{bipoles/cuteswitch/thickness=0.15} % Thickness of cute switch
