@@ -61,6 +61,7 @@
 \RequirePackage{newfloat}
 \RequirePackage{mathtools}
 \RequirePackage{placeins}
+%\usepackage{placeins}
 \usetikzlibrary{calc,math}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -105,11 +106,19 @@
 \NewDocumentEnvironment{solutionblock}{+b}
 {
     \ifsolution
-    \vspace{0.2\baselineskip}
+    %\vspace{0.2\baselineskip}
     \color{blue}
-    \setlength{\parskip}{0pt}~\\
-    \noindent\underline{Answer:} %if you want the actual answer to start from the next line simply add ~\\ also here.
+    %\setlength{\parskip}{0pt}\\
+    \setlength{\parskip}{0pt}%~\\
+    \FloatBarrier
+    \noindent\underline{Answer:}%~\\ %if you want the actual answer to start from the next line simply add ~\\ also
+    %\let\oldfigure\figure
+    %\renewcommand{\figure}{\vspace{-1\baselineskip}\oldfigure}
+    \FloatBarrier
     #1
+    %\let\oldfigure\figure
+    %\renewcommand{\figure}{\vspace{-1\baselineskip}\oldfigure}
+    \FloatBarrier
     \fi
 }
 
@@ -147,6 +156,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcounter{exerciseCount}
 \setcounter{exerciseCount}{0}
+%\newcommand{\taskspacing}{\vspace{1em}} 
 
 \newcommand{\ex}[1]{
     \stepcounter{exerciseCount}
@@ -183,13 +193,15 @@
     \else
         \setlength{\parskip}{-12pt}
     \fi
+    \ifnum\value{taskCount}>1
+    \vspace{1em} % Adjust the spacing value as needed
+    \fi
     \normalsize
     \section*{\textbf{Task~\theexerciseCount.\thetaskCount:~#1}} % Display "Subtask" without numbering
     \refstepcounter{section} 
     %\section{\textbf{Task:~#1}}
     %\addcontentsline{toc}{section}{\protect\numberline{}#1}
     \label{task:\theexerciseCount.\thetaskCount} % Unique label for each task
-
 }
 \addto\extrasenglish{%
 \renewcommand{\sectionautorefname}{task}
@@ -204,6 +216,10 @@
 
 \newcommand{\subtask}[1]{
     {\stepcounter{subtaskCount}
+        %\fi
+    %\ifnum\value{taskCount}>1
+    %\vspace{0.5em} % Adjust the spacing value as needed
+    %\fi 
         \normalsize
         \subsection*{} % Display "Subtask" without numbering
         \refstepcounter{subsection}
