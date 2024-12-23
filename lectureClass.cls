@@ -162,6 +162,7 @@
 \definecolor{signalorange}{rgb}{1.0000, 0.5482, 0.1000}
 \definecolor{signalyellow}{rgb}{0.8650, 0.8110, 0.4330}
 \definecolor{signalbrown}{rgb}{0.6859, 0.4035, 0.2412}
+\definecolor{signallavender}{rgb}{0.55, 0.51, 0.71}
 \colorlet{shadecolor}{gray!60}
 
 
