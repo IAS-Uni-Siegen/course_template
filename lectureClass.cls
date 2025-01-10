@@ -1,6 +1,13 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{lectureClass}[IAS lecture LaTeX class]
-\LoadClass[aspectratio=169, usepdftitle=false]{beamer}
+\LoadClass[aspectratio=169, usepdftitle=false, handout]{beamer}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Class options %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newif\ifmarketing
+\DeclareOption{marketing}{\marketingtrue} % Marketing option (target audience: external partners)
+\ProcessOptions\relax
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Class options %%
@@ -22,6 +29,24 @@
 \setbeamertemplate{subsection in toc}[square]
 \setbeamercolor{section number projected}{fg = white, bg = uniblue}
 \setbeamercolor{subsection number projected}{fg = white, bg = uniblue}
+
+% toc automation
+\AtBeginSection[]
+{
+  \begin{frame}{Table of contents}
+    \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/show/hide]
+  \end{frame}
+}
+
+\AtBeginSubsection[]
+{
+  \ifnum\value{subsection} > 1 % show toc only again after second subsection onwards  
+    \begin{frame}{Table of contents}
+      \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
+   \end{frame}
+  \fi
+}
+
 
 %itemize / enumerate style
 \setbeamertemplate{itemize items}[triangle]
@@ -54,7 +79,7 @@
 \else
     \titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{IAS.pdf}}\hspace{2cm} \href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[height=1cm]{CC-BY.pdf}}}
 \fi
-\author{Oliver Wallscheid}
+\author{N.N.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -76,6 +101,7 @@
 \RequirePackage{animate}
 \RequirePackage{xparse}
 \RequirePackage{nicefrac}
+\RequirePackage{tikzpeople}
 \RequirePackage{multimedia}
 \ifmarketing
   \RequirePackage[toc = false]{glossaries-extra}
@@ -136,6 +162,7 @@
 \definecolor{signalorange}{rgb}{1.0000, 0.5482, 0.1000}
 \definecolor{signalyellow}{rgb}{0.8650, 0.8110, 0.4330}
 \definecolor{signalbrown}{rgb}{0.6859, 0.4035, 0.2412}
+\definecolor{signallavender}{rgb}{0.55, 0.51, 0.71}
 \colorlet{shadecolor}{gray!60}
 
 
@@ -218,11 +245,15 @@
   }
 \pgfplotsset{compat=1.18}
 \usepgfplotslibrary{groupplots, fillbetween} 
+\tikzstyle{ctrlblock} = [draw, rectangle, minimum height = 2em, minimum width = 3em, thick]
 
 \ctikzset{bipoles/cuteswitch/thickness=0.15} % Thickness of cute switch
 \ctikzset{diodes/scale=0.65} % Scale of diodes
 \ctikzset{tripoles/nigbt/bodydiode scale=.5} % Scale of body diode
 \ctikzset{tripoles/nigfete/bodydiode scale=.5} % Scale of body diode
+\ctikzset{bipoles/currtap/dot size=0.3} % Scale of curr tab dot
+\ctikzset{tripoles/adder/width=0.4} % Scale of adder
+\ctikzset{tripoles/mixer/width=0.4} % Scale of adder
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Blocks / tcolorboxes %%
