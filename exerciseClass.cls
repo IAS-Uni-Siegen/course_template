@@ -56,7 +56,7 @@
 \RequirePackage{tikz}
 \RequirePackage{pgfplots}
 \RequirePackage{standalone}
-\RequirePackage{circuitikz}[european, smartlabels, americaninductor]
+\RequirePackage[european, smartlabels, americaninductor]{circuitikz}
 \RequirePackage{multirow}
 \RequirePackage{newfloat}
 \RequirePackage{mathtools}
