@@ -1,8 +1,5 @@
 
 
-
-
-
 %Updated code
 
 
