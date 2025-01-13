@@ -46,7 +46,7 @@
 \RequirePackage[hidelinks]{hyperref}
 \RequirePackage{amsmath}
 \RequirePackage{booktabs}
-\RequirePackage{graphicx}
+\RequirePackage{graphicx, nicefrac}
 \RequirePackage{import}
 \RequirePackage{epsfig}
 \RequirePackage{upgreek}
