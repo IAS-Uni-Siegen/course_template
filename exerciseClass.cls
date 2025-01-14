@@ -220,7 +220,7 @@
     %\ifnum\value{taskCount}>1
     %\vspace{0.5em} % Adjust the spacing value as needed
     %\fi 
-        \vspace{-1em}
+        \vspace{-1em} %reduce spacing
         \normalsize
         \subsection*{} % Display "Subtask" without numbering
         \refstepcounter{subsection}
