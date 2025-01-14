@@ -1,8 +1,5 @@
 
 
-
-
-
 %Updated code
 
 
@@ -46,7 +43,7 @@
 \RequirePackage[hidelinks]{hyperref}
 \RequirePackage{amsmath}
 \RequirePackage{booktabs}
-\RequirePackage{graphicx}
+\RequirePackage{graphicx, nicefrac}
 \RequirePackage{import}
 \RequirePackage{epsfig}
 \RequirePackage{upgreek}
@@ -56,13 +53,12 @@
 \RequirePackage{tikz}
 \RequirePackage{pgfplots}
 \RequirePackage{standalone}
-\RequirePackage{circuitikz}[european, smartlabels, americaninductor]
+\RequirePackage[european, smartlabels, americaninductor]{circuitikz}
 \usetikzlibrary{calc,math}
 \RequirePackage{multirow}
 \RequirePackage{newfloat}
 \RequirePackage{mathtools}
 \RequirePackage{placeins}
-
 \RequirePackage{nicefrac}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -309,7 +305,7 @@
   level 3/.style = {basic, thin, align=left, fill=gray!25, text width=3cm}
 }
 
-% Block diagram
+% same block diagram settings as in the lecture
 \tikzset{%
 	block/.style    = {draw, thick, rectangle, minimum height = 3em,
 	  minimum width = 4em},
