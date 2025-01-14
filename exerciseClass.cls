@@ -57,12 +57,13 @@
 \RequirePackage{pgfplots}
 \RequirePackage{standalone}
 \RequirePackage{circuitikz}[european, smartlabels, americaninductor]
+\usetikzlibrary{calc,math}
 \RequirePackage{multirow}
 \RequirePackage{newfloat}
 \RequirePackage{mathtools}
 \RequirePackage{placeins}
-%\usepackage{placeins}
-\usetikzlibrary{calc,math}
+
+\RequirePackage{nicefrac}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Graphic path %%
