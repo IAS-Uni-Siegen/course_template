@@ -54,12 +54,12 @@
 \RequirePackage{pgfplots}
 \RequirePackage{standalone}
 \RequirePackage[european, smartlabels, americaninductor]{circuitikz}
+\usetikzlibrary{calc,math}
 \RequirePackage{multirow}
 \RequirePackage{newfloat}
 \RequirePackage{mathtools}
 \RequirePackage{placeins}
-%\usepackage{placeins}
-\usetikzlibrary{calc,math}
+\RequirePackage{nicefrac}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Graphic path %%
@@ -217,6 +217,7 @@
     %\ifnum\value{taskCount}>1
     %\vspace{0.5em} % Adjust the spacing value as needed
     %\fi 
+        \vspace{-1em} %reduce spacing
         \normalsize
         \subsection*{} % Display "Subtask" without numbering
         \refstepcounter{subsection}
