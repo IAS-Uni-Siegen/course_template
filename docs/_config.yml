@@ -1,0 +1,12 @@
+title: IAS Documentation
+description: A starter template for a Jeykll site using the Just the Docs theme!
+theme: just-the-docs
+
+url: https://github.com/IAS-Uni-Siegen
+
+aux_links:
+  Template Repository: https://github.com/IAS-Uni-Siegen
+
+
+gems:
+  - jekyll-default-layout
