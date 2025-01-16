@@ -41,6 +41,9 @@ jobs:
           bundler-cache: true
           cache-version: 0
           working-directory: '${{ github.workspace }}/docs'
+
+      - name: Install Bundler
+        run: gem install bundler   # Ensure Bundler is installed
           
       - name: Setup Pages
         id: pages
