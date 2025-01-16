@@ -39,12 +39,13 @@ jobs:
         with:
           ruby-version: '3.3'
           bundler-cache: true
-          cache-version: 0
+          cache-version: 1
           working-directory: '${{ github.workspace }}/docs'
 
       - name: Install Bundler
         run: gem install bundler   # Ensure Bundler is installed
-          
+        working-directory: ./docs
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
