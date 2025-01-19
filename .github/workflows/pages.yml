@@ -35,13 +35,18 @@ jobs:
       run:
         working-directory: docs
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Ensure the full history is checked out to capture the PR changes
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
           bundler-cache: true
           cache-version: 1
-          working-directory: '${{ github.workspace }}/docs'
+          #working-directory: '${{ github.workspace }}/docs'
 
       - name: Install Bundler
         run: gem install bundler   # Ensure Bundler is installed
