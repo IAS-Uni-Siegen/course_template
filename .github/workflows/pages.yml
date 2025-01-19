@@ -12,6 +12,7 @@ on:
       - "main"
     paths:
       - "docs/**"
+  pull_request:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -40,7 +41,7 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
           cache-version: 1
-          working-directory: '${{ github.workspace }}/docs'
+          #working-directory: '${{ github.workspace }}/docs'
 
       - name: Install Bundler
         run: gem install bundler   # Ensure Bundler is installed
