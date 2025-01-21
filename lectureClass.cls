@@ -129,7 +129,8 @@
   fraction-function=\tfrac,
   input-digits = 0123456789\pi,
   exponent-product=\ensuremath{\cdot},
-  inter-unit-product = {}
+  inter-unit-product = {},
+  range-phrase=\,--\,
 }
 \DeclareSIUnit{\EUR}{\text{\euro}}
 
@@ -254,6 +255,7 @@
 \ctikzset{bipoles/currtap/dot size=0.3} % Scale of curr tab dot
 \ctikzset{tripoles/adder/width=0.4} % Scale of adder
 \ctikzset{tripoles/mixer/width=0.4} % Scale of adder
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Blocks / tcolorboxes %%
