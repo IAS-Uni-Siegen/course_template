@@ -7,14 +7,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifmarketing
 \DeclareOption{marketing}{\marketingtrue} % Marketing option (target audience: external partners)
+
+\DeclareOption{CC-BY}{
+  \newcommand{\CCfig}{\href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[height=1cm]{CC-BY.pdf}}}
+  \newcommand{\CClink}{https://creativecommons.org/licenses/by/4.0/}
+  \newcommand{\CCname}{Creative Commons BY 4.0}
+} % Creative Commons license (default)
+\DeclareOption{CC-BY-NC-SA}{
+  \renewcommand{\CCfig}{\href{https://creativecommons.org/licenses/by-nc-sa/4.0/}{\includegraphics[height=1cm]{CC-BY-NC-SA.pdf}}}
+  \renewcommand{\CClink}{https://creativecommons.org/licenses/by-nc-sa/4.0/}
+  \renewcommand{\CCname}{Creative Commons BY-NC-SA 4.0}
+} % Creative Commons license (alternatve)
+\ExecuteOptions{CC-BY} % Default CC license
+
 \ProcessOptions\relax
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Class options %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newif\ifmarketing
-\DeclareOption{marketing}{\marketingtrue} % Marketing option (target audience: external partners)
-\ProcessOptions\relax
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Very basic document style settings %%
@@ -52,8 +59,14 @@
 \setbeamertemplate{itemize items}[triangle]
 \setbeamercolor{item}{fg = uniblue}
 \setbeamercolor{subitem}{fg = uniblue}
-\setbeamertemplate{itemize/enumerate body begin}{\vspace{0.5em}} % vertical space before itemize/enumerate
-\setbeamertemplate{itemize/enumerate body end}{\vspace{0.5em}} % vertical space after itemize/enumerate
+\setbeamertemplate{itemize/enumerate body begin}{\vspace{0.25em}} % vertical space before itemize/enumerate
+\setbeamertemplate{itemize/enumerate body end}{\vspace{0.25em}} % vertical space after itemize/enumerate
+
+% Align itemize smybols with slide title on the left
+\settowidth{\leftmargini}{\usebeamertemplate{itemize item}}
+\addtolength{\leftmargini}{\labelsep}
+\settowidth{\leftmarginii}{\usebeamertemplate{itemize item}}
+\addtolength{\leftmarginii}{\labelsep}
 
 % Set title slide color to uniblue
 \setbeamercolor{titlelike}{parent = structure, fg = uniblue}
@@ -66,6 +79,10 @@
 \setbeamercolor{author in head/foot}{fg = uniblue}
 \setbeamercolor{page number in head/foot}{fg = uniblue}
 
+% Align text and slide title on the left
+\setbeamersize{text margin left=0.3cm}
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -77,9 +94,14 @@
 \ifmarketing
     \titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{IAS.pdf}}}
 \else
-    \titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{IAS.pdf}}\hspace{2cm} \href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[height=1cm]{CC-BY.pdf}}}
+    \titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{IAS.pdf}}
+    \hspace{2cm} 
+    \CCfig
+    }
 \fi
 \author{N.N.}
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -115,8 +137,10 @@
 \RequirePackage{tikz, pgfplots}
 \RequirePackage[european, smartlabels, americaninductor]{circuitikz}
 \RequirePackage{eurosym}
-\RequirePackage[listings,theorems]{tcolorbox}
+\RequirePackage[listings,theorems, skins, most, many]{tcolorbox}
 \RequirePackage[parent]{currfile}
+\RequirePackage[hang,flushmargin]{footmisc}
+\RequirePackage{csquotes} % For \enquote command
 
 
 
@@ -141,8 +165,8 @@
 \hypersetup{colorlinks,
             linkcolor=,
             urlcolor=links,
-            pdfcopyright={Creative Commons BY 4.0},
-            pdflicenseurl={https://creativecommons.org/licenses/by/4.0/},
+            pdfcopyright={\CCname},
+            pdflicenseurl={\CClink},
             pdfauthor={Oliver Wallscheid},
             pdfcontacturl={https://www.eti.uni-siegen.de/ias/},
             pdftitle={Lecture slides}
@@ -177,6 +201,7 @@
   \endgroup
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Delete absolute page number depiction since \inserttotalframenumber is not updated to zero when using \part      command  %%%%%
@@ -284,13 +309,16 @@
 }
 
 % Math. definitions
-\newtcbtheorem[number within=part, reset counter on overlays=true]{defi}{Definition}{grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colframe = black!60}{defi}
+\newtcbtheorem[number within=section, reset counter on overlays=true]{defi}{Definition}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = uniblue, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90,  width=1.02\textwidth}{defi}
 
 % Math. theorems		
-\newtcbtheorem[number within=part, reset counter on overlays=true]{theo}{Theorem}{grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colframe = black!60}{theo}
+\newtcbtheorem[number within=section, reset counter on overlays=true]{theo}{Theorem}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = uniblue, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90}{theo}
 
 % Algorithms	
-\newtcbtheorem[number within=part, reset counter on overlays=true]{algo}{Algorithm}{grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colframe = black!60}{algo}
+\newtcbtheorem[number within=section, reset counter on overlays=true]{algo}{Algorithm}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = uniblue, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90,  width=1.02\textwidth}{algo}
+
+% Footnote box with footnotesize text and minimal margins
+\newtcolorbox{footnotebox}[1][]{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = uniblue, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90, width=1.02\textwidth, fontupper=\footnotesize, #1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% References %%
@@ -346,4 +374,4 @@
 \graphicspath{{course_template/}{../course_template/}{fig/}{../fig/}} % Potential paths to figures
 
 
-
+\ProcessOptions\relax
