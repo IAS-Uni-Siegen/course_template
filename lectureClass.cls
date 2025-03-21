@@ -31,6 +31,7 @@
 \usefonttheme{professionalfonts}
 \beamertemplatenavigationsymbolsempty % deactivate beamer class navigator bar
 
+
 % toc style
 \setbeamertemplate{section in toc}[ball]
 \setbeamertemplate{subsection in toc}[square]
@@ -41,7 +42,7 @@
 \AtBeginSection[]
 {
   \begin{frame}{Table of contents}
-    \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/show/hide]
+     \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/show/hide]
   \end{frame}
 }
 
@@ -104,6 +105,8 @@
 
 
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Packages %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -141,6 +144,7 @@
 \RequirePackage[parent]{currfile}
 \RequirePackage[hang,flushmargin]{footmisc}
 \RequirePackage{csquotes} % For \enquote command
+\RequirePackage{fontawesome} % For icons
 
 
 
@@ -348,6 +352,12 @@
 \renewcommand{\algorithmcfname}{Algo.} %Algorithm-Name
 \numberwithin{algocf}{section} %Allows for \part.\algo style numbering
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Captions for algorithm2e package (modify towards regular figure cap)  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\SetAlCapNameFnt{\small}
+\SetAlCapSty{}
+\SetAlCapFnt{\small}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Math short commands  %%
