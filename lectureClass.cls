@@ -41,11 +41,11 @@
 % toc automation
 \AtBeginSection[]
 {
+    \hypertarget{sec\thesection}{}
     \begin{frame}{Table of contents}
       \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/show/hide]
     \end{frame}
 }
-
 
 \AtBeginSubsection[]
 {
