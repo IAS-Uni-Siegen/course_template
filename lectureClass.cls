@@ -1,6 +1,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{lectureClass}[IAS lecture LaTeX class]
-\LoadClass[aspectratio=169, usepdftitle=false, handout]{beamer}
+\LoadClass[aspectratio=169, usepdftitle=false, onlytextwidth, handout]{beamer}
+
+% onlytextwidth: slides with column utilize the same effective textwidth as slides without columns to ensure proper alignment 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Class options %%
