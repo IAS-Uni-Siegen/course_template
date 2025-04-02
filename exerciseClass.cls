@@ -17,8 +17,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{../course_template/document_template/paper}
 \RequirePackage{titling}
-%\RequirePackage[european, smartlabels, americaninductor]{circuitikz}
-%\usetikzlibrary{calc,math}
 \RequirePackage{mathtools}
 \RequirePackage{placeins}
 
