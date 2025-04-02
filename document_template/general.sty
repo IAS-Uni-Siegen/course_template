@@ -1,0 +1,193 @@
+% sharedContent.sty
+\ProvidesPackage{document}[2025/02/28 v1.0 Shared code for examClass and exerciseClass]
+\RequirePackage{siunitx}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}  % Set T1 encoding for better character rendering
+\RequirePackage{lmodern}      % Load Latin Modern font
+\RequirePackage{amsfonts}     % Load additional math fonts
+\RequirePackage{amsmath}
+\RequirePackage{subcaption}
+\RequirePackage{bm}
+\RequirePackage{multirow}
+\RequirePackage{nicefrac}
+\RequirePackage{booktabs}
+\RequirePackage{xcolor}
+\RequirePackage{caption}
+\RequirePackage{graphicx}
+\RequirePackage{wrapfig} % Allows wrapping text around figures for better layout
+\RequirePackage{ragged2e}
+\RequirePackage{array} % Enhances table formatting by allowing advanced column definitions
+\RequirePackage{hhline} % Improves control over horizontal lines in tables
+\RequirePackage{calc}
+\RequirePackage{xparse} 
+\RequirePackage{eurosym} % Provides the Euro currency symbol (€)
+\RequirePackage{animate} % Enables animated graphics in PDF output
+\RequirePackage{multimedia} % Supports embedding multimedia content like audio and video
+\RequirePackage{upgreek} % Provides upright Greek letters for mathematical notation
+\RequirePackage[boxed, noend, noline]{algorithm2e}
+\RequirePackage{standalone}  % Allows compiling standalone figures or sub-documents independently
+\RequirePackage{newfloat} % Defines new types of floating environments (e.g., for algorithms or figures)
+\RequirePackage{tikz} %presentation has packae tikzpeople
+\RequirePackage{pgfplots}
+\RequirePackage{hyperref} 
+\RequirePackage{hyperxmp} 
+\RequirePackage{fontawesome} % For icon
+\RequirePackage{tikzpeople}
+\RequirePackage[european, smartlabels, americaninductor]{circuitikz}
+\RequirePackage[listings,theorems, skins, most, many]{tcolorbox}
+\RequirePackage[hang,flushmargin]{footmisc}
+ \RequirePackage{csquotes} % For \enquote command
+ 
+
+
+
+% Global declarations (always applied)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% SI units %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% one space between value and unit
+\sisetup{number-unit-product=\ }
+
+% no space between the units
+\sisetup{inter-unit-product = }
+
+% fraction for units
+\sisetup{per-mode = fraction}
+
+% allow fraction for values
+\sisetup{parse-numbers = false}
+
+
+\sisetup{
+  per-mode=fraction,
+  fraction-function=\tfrac,
+  input-digits = 0123456789\pi,
+  exponent-product=\ensuremath{\cdot},
+  inter-unit-product = {},
+  range-phrase=\,--\,
+}
+\DeclareSIUnit{\EUR}{\text{\euro}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Tabular %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{L}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Centered p-box & m-box in table env. using array package %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Color Definitions %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{uniblue}{HTML}{00385F}
+\definecolor{unilightblue}{HTML}{009ED4}
+\definecolor{unigrey}{HTML}{64727f}
+\definecolor{links}{HTML}{2A1B81}
+\newcommand{\hl}[1]{\textcolor{signalred}{#1}} %Highlights in text
+\newcommand{\hlh}[1]{\textbf{#1}} %Highlights in sub-headings
+\definecolor{signalred}{rgb}{0.9047, 0.1918, 0.1988}
+\definecolor{signalblue}{rgb}{0.2941, 0.5447, 0.7494}
+\definecolor{signalgreen}{rgb}{0.3718, 0.7176, 0.3612}
+\definecolor{signalorange}{rgb}{1.0000, 0.5482, 0.1000}
+\definecolor{signalyellow}{rgb}{0.8650, 0.8110, 0.4330}
+\definecolor{signalbrown}{rgb}{0.6859, 0.4035, 0.2412}
+\definecolor{signallavender}{rgb}{0.55, 0.51, 0.71}
+\colorlet{shadecolor}{gray!60}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Math short commands  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\E}[1]{\mathbb{E}\left[#1\right]} %Expected value
+\newcommand{\Var}[1]{\mathrm{Var}\left[#1\right]} %Variance value
+\newcommand{\El}[2]{\mathbb{E}_{#2}\left[#1\right]} %Expected value with lower index
+\newcommand{\Pb}[1]{\mathbb{P}\left[#1\right]} %Propability
+\newcommand{\T}{^{\mkern-1.5mu\mathsf{T}}} %Transpose
+\newcommand{\iu}{\mathrm{j}\mkern1mu} %imaginary unit
+\DeclareMathOperator*{\argmax}{arg\,max} % arg max
+\DeclareMathOperator*{\argmin}{arg\,min} % arg min
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% tikz and circuittikz%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \usetikzlibrary{
+  arrows, arrows.meta, shapes, shapes.symbols, positioning, shadows, trees, matrix, backgrounds, fit, 
+  calc, math, intersections, overlay-beamer-styles, angles, quotes, patterns, decorations.pathmorphing, 
+  decorations.pathreplacing, decorations.shapes, decorations.text,math
+}
+
+%% Tikz
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{groupplots, fillbetween} 
+\ctikzset{bipoles/cuteswitch/thickness=0.15} % Thickness of cute switch
+\ctikzset{multipoles/rotary/thickness=0.15} % Thickness of rotary switch
+\ctikzset{diodes/scale=0.65} % Scale of diodes
+\ctikzset{tripoles/nigbt/bodydiode scale=.5} % Scale of body diode
+\ctikzset{tripoles/nigfete/bodydiode scale=.5} % Scale of body diode
+\ctikzset{bipoles/currtap/dot size=0.3} % Scale of curr tab dot
+\ctikzset{tripoles/adder/width=0.4} % Scale of adder
+\ctikzset{tripoles/mixer/width=0.4} % Scale of adder
+\tikzstyle{ctrlblock} = [draw, rectangle, minimum height = 2em, minimum width = 3em, thick]
+
+
+
+% Layered tree diagram
+\tikzset{
+  basic/.style  = {draw, text width=3cm, drop shadow, rectangle},
+  root/.style   = {basic, rounded corners=2pt, thin, align=center,
+                   fill=uniblue, text=white},
+  level 2/.style = {basic, rounded corners=4pt, thin,align=center, fill=unilightblue,
+                   text width=8em},
+  level 3/.style = {basic, thin, align=left, fill=gray!25, text width=3cm}
+}
+
+% same block diagram settings as in the lecture
+\tikzset{%
+	block/.style    = {draw, thick, rectangle, minimum height = 3em,
+	  minimum width = 4em},
+    bubble/.style = {draw, ellipse, thick, minimum height = 3em,
+    minimum width = 5em, fill = uniblue, text = white},
+	dot/.style = {circle, draw, fill=black, minimum size=3pt, inner sep=0pt, outer sep=0pt},
+	input/.style    = {coordinate}, % Input
+	output/.style   = {coordinate}, % Output
+  >={Latex[scale=1.25]} % Make the arrow heads larger
+  }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Hyperref setup %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{colorlinks,
+            linkcolor=,
+            urlcolor=links,
+            pdfcopyright={\CCname},
+            pdflicenseurl={\CClink},
+            pdfauthor={Oliver Wallscheid},
+            pdfcontacturl={https://www.eti.uni-siegen.de/ias/},
+            pdftitle={Lecture slides}
+            }
+
+
+
+% Math. definitions %%% Definition Box
+\newtcbtheorem[number within=section, reset counter on overlays=true]{defi}{Definition}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = uniblue, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90,  width=1.02\textwidth}{defi}
+% Math. theorems	%%Theorem Box
+\newtcbtheorem[number within=section, reset counter on overlays=true]{theo}{Theorem}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = uniblue, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90}{theo}
+% Algorithms	%%Algorithm Box
+\newtcbtheorem[number within=section, reset counter on overlays=true]{algo}{Algorithm}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = uniblue, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90,  width=1.02\textwidth}{algo}
+ 
+ % Footnote box with footnotesize text and minimal margins
+ \newtcolorbox{footnotebox}[1][]{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = uniblue, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90, width=1.02\textwidth, fontupper=\footnotesize, #1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %% Captions for algorithm2e package (modify towards regular figure cap)  %%
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \SetAlCapNameFnt{\small}
+ \SetAlCapSty{}
+ \SetAlCapFnt{\small}

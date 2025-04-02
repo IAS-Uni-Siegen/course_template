@@ -1,0 +1,183 @@
+\ProvidesPackage{presentation}[2025/02/28 v1.0 Shared code for examClass and exerciseClass]
+
+\usepackage{../document_template/general}
+
+\captionsetup{font=small, justification=centering} 
+
+\ifmarketing
+  \RequirePackage[toc = false]{glossaries-extra}
+\else 
+  \RequirePackage[automake, toc = false]{glossaries-extra} % automake option causes error if \makeglossaries is not used in main file 
+\fi
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Beamer Theme and Colors %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetheme{Madrid}
+\usecolortheme{dove}
+\usefonttheme{professionalfonts}
+\beamertemplatenavigationsymbolsempty % Remove navigation bar
+
+% Set title slide color to uniblue
+\setbeamercolor{titlelike}{parent = structure, fg = uniblue}
+\setbeamercolor{title}{parent = structure, fg = uniblue}
+\setbeamercolor{author}{parent = structure, fg = uniblue}
+\setbeamercolor{date}{parent = structure, fg = uniblue}
+
+% Set font color of footer information to uniblue
+\setbeamercolor{title in head/foot}{fg = uniblue}
+\setbeamercolor{author in head/foot}{fg = uniblue}
+\setbeamercolor{page number in head/foot}{fg = uniblue}
+\setbeamersize{text margin left=0.3cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TOC (Table of Contents) Styling %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{section in toc}[ball]
+\setbeamertemplate{subsection in toc}[square]
+\setbeamercolor{section number projected}{fg = white, bg = uniblue}
+\setbeamercolor{subsection number projected}{fg = white, bg = uniblue}
+
+\AtBeginSection[]
+{
+  \hypertarget{sec\thesection}{}
+  \begin{frame}{Table of contents}
+    \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/show/hide]
+  \end{frame}
+}
+
+\AtBeginSubsection[]
+{
+  \ifnum\value{subsection} > 1 % show TOC again after the second subsection
+    \begin{frame}{Table of contents}
+      \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
+    \end{frame}
+  \fi
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Itemize and Enumerate Styles %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{itemize items}[triangle]
+\setbeamercolor{item}{fg = uniblue}
+\setbeamercolor{subitem}{fg = uniblue}
+\setbeamertemplate{itemize/enumerate body begin}{\vspace{0.25em}}
+\setbeamertemplate{itemize/enumerate body end}{\vspace{0.25em}}
+
+% Align itemize smybols with slide title on the left
+\settowidth{\leftmargini}{\usebeamertemplate{itemize item}}
+\addtolength{\leftmargini}{\labelsep}
+\settowidth{\leftmarginii}{\usebeamertemplate{itemize item}}
+\addtolength{\leftmarginii}{\labelsep}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Blocks Styling %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamercolor{block body}{fg=black,bg=gray!15}
+\setbeamercolor{block title}{fg=white,bg=uniblue}
+\addtobeamertemplate{block begin}{}{\justifying}
+
+% Centered block with adjustable width
+\newenvironment<>{varblock}[2][.9\textwidth]{
+\begin{center}
+  \begin{minipage}{#1}
+    \begin{actionenv}#3%
+      \def\insertblocktitle{#2}%
+      \par%
+      \usebeamertemplate{block begin}}
+    {\par%
+      \usebeamertemplate{block end}%
+    \end{actionenv}
+  \end{minipage}
+\end{center}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Footnote Without Numbering %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Custom Beamer Footer (Footline) %%
+%%%% Delete absolute page number depiction since \inserttotalframenumber is not updated to zero when using \part      command  %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\setbeamertemplate{footline}{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex, left, leftskip=0.375cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor\expandafter\ifblank\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right, rightskip=0.25cm]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{5em}
+    \insertframenumber{}%/\inserttotalframenumber
+    \hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+
+}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Custom Reference Formatting %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\figref}[1]{\figurename~\ref{#1}}
+\newcommand{\satzref}[1]{Theo.~\ref{#1}}
+\newcommand{\defref}[1]{Def.~\ref{#1}}
+\newcommand{\theoref}[1]{Theo.~\ref{#1}}
+\newcommand{\tabref}[1]{\tablename~\ref{#1}}
+\newcommand{\capref}[1]{\capname~\ref{#1}}
+\newcommand{\apref}[1]{\apname~\ref{#1}}
+\newcommand{\algname}{Algo.}
+\newcommand{\algoref}[1]{\algname~\ref{#1}}
+\setbeamertemplate{caption}{\raggedright\centering\insertcaption\par}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Numbering of Captions %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{caption}[numbered] %Gives basic numbering to captions
+\numberwithin{figure}{section} %Allows for \part.\figure style numbering
+\renewcommand\figurename{Fig.}
+\renewcommand{\thetable}{\arabic{table}}
+\numberwithin{equation}{section} %Allows for \part.\equation style numbering
+\numberwithin{table}{section} %Allows for \part.\table style numbering
+\renewcommand\tablename{Tab.}
+\renewcommand{\algorithmcfname}{Algo.} %Algorithm-Name
+\numberwithin{algocf}{section} %Allows for \part.\algo style numbering
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% check- and x-mark %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Glossaries %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newglossary{nomen}{nom}{nomc}{Nomenclature}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Misc. %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\let\footnoterule\relax % Removes the horizontal line above footnotes
+\graphicspath{{course_template/}{../course_template/}{fig/}{../fig/}} % Potential paths to figures
+
+
+
