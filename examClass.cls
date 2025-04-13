@@ -17,7 +17,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %---Allgemeine Packages---
-\usepackage{../../course_template/document_template/paper}
+\usepackage{../../course_template/style/paper}
 \RequirePackage{totcount}
 
 
