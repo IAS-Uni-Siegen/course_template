@@ -19,16 +19,16 @@
 \DeclareOption{marketing}{\marketingtrue}
 
 \DeclareOption{CC-BY}{
-   \newcommand{\CCfig}{\href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[height=1cm]{CC-BY.pdf}}}
+   \newcommand{\CCfig}{\href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[height=1cm]{../course_template/fig/CC-BY.pdf}}}
    \newcommand{\CClink}{https://creativecommons.org/licenses/by/4.0/}
    \newcommand{\CCname}{Creative Commons BY 4.0}
  } % Creative Commons license (default)
  \DeclareOption{CC-BY-NC-SA}{
-   \renewcommand{\CCfig}{\href{https://creativecommons.org/licenses/by-nc-sa/4.0/}{\includegraphics[height=1cm]{CC-BY-NC-SA.pdf}}}
+   \renewcommand{\CCfig}{\href{https://creativecommons.org/licenses/by-nc-sa/4.0/}{\includegraphics[height=1cm]{../course_template/fig/CC-BY-NC-SA.pdf}}}
    \renewcommand{\CClink}{https://creativecommons.org/licenses/by-nc-sa/4.0/}
    \renewcommand{\CCname}{Creative Commons BY-NC-SA 4.0}
  } % Creative Commons license (alternatve)
- \ExecuteOptions{CC-BY} % Default CC license
+\ExecuteOptions{CC-BY} % Default CC license
  % Marketing option (target audience: external partners)
 \ProcessOptions\relax
 
@@ -44,11 +44,12 @@
 
 % Set logo and author information
 \ifmarketing
-    \titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{IAS.pdf}}}
+    \titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{../course_template/fig/IAS.pdf}}}
 \else
-    \titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{IAS.pdf}}
+    \titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{../course_template/fig/IAS.pdf}}
     \hspace{2cm} 
     \CCfig
+    }
 \fi
 \author{N.N.}
 
