@@ -12,79 +12,19 @@
 \ProcessOptions\relax
 
 
-\RequirePackage{geometry}
-\geometry{left=1.5cm, right=1.5cm, top=1.5cm, bottom=1.5cm}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Packages  and Graphic path%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %---Allgemeine Packages---
-\RequirePackage{tabularx}
-\RequirePackage{caption}
-\RequirePackage{siunitx}
-\RequirePackage[obeyspaces, spaces]{url}
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[english]{babel}
-\RequirePackage[babel]{csquotes}
-\RequirePackage[T1]{fontenc}
-\RequirePackage{graphicx}
-\RequirePackage{lmodern}
-\RequirePackage[onehalfspacing]{setspace}
-\RequirePackage{wrapfig}
-\RequirePackage[hidelinks]{hyperref}
-\RequirePackage{amsmath}
-\RequirePackage{booktabs}
-\RequirePackage{graphicx}
-\RequirePackage{import}
-\RequirePackage{epsfig}
-\RequirePackage{upgreek}
-\RequirePackage{subcaption}
-\RequirePackage{titlesec}
-\RequirePackage{siunitx}
-\RequirePackage{bm}
-\RequirePackage{tikz}
-\RequirePackage{pgfplots}
-\RequirePackage{standalone}
-\RequirePackage{circuitikz}
-\RequirePackage{multirow}
-\RequirePackage{newfloat}
+\usepackage{../../course_template/style/paper}
 \RequirePackage{totcount}
-\RequirePackage{nicefrac}
 
-%% Tikz
-\pgfplotsset{compat=1.18}
-\usetikzlibrary{shapes, angles, arrows, intersections, quotes, positioning, fit, calc, patterns, decorations.pathmorphing,decorations.pathreplacing,decorations.shapes,decorations.text, math}
-\usepgfplotslibrary{groupplots, fillbetween}
-
-\RequirePackage{fancyhdr}
-\pagestyle{fancy}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
-
-% Caption
-\DeclareCaptionFont{blue}{\color{blue}}
 
 
 %---Grafiken---
 \graphicspath{ {./summer2024/fig/} }
 
-
-% Setup page geometry
-\setlength{\parindent}{0em}
-\setlength{\parskip}{0pt}
-\setlength{\headheight}{15mm}
-\setlength{\headsep}{8mm}
-\setlength{\textheight}{250mm}
-
-
-\fancyhead[L]{
-    \textbf{\large{\@title}}\\
-    Prof. Dr.-Ing. Oliver Wallscheid
-}
-
-\fancyhead[R]{
-    \includegraphics[width=\textwidth,height=10mm, keepaspectratio]{fig/IAS.pdf}
-}
-
-\fancyfoot[C]{\thepage}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% hint block block %%
@@ -350,51 +290,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% SI units %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% one space between value and unit
-\sisetup{number-unit-product=\ }
-
-% no space between the units
-\sisetup{inter-unit-product = }
-
-% fraction for units
-\sisetup{per-mode = fraction}
-
-% allow fraction for values
-\sisetup{parse-numbers = false}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Tabular %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% define specific tabular rules
-\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{R}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{L}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Further counters and caption %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\thetable}{\arabic{table}}
 \renewcommand{\thefigure}{\arabic{figure}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Color Definitions %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\definecolor{uniblue}{HTML}{00385F}
-\definecolor{unilightblue}{HTML}{009ED4}
-\definecolor{unigrey}{HTML}{64727f}
-\definecolor{links}{HTML}{2A1B81}
-\newcommand{\hl}[1]{\textcolor{signalred}{#1}} %Highlights in text
-\newcommand{\hlh}[1]{\textbf{#1}} %Highlights in sub-headings
-\definecolor{signalred}{rgb}{0.9047, 0.1918, 0.1988}
-\definecolor{signalblue}{rgb}{0.2941, 0.5447, 0.7494}
-\definecolor{signalgreen}{rgb}{0.3718, 0.7176, 0.3612}
-\definecolor{signalorange}{rgb}{1.0000, 0.5482, 0.1000}
-\definecolor{signalyellow}{rgb}{0.8650, 0.8110, 0.4330}
-\definecolor{signalbrown}{rgb}{0.6859, 0.4035, 0.2412}
-\definecolor{signallavender}{rgb}{0.55, 0.51, 0.71}
-\colorlet{shadecolor}{gray!60}
