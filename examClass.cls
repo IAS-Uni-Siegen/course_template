@@ -9,6 +9,17 @@
 
 \DeclareOption{solution}{\solutiontrue}
 \DeclareOption{german}{\germantrue}
+
+\DeclareOption{CC-BY}{
+   \newcommand{\CClink}{https://creativecommons.org/licenses/by/4.0/}
+   \newcommand{\CCname}{Creative Commons BY 4.0}
+ } % Creative Commons license (default)
+ \DeclareOption{CC-BY-NC-SA}{
+   \renewcommand{\CClink}{https://creativecommons.org/licenses/by-nc-sa/4.0/}
+   \renewcommand{\CCname}{Creative Commons BY-NC-SA 4.0}
+ } % Creative Commons license (alternatve)
+\ExecuteOptions{CC-BY} % Default CC license
+
 \ProcessOptions\relax
 
 

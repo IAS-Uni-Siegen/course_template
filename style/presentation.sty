@@ -4,11 +4,9 @@
 
 \captionsetup{font=small, justification=centering} 
 
-\ifmarketing
-  \RequirePackage[toc = false]{glossaries-extra}
-\else 
-  \RequirePackage[automake, toc = false]{glossaries-extra} % automake option causes error if \makeglossaries is not used in main file 
-\fi
+
+\RequirePackage[automake, toc = false]{glossaries-extra} % automake option causes error if \makeglossaries is not used in main file 
+
 
 
 

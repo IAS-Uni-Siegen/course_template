@@ -3,20 +3,9 @@
 \LoadClass[aspectratio=169, usepdftitle=false, onlytextwidth, handout]{beamer}
  
 
- 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Class options %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newif\ifmarketing
-\DeclareOption{marketing}{\marketingtrue} % Marketing option (target audience: external partners)
-\ProcessOptions\relax
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Class options %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newif\ifmarketing
-\DeclareOption{marketing}{\marketingtrue}
 
 \DeclareOption{CC-BY}{
    \newcommand{\CCfig}{\href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[height=1cm]{../course_template/fig/CC-BY.pdf}}}
@@ -43,13 +32,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Set logo and author information
-\ifmarketing
-    \titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{../course_template/fig/IAS.pdf}}}
-\else
-    \titlegraphic{\href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{../course_template/fig/IAS.pdf}}
-    \hspace{2cm} 
-    \CCfig
-    }
-\fi
-\author{N.N.}
+\titlegraphic{
+  \href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{../course_template/fig/IAS.pdf}}
+  \hspace{2cm} 
+  \CCfig
+}
+\author{N.N.} % Default fallback - override in actual main tex file
 
