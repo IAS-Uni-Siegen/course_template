@@ -1,0 +1,70 @@
+\ProvidesPackage{paper}[2025/02/28 v1.0 Shared code for examClass and exerciseClass]
+
+\RequirePackage{geometry} % Adjusts page layout (margins, paper size, spacing)
+\RequirePackage[onehalfspacing]{setspace} % Adjusts line spacing to 1.5x for better readability
+\RequirePackage{import} % Enables importing external files for modular document structure
+\RequirePackage{titlesec} % Customizes section titles, including fonts, spacing, and numbering( different from lecture)
+
+
+\newcommand{\loadgeneralpackage}{%
+    \IfFileExists{../../course_template/style/general.sty}{%
+        \usepackage{../../course_template/style/general}% 
+    }{%
+        \IfFileExists{../course_template/style/general.sty}{%
+            \usepackage{../course_template/style/general}%
+        }{%
+            \errmessage{Error: Could not find general.sty!}%
+        }%
+    }%
+}
+
+\loadgeneralpackage
+
+\hypersetup{hidelinks}  % Applies hidelinks setting afterward
+% Caption
+\DeclareCaptionFont{blue}{\color{blue}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%$ Setup page geometry %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{left=1.5cm, right=1.5cm, top=1.5cm, bottom=1.5cm}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0pt}
+\setlength{\headheight}{15mm}
+\setlength{\headsep}{8mm}
+\setlength{\textheight}{250mm}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Header and footer %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\fancyhead[L]{
+    \textbf{\large{\@title}}\\
+    Prof. Dr.-Ing. Oliver Wallscheid
+}
+
+\newcommand{\insertlogo}{%
+    \IfFileExists{../course_template/fig/IAS.pdf}{%
+        \fancyhead[R]{\includegraphics[width=\textwidth,height=10mm,keepaspectratio]{../course_template/fig/IAS.pdf}}%
+    }{%
+        \IfFileExists{../../course_template/fig/IAS.pdf}{%
+            \fancyhead[R]{\includegraphics[width=\textwidth,height=10mm,keepaspectratio]{../../course_template/fig/IAS.pdf}}%
+        }{%
+            \fancyhead[R]{\textbf{[LOGO NOT FOUND]}} % Fallback text if the image is missing
+        }%
+    }%
+}
+
+\insertlogo
+
+\fancyfoot[C]{\thepage}
+
+
