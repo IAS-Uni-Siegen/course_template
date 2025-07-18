@@ -91,6 +91,7 @@
 
 \newcommand{\ex}[1]{
     \stepcounter{exerciseCount}
+    \pdfbookmark[0]{Exercise~\ifnum\value{exerciseCount}<10 0\fi\theexerciseCount: #1}{ex:\theexerciseCount}
     \large
     \ifnum\value{exerciseCount} < 10
         \textbf{Exercise~0\theexerciseCount:} \textbf{#1}
@@ -126,7 +127,8 @@
     \vspace{1em} % Adjust the spacing value as needed
     \fi
     \normalsize
-    \section*{\textbf{Task~\theexerciseCount.\thetaskCount:~#1}} % Display "Subtask" without numbering
+    \setcounter{secnumdepth}{0}
+    \section{\textbf{Task~\theexerciseCount.\thetaskCount:~#1}} % Display "Subtask" without numbering
     \refstepcounter{section} 
     
     \label{task:\theexerciseCount.\thetaskCount} % Unique label for each task
@@ -146,7 +148,8 @@
         
         \vspace{-1em} %reduce spacing
         \normalsize
-        \subsection*{} % Display "Subtask" without numbering
+        \setcounter{secnumdepth}{0}
+        \subsection{} % Display "Subtask" without numbering
         \refstepcounter{subsection}
         \label{subtask:\theexerciseCount.\thetaskCount.\thesubtaskCount}
          
