@@ -20,8 +20,7 @@
    \renewcommand{\CCname}{Creative Commons BY-NC-SA 4.0}
  } % Creative Commons license (alternatve)
 \ExecuteOptions{CC-BY} % Default CC license
-
-
+\newcommand{\CCtitle}{Exercise Sheets}
 \ProcessOptions\relax
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
