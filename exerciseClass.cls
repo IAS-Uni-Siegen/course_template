@@ -148,8 +148,7 @@
         
         \vspace{-1em} %reduce spacing
         \normalsize
-        \setcounter{secnumdepth}{0}
-        \subsection{} % Display "Subtask" without numbering
+        \subsection*{} % Display "Subtask" without numbering
         \refstepcounter{subsection}
         \label{subtask:\theexerciseCount.\thetaskCount.\thesubtaskCount}
          
