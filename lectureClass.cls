@@ -19,7 +19,7 @@
  } % Creative Commons license (alternatve)
 \ExecuteOptions{CC-BY} % Default CC license
  % Marketing option (target audience: external partners)
-\newcommand{\CCtitle}{Lecture Slides}
+\newcommand{\CCtitle}{Lecture slides}
 \ProcessOptions\relax
 
 
