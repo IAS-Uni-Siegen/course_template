@@ -74,3 +74,12 @@ To integrate this repository into your existing project as a submodule, follow t
 
 
 This allows you to use the LaTeX classes provided in the course template repository directly within your project.
+
+
+## Customization
+
+- Default theme is `unisiegentheme`
+- In `themes` folder, you can create your own theme as `yourtheme.sty` and refer it in the `.cls` file as required
+- General color palette and pdfdata options are defined in `themes/unisiegentheme.sty` which can be modified as necessary 
+- For the repository to work out-of-the-box with custom theme, it must have `uniblue` and `unilightblue` colors defined
+- For advanced customization, files in `style` folder can be modified

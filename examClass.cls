@@ -4,6 +4,10 @@
 \LoadClass[a4paper,12pt,notitlepage,oneside]{article}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Class options %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \newif\ifsolution
 \newif\ifgerman
 
@@ -28,6 +32,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %---Allgemeine Packages---
+\usepackage{../../course_template/themes/unisiegentheme}
 \usepackage{../../course_template/style/paper}
 \RequirePackage{totcount}
 

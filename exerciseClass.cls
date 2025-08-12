@@ -26,6 +26,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Packages %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{../course_template/themes/unisiegentheme}
 \usepackage{../course_template/style/paper}
 \RequirePackage{titling}
 \RequirePackage{mathtools}

@@ -26,6 +26,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Packages %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{../course_template/themes/unisiegentheme}
 \usepackage{../course_template/style/presentation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -34,7 +35,7 @@
 
 % Set logo and author information
 \titlegraphic{
-  \href{https://www.eti.uni-siegen.de/ias/}{\includegraphics[height=1cm]{../course_template/fig/IAS.pdf}}
+  \href{\CCcontacturl}{\includegraphics[height=1cm]{\CClogo}}
   \hspace{2cm} 
   \CCfig
 }

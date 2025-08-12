@@ -48,15 +48,15 @@
 
 \fancyhead[L]{
     \textbf{\large{\@title}}\\
-    Prof. Dr.-Ing. Oliver Wallscheid
+    \CCauthor
 }
 
 \newcommand{\insertlogo}{%
-    \IfFileExists{../course_template/fig/IAS.pdf}{%
-        \fancyhead[R]{\includegraphics[width=\textwidth,height=10mm,keepaspectratio]{../course_template/fig/IAS.pdf}}%
+    \IfFileExists{\CClogo}{%
+        \fancyhead[R]{\includegraphics[width=\textwidth,height=10mm,keepaspectratio]{\CClogo}}%
     }{%
-        \IfFileExists{../../course_template/fig/IAS.pdf}{%
-            \fancyhead[R]{\includegraphics[width=\textwidth,height=10mm,keepaspectratio]{../../course_template/fig/IAS.pdf}}%
+        \IfFileExists{\CClogo}{%
+            \fancyhead[R]{\includegraphics[width=\textwidth,height=10mm,keepaspectratio]{\CClogo}}%
         }{%
             \fancyhead[R]{\textbf{[LOGO NOT FOUND]}} % Fallback text if the image is missing
         }%
