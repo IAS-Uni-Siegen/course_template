@@ -18,12 +18,17 @@
    \newcommand{\CClink}{https://creativecommons.org/licenses/by/4.0/}
    \newcommand{\CCname}{Creative Commons BY 4.0}
  } % Creative Commons license (default)
- \DeclareOption{CC-BY-NC-SA}{
+\DeclareOption{CC-BY-NC-SA}{
    \renewcommand{\CClink}{https://creativecommons.org/licenses/by-nc-sa/4.0/}
    \renewcommand{\CCname}{Creative Commons BY-NC-SA 4.0}
  } % Creative Commons license (alternatve)
+\newcommand{\selectedtheme}{unisiegen-IAS}
+\DeclareOption*{
+   \global\let\selectedtheme\CurrentOption
+}
 \ExecuteOptions{CC-BY} % Default CC license
 \newcommand{\CCtitle}{Exam sheets}
+
 \ProcessOptions\relax
 
 
@@ -32,7 +37,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %---Allgemeine Packages---
-\usepackage{../../course_template/themes/unisiegentheme}
+\usepackage{../../course_template/themes/\selectedtheme}
 \usepackage{../../course_template/style/paper}
 \RequirePackage{totcount}
 

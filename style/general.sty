@@ -122,8 +122,8 @@
 \tikzset{
   basic/.style  = {draw, text width=3cm, drop shadow, rectangle},
   root/.style   = {basic, rounded corners=2pt, thin, align=center,
-                   fill=uniblue, text=white},
-  level 2/.style = {basic, rounded corners=4pt, thin,align=center, fill=unilightblue,
+                   fill=defaultcolor, text=white},
+  level 2/.style = {basic, rounded corners=4pt, thin,align=center, fill=defaultlightcolor,
                    text width=8em},
   level 3/.style = {basic, thin, align=left, fill=gray!25, text width=3cm}
 }
@@ -133,7 +133,7 @@
 	block/.style    = {draw, thick, rectangle, minimum height = 3em,
 	  minimum width = 4em},
     bubble/.style = {draw, ellipse, thick, minimum height = 3em,
-    minimum width = 5em, fill = uniblue, text = white},
+    minimum width = 5em, fill = defaultcolor, text = white},
 	dot/.style = {circle, draw, fill=black, minimum size=3pt, inner sep=0pt, outer sep=0pt},
 	input/.style    = {coordinate}, % Input
 	output/.style   = {coordinate}, % Output
@@ -158,14 +158,14 @@
 
 
 % Math. definitions %%% Definition Box
-\newtcbtheorem[number within=section, reset counter on overlays=true]{defi}{Definition}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = uniblue, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90,  width=1.02\textwidth}{defi}
+\newtcbtheorem[number within=section, reset counter on overlays=true]{defi}{Definition}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = defaultcolor, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90,  width=1.02\textwidth}{defi}
 % Math. theorems	%%Theorem Box
-\newtcbtheorem[number within=section, reset counter on overlays=true]{theo}{Theorem}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = uniblue, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90}{theo}
+\newtcbtheorem[number within=section, reset counter on overlays=true]{theo}{Theorem}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = defaultcolor, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90}{theo}
 % Algorithms	%%Algorithm Box
-\newtcbtheorem[number within=section, reset counter on overlays=true]{algo}{Algorithm}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = uniblue, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90,  width=1.02\textwidth}{algo}
+\newtcbtheorem[number within=section, reset counter on overlays=true]{algo}{Algorithm}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = defaultcolor, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90,  width=1.02\textwidth}{algo}
  
  % Footnote box with footnotesize text and minimal margins
- \newtcolorbox{footnotebox}[1][]{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = uniblue, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90, width=1.02\textwidth, fontupper=\footnotesize, #1}
+ \newtcolorbox{footnotebox}[1][]{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = defaultcolor, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90, width=1.02\textwidth, fontupper=\footnotesize, #1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %% Captions for algorithm2e package (modify towards regular figure cap)  %%
