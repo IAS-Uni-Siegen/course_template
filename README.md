@@ -81,6 +81,7 @@ This allows you to use the LaTeX classes provided in the course template reposit
 - Default theme is `unisiegen-IAS`
 - General color palette and pdfdata options are defined in `.sty` files in `theme/` which can be modified as necessary 
 - In `theme` folder, you can create your own theme as `yourtheme.sty` and load it updating class option in `main.tex`:
+
     ```bash
     \documentclass[solution, yourtheme]{../course_template/exerciseClass}
     ```
