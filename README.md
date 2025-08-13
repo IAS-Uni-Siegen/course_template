@@ -82,7 +82,7 @@ This allows you to use the LaTeX classes provided in the course template reposit
 - General color palette and pdfdata options are defined in `.sty` files in `theme/` which can be modified as necessary 
 - In `theme` folder, you can create your own theme as `yourtheme.sty` and load it updating class option in `main.tex`:
 
-    ```bash
+    ```latex
     \documentclass[solution, yourtheme]{../course_template/exerciseClass}
     ```
 - For the repository to work out-of-the-box with custom theme, it must have `defaultcolor` and `defaultlightcolor` defined in your custom theme file
