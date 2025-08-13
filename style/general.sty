@@ -83,25 +83,6 @@
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Color Definitions %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\definecolor{uniblue}{HTML}{00385F}
-\definecolor{unilightblue}{HTML}{009ED4}
-\definecolor{unigrey}{HTML}{64727f}
-\definecolor{links}{HTML}{2A1B81}
-\newcommand{\hl}[1]{\textcolor{signalred}{#1}} %Highlights in text
-\newcommand{\hlh}[1]{\textbf{#1}} %Highlights in sub-headings
-\definecolor{signalred}{rgb}{0.9047, 0.1918, 0.1988}
-\definecolor{signalblue}{rgb}{0.2941, 0.5447, 0.7494}
-\definecolor{signalgreen}{rgb}{0.3718, 0.7176, 0.3612}
-\definecolor{signalorange}{rgb}{1.0000, 0.5482, 0.1000}
-\definecolor{signalyellow}{rgb}{0.8650, 0.8110, 0.4330}
-\definecolor{signalbrown}{rgb}{0.6859, 0.4035, 0.2412}
-\definecolor{signallavender}{rgb}{0.55, 0.51, 0.71}
-\colorlet{shadecolor}{gray!60}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Math short commands  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\E}[1]{\mathbb{E}\left[#1\right]} %Expected value
@@ -141,8 +122,8 @@
 \tikzset{
   basic/.style  = {draw, text width=3cm, drop shadow, rectangle},
   root/.style   = {basic, rounded corners=2pt, thin, align=center,
-                   fill=uniblue, text=white},
-  level 2/.style = {basic, rounded corners=4pt, thin,align=center, fill=unilightblue,
+                   fill=defaultcolor, text=white},
+  level 2/.style = {basic, rounded corners=4pt, thin,align=center, fill=defaultlightcolor,
                    text width=8em},
   level 3/.style = {basic, thin, align=left, fill=gray!25, text width=3cm}
 }
@@ -152,7 +133,7 @@
 	block/.style    = {draw, thick, rectangle, minimum height = 3em,
 	  minimum width = 4em},
     bubble/.style = {draw, ellipse, thick, minimum height = 3em,
-    minimum width = 5em, fill = uniblue, text = white},
+    minimum width = 5em, fill = defaultcolor, text = white},
 	dot/.style = {circle, draw, fill=black, minimum size=3pt, inner sep=0pt, outer sep=0pt},
 	input/.style    = {coordinate}, % Input
 	output/.style   = {coordinate}, % Output
@@ -169,22 +150,22 @@
             bookmarksdepth=1,
             pdfcopyright={\CCname},
             pdflicenseurl={\CClink},
-            pdfauthor={Oliver Wallscheid},
-            pdfcontacturl={https://www.eti.uni-siegen.de/ias/},
+            pdfauthor={\CCauthor},
+            pdfcontacturl={\CCcontacturl},
             pdftitle={\CCtitle}
             }
 
 
 
 % Math. definitions %%% Definition Box
-\newtcbtheorem[number within=section, reset counter on overlays=true]{defi}{Definition}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = uniblue, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90,  width=1.02\textwidth}{defi}
+\newtcbtheorem[number within=section, reset counter on overlays=true]{defi}{Definition}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = defaultcolor, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90,  width=1.02\textwidth}{defi}
 % Math. theorems	%%Theorem Box
-\newtcbtheorem[number within=section, reset counter on overlays=true]{theo}{Theorem}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = uniblue, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90}{theo}
+\newtcbtheorem[number within=section, reset counter on overlays=true]{theo}{Theorem}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = defaultcolor, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90}{theo}
 % Algorithms	%%Algorithm Box
-\newtcbtheorem[number within=section, reset counter on overlays=true]{algo}{Algorithm}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = uniblue, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90,  width=1.02\textwidth}{algo}
+\newtcbtheorem[number within=section, reset counter on overlays=true]{algo}{Algorithm}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = defaultcolor, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90,  width=1.02\textwidth}{algo}
  
  % Footnote box with footnotesize text and minimal margins
- \newtcolorbox{footnotebox}[1][]{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = uniblue, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90, width=1.02\textwidth, fontupper=\footnotesize, #1}
+ \newtcolorbox{footnotebox}[1][]{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = defaultcolor, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90, width=1.02\textwidth, fontupper=\footnotesize, #1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %% Captions for algorithm2e package (modify towards regular figure cap)  %%
