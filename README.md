@@ -17,8 +17,11 @@ This work is licensed under a
 
 This repository provides LaTeX classes for creating structured academic documents, including lectures, exercises, and exams. The template is designed to standardize and simplify document creation for courses, with built-in formatting and styling.
 
+
 ## LaTeX Classes Overview
+
 ### Lecture Class (`lectureClass.cls`)
+
 Provides a clean and professional layout for lecture notes, with support for:
 - Author information
 - Titles
@@ -26,16 +29,19 @@ Provides a clean and professional layout for lecture notes, with support for:
 - A consistent structure for academic content
 
 ### Exercise Class (`exerciseClass.cls`)
+
 Designed for exercise sheets, this class enables easy structuring of:
 - Problems
 - Solutions
 - Formatting features such as sectioning and problem numbering
 
 ### Exam Class (`examClass.cls`)
+
 This class assists in the formatting of exams by providing:
 - Automatic question numbering
 - Consistent spacing
 - Header formatting for exam information
+
 
 ## Usage
 
@@ -54,7 +60,6 @@ This class assists in the formatting of exams by providing:
 - Compile your `.tex` files as usual with `pdflatex`, `xelatex`, or your preferred LaTeX compiler.
 
 
-
 ## Adding Course Template as a Submodule
 
 To integrate this repository into your existing project as a submodule, follow these steps:
@@ -71,8 +76,6 @@ To integrate this repository into your existing project as a submodule, follow t
     git submodule init
     git submodule update
     ```
-
-
 
 This allows you to use the LaTeX classes provided in the course template repository directly within your project.
 
@@ -93,9 +96,17 @@ This allows you to use the LaTeX classes provided in the course template reposit
 
 ## Notes
 
+### Expected Warnings and Workaround:
+
 - Depending on how you include the `.cls` files in your project, it is possible that latex might generate following warning:
 
     ```bash
     LaTeX: You have requested document class '../course_template/exerciseClass', but the document class provides 'exerciseClass'.
     ```
 - Although, this warning does not affect document generation and can be ignored here, it can be resolved by updating [TEXINPUTS](https://tex.stackexchange.com/questions/93712/definition-of-the-texinputs-variable) environment variable. If you are using [VSCode](https://code.visualstudio.com/) with [LaTeX-Workshop](https://github.com/James-Yu/LaTeX-Workshop) extension, procedure to update environment variable is available at [LaTeX-Workshop wiki](https://github.com/James-Yu/latex-workshop/wiki/Install).
+
+### Color Vision Deficiency (CVD) Accessibile Color Palette
+
+- All example themes contain a six-color palette designed to provide improved readability and accessibility for generated documents
+- This color palette is taken from ["Communicating Effectively in Color" by J. W. Kimball in IEEE Power Electronics Magazine](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10839151&isnumber=10839145).
+
