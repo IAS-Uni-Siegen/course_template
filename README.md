@@ -66,6 +66,7 @@ To integrate this repository into your existing project as a submodule, follow t
     git submodule add https://github.com/IAS-Uni-Siegen/course_template.git
     ``` 
 - Initialize and update the submodule to ensure it is ready for use:
+    
     ```bash
     git submodule init
     git submodule update
@@ -88,3 +89,13 @@ This allows you to use the LaTeX classes provided in the course template reposit
 - For the repository to work out-of-the-box with custom theme, it must have `defaultcolor` and `defaultlightcolor` defined in your custom theme file
 - As additional examples, `unisiegen` and `unipaderborn` themes are provided
 - For advanced customization, files in `style` folder can be modified
+
+
+## Notes
+
+- Depending on how you include the `.cls` files in your project, it is possible that latex might generate following warning:
+
+    ```bash
+    LaTeX: You have requested document class '../course_template/exerciseClass', but the document class provides 'exerciseClass'.
+    ```
+- Although, this warning does not affect document generation and can be ignored here, it can be resolved by updating [TEXINPUTS](https://tex.stackexchange.com/questions/93712/definition-of-the-texinputs-variable) environment variable. If you are using [VSCode](https://code.visualstudio.com/) with [LaTeX-Workshop](https://github.com/James-Yu/LaTeX-Workshop) extension, procedure to update environment variable is available at [LaTeX-Workshop wiki](https://github.com/James-Yu/latex-workshop/wiki/Install).
