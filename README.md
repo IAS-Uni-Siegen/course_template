@@ -105,7 +105,7 @@ This allows you to use the LaTeX classes provided in the course template reposit
     ```
 - Although, this warning does not affect document generation and can be ignored here, it can be resolved by updating [TEXINPUTS](https://tex.stackexchange.com/questions/93712/definition-of-the-texinputs-variable) environment variable. If you are using [VSCode](https://code.visualstudio.com/) with [LaTeX-Workshop](https://github.com/James-Yu/LaTeX-Workshop) extension, procedure to update environment variable is available at [LaTeX-Workshop wiki](https://github.com/James-Yu/latex-workshop/wiki/Install).
 
-### Color Vision Deficiency (CVD) Accessibile Color Palette
+### Color Vision Deficiency (CVD) Accessibile Color Palette:
 
 - All example themes contain a six-color palette designed to provide improved readability and accessibility for generated documents
 - This color palette is taken from ["Communicating Effectively in Color" by J. W. Kimball in IEEE Power Electronics Magazine](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10839151&isnumber=10839145).
