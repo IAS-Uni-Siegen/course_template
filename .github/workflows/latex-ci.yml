@@ -1,0 +1,29 @@
+name: LaTeX CI
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        tex:
+          - test/testLecture.tex
+          - test/testExercise.tex
+          - test/testExam.tex
+    steps:
+      - uses: actions/checkout@v4
+      - name: Submodule-like setup
+        run: |
+          mkdir -p ../course_template
+          rsync -av --exclude='.git' . ../course_template/
+          mkdir -p summer2024/fig
+          mkdir -p ../../course_template
+          ln -s "$PWD/theme" ../../course_template/theme || true
+          ln -s "$PWD/style" ../../course_template/style || true
+      - uses: xu-cheng/latex-action@v3
+        with:
+          root_file: ${{ matrix.tex }}
+          args: -pdf -interaction=nonstopmode -halt-on-error -shell-escape
