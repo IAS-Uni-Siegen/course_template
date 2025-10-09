@@ -15,10 +15,11 @@ jobs:
           - test/testExam.tex
     steps:
       - uses: actions/checkout@v4
-      - name: Copy test files to root
+      - name: Submodule-like setup
         run: |
-          ln -s "$PWD" ../course_template || true
-          ln -s "$PWD" ../../course_template || true
+          mkdir -p ../course_template
+          cp -r . ../course_template/
+          mkdir -p summer2024/fig
       - uses: xu-cheng/latex-action@v3
         with:
           root_file: ${{ matrix.tex }}
