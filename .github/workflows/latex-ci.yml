@@ -18,7 +18,7 @@ jobs:
       - name: Submodule-like setup
         run: |
           mkdir -p ../course_template
-          cp -r . ../course_template/
+          rsync -av --exclude='.git' . ../course_template/
           mkdir -p summer2024/fig
       - uses: xu-cheng/latex-action@v3
         with:
