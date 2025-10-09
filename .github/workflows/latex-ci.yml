@@ -14,6 +14,11 @@ jobs:
           - test/testExam.tex
     steps:
       - uses: actions/checkout@v4
+      - name: Copy test files to root
+        run: |
+          cp test/testLecture.tex lecture_test.tex
+          cp test/testExercise.tex exercise_test.tex
+          cp test/testExam.tex exam_test.tex
       - uses: xu-cheng/latex-action@v3
         with:
           root_file: ${{ matrix.tex }}
