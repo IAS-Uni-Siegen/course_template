@@ -20,6 +20,9 @@ jobs:
           mkdir -p ../course_template
           rsync -av --exclude='.git' . ../course_template/
           mkdir -p summer2024/fig
+          mkdir -p ../../course_template
+          ln -s "$PWD/theme" ../../course_template/theme || true
+          ln -s "$PWD/style" ../../course_template/style || true
       - uses: xu-cheng/latex-action@v3
         with:
           root_file: ${{ matrix.tex }}
