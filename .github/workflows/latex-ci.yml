@@ -1,0 +1,20 @@
+name: LaTeX CI
+on:
+  push:
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        tex:
+          - test/testLecture.tex
+          - test/testExercise.tex
+          - test/testExam.tex
+    steps:
+      - uses: actions/checkout@v4
+      - uses: xu-cheng/latex-action@v3
+        with:
+          root_file: ${{ matrix.tex }}
+          args: -pdf -interaction=nonstopmode -halt-on-error -shell-escape
