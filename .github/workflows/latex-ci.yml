@@ -1,7 +1,8 @@
 name: LaTeX CI
 on:
-  push:
   pull_request:
+    branches:
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,9 +17,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Copy test files to root
         run: |
-          cp test/testLecture.tex lecture_test.tex
-          cp test/testExercise.tex exercise_test.tex
-          cp test/testExam.tex exam_test.tex
+          ln -s "$PWD" ../course_template || true
+          ln -s "$PWD" ../../course_template || true
       - uses: xu-cheng/latex-action@v3
         with:
           root_file: ${{ matrix.tex }}
