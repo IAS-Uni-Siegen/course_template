@@ -3,12 +3,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Color Definitions %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% text highlight colors
+\newcommand{\hl}[1]{\textcolor{signaldelta}{#1}} %Highlights in text
+\newcommand{\hlh}[1]{\textbf{#1}} %Highlights in sub-headings
+
+% University Siegen corporate colors
 \definecolor{uniblue}{HTML}{00385F}
 \definecolor{unilightblue}{HTML}{009ED4}
 \definecolor{unigrey}{HTML}{64727f}
 \definecolor{links}{HTML}{2A1B81}
-\newcommand{\hl}[1]{\textcolor{signalred}{#1}} %Highlights in text
-\newcommand{\hlh}[1]{\textbf{#1}} %Highlights in sub-headings
+
+% legacy color scheme (non-CVD optimized)
 \definecolor{signalred}{rgb}{0.9047, 0.1918, 0.1988}
 \definecolor{signalblue}{rgb}{0.2941, 0.5447, 0.7494}
 \definecolor{signalgreen}{rgb}{0.3718, 0.7176, 0.3612}
@@ -18,15 +24,24 @@
 \definecolor{signallavender}{rgb}{0.55, 0.51, 0.71}
 \colorlet{shadecolor}{gray!60}
 
-% Below is a six-color palette which contains Color Vision Deficiency (CVD) Friendly colors -
-% CF color palette start
+% Color vision deficiency (CVD) friendly colors
+% Taken from https://ieeexplore.ieee.org/document/10839151
 \definecolor{cfblack}{HTML}{000000}
 \definecolor{cfskyblue}{HTML}{56B3E8}
 \definecolor{cfgreen}{HTML}{009E73}
 \definecolor{cfyellow}{HTML}{F0E442}
 \definecolor{cfblue}{HTML}{0072B2}
 \definecolor{cfvermillion}{HTML}{D55E00}
-% CF color palette end
+
+\RequirePackage[Tol, pgf, keep-defaults]{colorblind} % load colorblind package with Tol color scheme
+
+% Mapping of signal colors (for changing colors accross entire documents if needed)
+\colorlet{signalalpha}{T-Q-B1}
+\colorlet{signalbeta}{T-Q-V3}
+\colorlet{signalgamma}{T-Q-B4}
+\colorlet{signaldelta}{T-Q-V5}
+\colorlet{signalepsilon}{T-Q-B5}
+\colorlet{signalzeta}{T-Q-B6}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

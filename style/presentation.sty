@@ -132,11 +132,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Custom Reference Formatting %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\figref}[1]{\figurename~\ref{#1}}
+\newcommand{\figref}[1]{\figname~\ref{#1}}
 \newcommand{\satzref}[1]{Theo.~\ref{#1}}
 \newcommand{\defref}[1]{Def.~\ref{#1}}
 \newcommand{\theoref}[1]{Theo.~\ref{#1}}
-\newcommand{\tabref}[1]{\tablename~\ref{#1}}
+\newcommand{\tabref}[1]{\tabname~\ref{#1}}
 \newcommand{\capref}[1]{\capname~\ref{#1}}
 \newcommand{\apref}[1]{\apname~\ref{#1}}
 \newcommand{\algname}{Algo.}
@@ -149,11 +149,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{caption}[numbered] %Gives basic numbering to captions
 \numberwithin{figure}{section} %Allows for \part.\figure style numbering
-\renewcommand\figurename{Fig.}
+\newcommand{\figname}{Fig.}
 \renewcommand{\thetable}{\arabic{table}}
 \numberwithin{equation}{section} %Allows for \part.\equation style numbering
 \numberwithin{table}{section} %Allows for \part.\table style numbering
-\renewcommand\tablename{Tab.}
+\newcommand{\tabname}{Tab.}
 \renewcommand{\algorithmcfname}{Algo.} %Algorithm-Name
 \numberwithin{algocf}{section} %Allows for \part.\algo style numbering
 
