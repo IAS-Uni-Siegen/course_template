@@ -34,6 +34,13 @@
 \usepackage{../course_template/theme/\selectedtheme}
 \usepackage{../course_template/style/presentation}
 
+%% Custom table and figure title
+\AtBeginDocument{
+  \renewcommand{\tablename}{Tab.}%
+  \renewcommand{\figurename}{Fig.}%
+}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% logo & author information for the entire slide set %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
