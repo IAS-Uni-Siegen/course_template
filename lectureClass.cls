@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{lectureClass}[IAS lecture LaTeX class]
-\LoadClass[aspectratio=169, usepdftitle=false, onlytextwidth, handout]{beamer}
+\LoadClass[aspectratio=169, usepdftitle=false, onlytextwidth]{beamer}
  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
