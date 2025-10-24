@@ -36,6 +36,7 @@
 \RequirePackage{titling}
 \RequirePackage{mathtools}
 \RequirePackage{placeins}
+\RequirePackage{etoolbox} % for environment hooks
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Graphic path %%
@@ -74,14 +75,15 @@
     \renewcommand{\tablename}{Tab.}
 }
 
-% Hook to apply blue color to table content
-\AtBeginEnvironment{solutiontable}{%
-    \AtBeginEnvironment{tabular}{%
-        \ifsolution
-            \color{blue}%
-        \fi
-    }
-}
+% Color hook for solutiontable
+\newif\ifinsolutiontable
+\insolutiontablefalse
+\AtBeginEnvironment{solutiontable}{\insolutiontabletrue}
+\AtEndEnvironment{solutiontable}{\insolutiontablefalse}
+% Color only the tabular content within solutiontable; tabular forms a group, so color is local
+\AtBeginEnvironment{tabular}{\ifsolution\ifinsolutiontable\color{blue}\fi\fi}
+\AtBeginEnvironment{tabular*}{\ifsolution\ifinsolutiontable\color{blue}\fi\fi}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
