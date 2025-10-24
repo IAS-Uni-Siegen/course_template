@@ -73,7 +73,20 @@
     \renewcommand{\tableautorefname}{Tab.}%
     \renewcommand{\tablename}{Tab.}
 }
-    
+
+% Hook to apply blue color to table content
+\AtBeginEnvironment{solutiontable}{%
+    \color{blue}%
+}
+
+% Ensure table environment inside solutiontable is also blue
+\AtBeginEnvironment{tabular}{%
+    \ifsolution
+        \color{blue}%
+    \fi
+}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Solution figure %%
