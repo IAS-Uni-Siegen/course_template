@@ -76,16 +76,12 @@
 
 % Hook to apply blue color to table content
 \AtBeginEnvironment{solutiontable}{%
-    \color{blue}%
+    \AtBeginEnvironment{tabular}{%
+        \ifsolution
+            \color{blue}%
+        \fi
+    }
 }
-
-% Ensure table environment inside solutiontable is also blue
-\AtBeginEnvironment{tabular}{%
-    \ifsolution
-        \color{blue}%
-    \fi
-}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
