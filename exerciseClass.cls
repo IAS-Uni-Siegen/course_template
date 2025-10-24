@@ -65,12 +65,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \DeclareFloatingEnvironment[autorefname=Sol.-Tab.]{solutiontable}
-\captionsetup[solutiontable]{name=Solution Table, labelfont={color=blue},textfont={color=blue}}
+\captionsetup[solutiontable]{name=Solution Tab., labelfont={color=blue},textfont={color=blue}}
 \renewcommand{\thesolutiontable}{\arabic{exerciseCount}.\arabic{solutiontable}}
 
 % Change autorefname of table to Tab.
 \addto\extrasenglish{%
     \renewcommand{\tableautorefname}{Tab.}%
+    \renewcommand{\tablename}{Tab.}
 }
     
 
@@ -79,12 +80,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \DeclareFloatingEnvironment[autorefname=Sol.-Fig.]{solutionfigure}
-\captionsetup[solutionfigure]{name=Solution Figure, labelfont={color=blue},textfont={color=blue}}
+\captionsetup[solutionfigure]{name=Solution Fig., labelfont={color=blue},textfont={color=blue}}
 \renewcommand{\thesolutionfigure}{\arabic{exerciseCount}.\arabic{solutionfigure}}
 
 % Change autorefname of figure to Fig.
 \addto\extrasenglish{%
     \renewcommand{\figureautorefname}{Fig.}%
+    \renewcommand{\figurename}{Fig.}
 }
 
 
