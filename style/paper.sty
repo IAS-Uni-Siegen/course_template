@@ -7,11 +7,11 @@
 
 
 \newcommand{\loadgeneralpackage}{%
-    \IfFileExists{../../course_template/style/general.sty}{%
-        \usepackage{../../course_template/style/general}% 
+    \IfFileExists{../course_template/style/general.sty}{%
+        \usepackage{../course_template/style/general}% 
     }{%
-        \IfFileExists{../course_template/style/general.sty}{%
-            \usepackage{../course_template/style/general}%
+        \IfFileExists{../../course_template/style/general.sty}{%
+            \usepackage{../../course_template/style/general}%
         }{%
             \errmessage{Error: Could not find general.sty!}%
         }%
