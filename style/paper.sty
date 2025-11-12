@@ -51,17 +51,7 @@
     \CCauthor
 }
 
-\newcommand{\insertlogo}{%
-    \IfFileExists{\CClogo}{%
-        \fancyhead[R]{\includegraphics[width=\textwidth,height=10mm,keepaspectratio]{\CClogo}}%
-    }{%
-        \IfFileExists{\CClogo}{%
-            \fancyhead[R]{\includegraphics[width=\textwidth,height=10mm,keepaspectratio]{\CClogo}}%
-        }{%
-            \fancyhead[R]{\textbf{[LOGO NOT FOUND]}} % Fallback text if the image is missing
-        }%
-    }%
-}
+\newcommand{\insertlogo}{\fancyhead[R]{\includegraphics[width=\textwidth,height=10mm,keepaspectratio]{\CClogo}}}
 
 \insertlogo
 
