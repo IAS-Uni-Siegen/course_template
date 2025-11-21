@@ -110,3 +110,6 @@ This allows you to use the LaTeX classes provided in the course template reposit
 - All example themes contain a six-color palette designed to provide improved readability and accessibility for generated documents
 - This color palette is taken from ["Communicating Effectively in Color" by J. W. Kimball in IEEE Power Electronics Magazine](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10839151&isnumber=10839145).
 
+### Contributing:
+
+- Make sure to install `pre-commit` using `pip install -r requirements.txt` and then `pre-commit install`.
