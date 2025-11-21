@@ -113,3 +113,5 @@ LaTeX: You have requested document class '../course_template/exerciseClass', but
 ### Contributing
 
 - As a standard practice, make sure you have `latexindent` code formatter enabled in you text editor. We recommend using VSCode + LaTeX Workshop extension, where `latexindent` can be enabled through VSCode settings.
+
+- Make sure to add `l` flag to `latex-workshop.formatting.latexindent.args` in VSCode settings.
