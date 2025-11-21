@@ -1,0 +1,3 @@
+onlyOneBackUp: 1
+maxNumberOfBackUps: 1
+backupExtension: .libak

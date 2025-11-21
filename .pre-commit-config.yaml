@@ -1,0 +1,7 @@
+repos:
+  - repo: https://github.com/cmhughes/latexindent.pl.git
+    rev: V3.24.7
+    hooks:
+      - id: latexindent
+        args: ["-wd", "-l"]
+        files: \.(tex|cls|sty)$
