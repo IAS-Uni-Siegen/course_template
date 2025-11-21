@@ -4,7 +4,36 @@ on:
     branches:
       - main
 jobs:
+  format-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install latexindent and dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y perl curl unzip
+          curl -L https://cpanmin.us | perl - --sudo App::cpanminus
+          sudo cpanm Unicode::GCString
+          curl -L -o latexindent.pl https://github.com/cmhughes/latexindent.pl/releases/latest/download/latexindent.pl
+          chmod +x latexindent.pl
+          curl -L -o defaultSettings.yaml https://raw.githubusercontent.com/cmhughes/latexindent.pl/master/defaultSettings.yaml
+
+      - name: Check formatting with latexindent (dry-run)
+        run: |
+          for ext in tex sty cls; do
+            for file in $(find . -name "*.${ext}"); do
+              formatted=$(./latexindent.pl -o=- "$file")
+              original=$(cat "$file")
+              if [ "$formatted" != "$original" ]; then
+                echo "::error file=$file::File is not properly formatted. Please run latexindent locally."
+                exit 1
+              fi
+            done
+          done
+
   build:
+    needs: format-check
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -15,14 +44,15 @@ jobs:
           - test/testExam.tex
     steps:
       - uses: actions/checkout@v4
+
       - name: Submodule-like setup
         run: |
           mkdir -p ../course_template
           rsync -av --exclude='.git' . ../course_template/
-          mkdir -p summer2024/fig
           mkdir -p ../../course_template
           ln -s "$PWD/theme" ../../course_template/theme || true
           ln -s "$PWD/style" ../../course_template/style || true
+
       - uses: xu-cheng/latex-action@v3
         with:
           root_file: ${{ matrix.tex }}
