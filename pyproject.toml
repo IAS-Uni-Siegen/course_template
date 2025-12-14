@@ -1,0 +1,36 @@
+[tool.black]
+line-length = 88
+target-version = ['py39', 'py310', 'py311']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | build
+  | dist
+  | __pycache__
+  | \.pytest_cache
+  | \.mypy_cache
+)/
+'''
+skip-string-normalization = false  # consistent string quotes
+color-diff = true                  # pretty diff output in CI/editor
+
+preview = true # use latest Black features
+
+[tool.nbqa.black]
+line-length = 88
+skip-string-normalization = false
+
+[tool.nbqa.nbqa-magic]
+enabled = true
+
+[tool.isort]
+profile = "black"
+line_length = 88
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_if_statements = true
+skip = ["build", "dist", "__pycache__"]
