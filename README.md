@@ -110,3 +110,7 @@ This allows you to use the LaTeX classes provided in the course template reposit
 - All example themes contain a six-color palette designed to provide improved readability and accessibility for generated documents
 - This color palette is taken from ["Communicating Effectively in Color" by J. W. Kimball in IEEE Power Electronics Magazine](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10839151&isnumber=10839145).
 
+### Contributing
+
+- We recommend using [VSCode](https://code.visualstudio.com/) as code editor.
+- It is expected that [LaTeX Workshop extension](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) and [Black Formatter](https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter) is installed so that formatting of the code is achieved properly.
