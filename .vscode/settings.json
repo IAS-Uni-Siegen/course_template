@@ -4,20 +4,19 @@
         "-l=%WORKSPACE_FOLDER%/.latexindent.yml",
         "%TMPFILE%"
     ],
-    "latex-workshop.formatting.latex": "latexindent",
     "[latex]": {
         "editor.formatOnSave": true
     },
-    "black-formatter.args": [
-        "--config",
-        "./pyproject.toml"
-    ],
+    "ruff.configuration": "./pyproject.toml",
     "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff"
     },
-    "[jupyter]": {
-        "editor.defaultFormatter": "ms-python.black-formatter",
-        "editor.formatOnSave": true
+    "notebook.formatOnSave.enabled": true,
+    "notebook.codeActionsOnSave": {
+        "notebook.source.organizeImports": "explicit"
     }
 }
