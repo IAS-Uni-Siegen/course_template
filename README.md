@@ -113,4 +113,8 @@ This allows you to use the LaTeX classes provided in the course template reposit
 ### Contributing
 
 - We recommend using [VSCode](https://code.visualstudio.com/) as code editor.
-- It is expected that [LaTeX Workshop extension](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) and [Black Formatter](https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter) is installed so that formatting of the code is achieved properly.
+- [Black](https://github.com/psf/black) should be installed.
+    ```python
+    pip install black
+    ```
+- It is expected that [LaTeX Workshop extension](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) and [Black Formatter](https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter) is installed so that formatting of the code is achieved automatically.
