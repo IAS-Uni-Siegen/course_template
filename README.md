@@ -114,6 +114,7 @@ This allows you to use the LaTeX classes provided in the course template reposit
 
 - We recommend using [VSCode](https://code.visualstudio.com/) as code editor.
 - [Black](https://github.com/psf/black) should be installed.
+
     ```python
     pip install black
     ```
