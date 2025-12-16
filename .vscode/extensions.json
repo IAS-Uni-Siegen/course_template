@@ -1,6 +1,6 @@
 {
     "recommendations": [
         "James-Yu.latex-workshop",
-        "astral-sh.ruff-vscode"
+        "charliermarsh.ruff"
     ]
 }
