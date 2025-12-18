@@ -2,12 +2,11 @@
     "latex-workshop.formatting.latexindent.path": "latexindent",
     "latex-workshop.formatting.latexindent.args": [
         "-l=%WORKSPACE_FOLDER%/.latexindent.yml",
-        "%TMPFILE%"
+        "%TMPFILE%",
+        "-o=%TMPFILE%"
     ],
+    "editor.formatOnSave": true,
     "latex-workshop.formatting.latex": "latexindent",
-    "[latex]": {
-        "editor.formatOnSave": true
-    },
     "ruff.configuration": "./pyproject.toml",
     "[python]": {
         "editor.formatOnSave": true,

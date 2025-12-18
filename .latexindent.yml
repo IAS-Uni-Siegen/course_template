@@ -31,7 +31,7 @@ alignAtAmpersand:
 
 modifyLineBreaks:
   yaml: 1
-  preserveBlankLines: 1
+  preserveBlankLines: 0
 
 noAdditionalIndent:
   comment: 1
@@ -39,7 +39,7 @@ noAdditionalIndent:
   lstlisting: 1
 
 preamble:
-  indentPreamble: 0
+  indentPreamble: 1
 
 maximumIndentation:
   environments: 10
