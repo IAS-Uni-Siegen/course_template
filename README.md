@@ -118,4 +118,4 @@ This allows you to use the LaTeX classes provided in the course template reposit
     ```python
     pip install ruff
     ```
-- It is expected that [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) extension and [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff) extension is installed so that formatting of the code is achieved automatically.
+- It is expected that [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) and [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff) extensions are installed so that formatting of the code is achieved automatically.
