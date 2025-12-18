@@ -9,22 +9,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install latexindent and dependencies
+      - name: Install latexindent binary
         run: |
-          sudo apt-get update
-          sudo apt-get install -y perl curl unzip
-          curl -L https://cpanmin.us | perl - --sudo App::cpanminus
-          sudo cpanm Unicode::GCString
-          curl -L -o latexindent.pl https://github.com/cmhughes/latexindent.pl/releases/latest/download/latexindent.pl
-          chmod +x latexindent.pl
-          curl -L -o defaultSettings.yaml https://raw.githubusercontent.com/cmhughes/latexindent.pl/master/defaultSettings.yaml
+          set -e
+          curl -L -o latexindent-linux \
+            https://github.com/cmhughes/latexindent.pl/releases/latest/download/latexindent-linux
+          chmod +x latexindent-linux
+          sudo mv latexindent-linux /usr/local/bin/latexindent
+          echo "latexindent installed at:"
+          which latexindent || echo "latexindent not found on PATH"
+
+          echo "latexindent verbose version info:"
+          latexindent -vv
 
       - name: Check LaTeX formatting with latexindent (dry-run)
         run: |
           set -e
           for ext in tex sty cls; do
             for file in $(find . -name "*.${ext}" || true); do
-              formatted=$(./latexindent.pl -o=- "$file")
+              formatted=$(latexindent -o=- "$file")
               original=$(cat "$file")
               if [ "$formatted" != "$original" ]; then
                 echo "::error file=$file::File is not properly formatted. Please run latexindent locally."
@@ -33,6 +36,7 @@ jobs:
             done
           done
           echo "All LaTeX files are properly formatted!"
+
 
       - name: Install Python format tools
         run: |
