@@ -4,7 +4,6 @@
 \ProvidesClass{exerciseClass}[IAS exercise LaTeX class]
 \LoadClass[a4paper, 12pt, notitlepage, oneside]{article}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Class options %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -54,7 +53,6 @@
 	\fi
 }
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Solution table %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -78,8 +76,6 @@
 \AtBeginEnvironment{tabular}{\ifsolution\ifinsolutiontable\color{blue}\fi\fi}
 \AtBeginEnvironment{tabular*}{\ifsolution\ifinsolutiontable\color{blue}\fi\fi}
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Solution figure %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -93,7 +89,6 @@
 	\renewcommand{\figureautorefname}{Fig.}%
 	\renewcommand{\figurename}{Fig.}
 }
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% exercise %%
@@ -119,7 +114,6 @@
 }
 
 \titleformat*{\section}{\normalfont}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% task %%
@@ -156,18 +150,16 @@
 %\setcounter{subtaskCount}{0}
 
 \newcommand{\subtask}[1]{
-	{\stepcounter{subtaskCount}
-
-			\vspace{-1em} %reduce spacing
-			\normalsize
-			\subsection*{} % Display "Subtask" without numbering
-			\refstepcounter{subsection}
-			\label{subtask:\theexerciseCount.\thetaskCount.\thesubtaskCount}
-
-			\theexerciseCount.\thetaskCount.\thesubtaskCount \ #1
-		}
+	\begingroup
+	\stepcounter{subtaskCount}
+	\vspace{-1em} %reduce spacing
+	\normalsize
+	\subsection*{} % Display "Subtask" without numbering
+	\refstepcounter{subsection}
+	\label{subtask:\theexerciseCount.\thetaskCount.\thesubtaskCount}
+	\theexerciseCount.\thetaskCount.\thesubtaskCount \ #1
+	\endgroup
 }
-
 
 \addto\extrasenglish{%
 	\renewcommand{\subsectionautorefname}{subtask}

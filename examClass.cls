@@ -3,7 +3,6 @@
 
 \LoadClass[a4paper,12pt,notitlepage,oneside]{article}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Class options %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -31,7 +30,6 @@
 
 \ProcessOptions\relax
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Packages  and Graphic path%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -40,7 +38,6 @@
 \usepackage{../../course_template/theme/\selectedtheme}
 \usepackage{../../course_template/style/paper}
 \RequirePackage{totcount}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% hint block block %%
@@ -118,8 +115,6 @@
 \AtBeginEnvironment{tabular}{\ifsolution\ifinsolutiontable\color{blue}\fi\fi}
 \AtBeginEnvironment{tabular*}{\ifsolution\ifinsolutiontable\color{blue}\fi\fi}
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Solution figure %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -127,13 +122,11 @@
 \captionsetup[solutionfigure]{name=Solution Fig., labelfont={color=blue},textfont={color=blue}}
 \renewcommand{\thesolutionfigure}{\arabic{solutionfigure}}
 
-
 % Change autorefname of figure to Fig.
 \addto\extrasenglish{%
 	\renewcommand{\figureautorefname}{Fig.}%
 	\renewcommand{\figurename}{Fig.}
 }
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Counter and space %%
@@ -159,9 +152,6 @@
 }
 
 \titleformat*{\section}{\normalfont}
-
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% task %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -220,8 +210,6 @@
 	\fi
 }
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% subtask %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcounter{subtaskCount}[taskCount]
@@ -229,33 +217,34 @@
 \newcounter{subTaskPoints}
 
 \newcommand{\subtask}[2]{
-	{\stepcounter{subtaskCount}
-			\normalsize
-			\color{black}
-			\setlength{\parskip}{12pt}
-			\thetaskCount.\thesubtaskCount \ #1
-			\setcounter{subTaskPoints}{#2}
-			\ifnum \value{subTaskPoints}=1
-				\hfill [#2~Point]
-			\else
-				\hfill [#2~Points]
-			\fi
+	\begingroup
+	\stepcounter{subtaskCount}
+	\normalsize
+	\color{black}
+	\setlength{\parskip}{12pt}
+	\thetaskCount.\thesubtaskCount\ #1
+	\setcounter{subTaskPoints}{#2}
+	\ifnum \value{subTaskPoints}=1
+		\hfill [#2~Point]
+	\else
+		\hfill [#2~Points]
+	\fi
 
-			% sum up subtask points for task 1
-			\ifnum \value{taskCount} = 1
-				\addtocounter{taskPointsA}{#2}
-			\fi
-			% task 2
-			\ifnum \value{taskCount} = 2
-				\addtocounter{taskPointsB}{#2}
-			\fi
-			\ifnum \value{taskCount} = 3
-				\addtocounter{taskPointsC}{#2}
-			\fi
-			\ifnum \value{taskCount} = 4
-				\addtocounter{taskPointsD}{#2}
-			\fi
-		}
+	% sum up subtask points for task 1
+	\ifnum \value{taskCount} = 1
+		\addtocounter{taskPointsA}{#2}
+	\fi
+	% task 2
+	\ifnum \value{taskCount} = 2
+		\addtocounter{taskPointsB}{#2}
+	\fi
+	\ifnum \value{taskCount} = 3
+		\addtocounter{taskPointsC}{#2}
+	\fi
+	\ifnum \value{taskCount} = 4
+		\addtocounter{taskPointsD}{#2}
+	\fi
+	\endgroup
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -277,8 +266,6 @@
 	\fi
 }
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% subtask german %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcounter{subtaskCountGerman}[taskCount]
@@ -286,16 +273,15 @@
 
 \newcommand{\subtaskGerman}[1]{
 	\ifgerman
-		{\stepcounter{subtaskCountGerman}
+		\begingroup
+		\stepcounter{subtaskCountGerman}
 		\color{gray}
 		\normalsize
 		\setlength{\parskip}{0pt}
-		\thetaskCountGerman.\thesubtaskCountGerman \ #1
-
-		}
+		\thetaskCountGerman.\thesubtaskCountGerman\ #1
+		\endgroup
 	\fi
 }
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% total points %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -314,7 +300,6 @@
 \numberwithin{equation}{exerciseCount}
 \numberwithin{figure}{exerciseCount}
 \numberwithin{table}{exerciseCount}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Further counters and caption %%
