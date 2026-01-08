@@ -2,10 +2,10 @@ onlyOneBackUp: 1
 maxNumberOfBackUps: 1
 backupExtension: .libak
 
-defaultIndent: '  '
+defaultIndent: "\t"
 lookAtTheseModifyLineBreaks:
   environments: 1
-  commands: 1
+  commands: 0
   ifElseFi: 1
   items: 1
   specialBeginEnd: 1
@@ -32,6 +32,7 @@ alignAtAmpersand:
 modifyLineBreaks:
   yaml: 1
   preserveBlankLines: 0
+  condenseMultipleBlankLinesInto: 1
 
 noAdditionalIndent:
   comment: 1
