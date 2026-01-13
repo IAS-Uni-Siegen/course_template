@@ -43,16 +43,36 @@ jobs:
           python -m pip install --upgrade pip
           pip install ruff
 
-      - name: Check Python + Notebook formatting with Ruff (dry-run)
+      - name: Check Python + Notebook formatting (Ruff)
         run: |
           set -e
-          for file in $(find . \( -name "*.py" -o -name "*.ipynb" \) ); do
-            if ! ruff format --diff --config=./pyproject.toml "$file"; then
-              echo "::error file=$file::File is not properly formatted."
-              exit 1
+
+          echo "Checking .py files formatting..."
+          PY_FAILED=0
+          for file in $(find . -name "*.py" -not -path "*/.*"); do
+            if ! ruff format --check --config ./course_template/pyproject.toml "$file"; then
+              echo "::error file=$file::Formatting check failed for $file."
+              PY_FAILED=1
             fi
           done
-          echo "All Python (.py, .ipynb) files are properly formatted!"
+
+          echo "Checking .ipynb files formatting..."
+          NB_FAILED=0
+          for file in $(find . -name "*.ipynb" -not -path "*/.*"); do
+            if ! ruff format --check --config ./course_template/pyproject.toml "$file"; then
+              echo "::error file=$file::Formatting check failed for $file."
+              echo "TIP: There is likely a trailing newline at the end of a code cell."
+              ruff format --diff --config ./course_template/pyproject.toml "$file"
+              NB_FAILED=1
+            fi
+          done
+
+          if [ $PY_FAILED -ne 0 ] || [ $NB_FAILED -ne 0 ]; then
+            echo "Formatting check failed. You can check by running 'ruff format .' locally."
+            exit 1
+          fi
+          
+          echo "All files passed formatting!"
 
   build:
     needs: format-check
