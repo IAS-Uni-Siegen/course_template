@@ -5,17 +5,16 @@
 \RequirePackage{import} % Enables importing external files for modular document structure
 \RequirePackage{titlesec} % Customizes section titles, including fonts, spacing, and numbering( different from lecture)
 
-
 \newcommand{\loadgeneralpackage}{%
-    \IfFileExists{../course_template/style/general.sty}{%
-        \usepackage{../course_template/style/general}% 
-    }{%
-        \IfFileExists{../../course_template/style/general.sty}{%
-            \usepackage{../../course_template/style/general}%
-        }{%
-            \errmessage{Error: Could not find general.sty!}%
-        }%
-    }%
+	\IfFileExists{../course_template/style/general.sty}{%
+		\usepackage{../course_template/style/general}% 
+	}{%
+		\IfFileExists{../../course_template/style/general.sty}{%
+			\usepackage{../../course_template/style/general}%
+		}{%
+			\errmessage{Error: Could not find general.sty!}%
+		}%
+	}%
 }
 
 \loadgeneralpackage
@@ -23,8 +22,6 @@
 \hypersetup{hidelinks}  % Applies hidelinks setting afterward
 % Caption
 \DeclareCaptionFont{blue}{\color{blue}}
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %$ Setup page geometry %%
@@ -36,8 +33,6 @@
 \setlength{\headsep}{8mm}
 \setlength{\textheight}{250mm}
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Header and footer %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -47,8 +42,8 @@
 \renewcommand{\footrulewidth}{0.4pt}
 
 \fancyhead[L]{
-    \textbf{\large{\@title}}\\
-    \CCauthor
+	\textbf{\large{\@title}}\\
+	\CCauthor
 }
 
 \newcommand{\insertlogo}{\fancyhead[R]{\includegraphics[width=\textwidth,height=10mm,keepaspectratio]{\CClogo}}}
@@ -56,5 +51,4 @@
 \insertlogo
 
 \fancyfoot[C]{\thepage}
-
 

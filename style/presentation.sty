@@ -2,13 +2,9 @@
 
 \usepackage{../course_template/style/general}
 
-\captionsetup{font=small, justification=centering} 
-
+\captionsetup{font=small, justification=centering}
 
 \RequirePackage[automake, toc = false]{glossaries-extra} % automake option causes error if \makeglossaries is not used in main file 
-
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Beamer Theme and Colors %%
@@ -40,19 +36,19 @@
 
 \AtBeginSection[]
 {
-  \hypertarget{sec\thesection}{}
-  \begin{frame}{Table of contents}
-    \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/show/hide]
-  \end{frame}
+	\hypertarget{sec\thesection}{}
+	\begin{frame}{Table of contents}
+		\tableofcontents[sectionstyle=show/hide,subsectionstyle=show/show/hide]
+	\end{frame}
 }
 
 \AtBeginSubsection[]
 {
-  \ifnum\value{subsection} > 1 % show TOC again after the second subsection
-    \begin{frame}{Table of contents}
-      \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
-    \end{frame}
-  \fi
+	\ifnum\value{subsection} > 1 % show TOC again after the second subsection
+		\begin{frame}{Table of contents}
+			\tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
+		\end{frame}
+	\fi
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -79,28 +75,27 @@
 
 % Centered block with adjustable width
 \newenvironment<>{varblock}[2][.9\textwidth]{
-\begin{center}
-  \begin{minipage}{#1}
-    \begin{actionenv}#3%
-      \def\insertblocktitle{#2}%
-      \par%
-      \usebeamertemplate{block begin}}
-    {\par%
-      \usebeamertemplate{block end}%
-    \end{actionenv}
-  \end{minipage}
-\end{center}
+	\begin{center}
+		\begin{minipage}{#1}
+			\begin{actionenv}#3%
+				\def\insertblocktitle{#2}%
+				\par%
+				\usebeamertemplate{block begin}}
+				{\par%
+				\usebeamertemplate{block end}%
+			\end{actionenv}
+		\end{minipage}
+	\end{center}
 }
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Footnote Without Numbering %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\blfootnote[1]{%
-  \begingroup
-  \renewcommand\thefootnote{}\footnote{#1}%
-  \addtocounter{footnote}{-1}%
-  \endgroup
+	\begingroup
+	\renewcommand\thefootnote{}\footnote{#1}%
+	\addtocounter{footnote}{-1}%
+	\endgroup
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -109,25 +104,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \makeatletter
 \setbeamertemplate{footline}{
-  \leavevmode%
-  \hbox{%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex, left, leftskip=0.375cm]{author in head/foot}%
-    \usebeamerfont{author in head/foot}\insertshortauthor\expandafter\ifblank\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
-    \usebeamerfont{title in head/foot}\insertshorttitle
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right, rightskip=0.25cm]{date in head/foot}%
-    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{5em}
-    \insertframenumber{}%/\inserttotalframenumber
-    \hspace*{2ex} 
-  \end{beamercolorbox}}%
-  \vskip0pt%
+	\leavevmode%
+	\hbox{%
+		\begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex, left, leftskip=0.375cm]{author in head/foot}%
+			\usebeamerfont{author in head/foot}\insertshortauthor\expandafter\ifblank\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+			\usebeamerfont{title in head/foot}\insertshorttitle
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right, rightskip=0.25cm]{date in head/foot}%
+			\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{5em}
+			\insertframenumber{}%/\inserttotalframenumber
+			\hspace*{2ex}
+		\end{beamercolorbox}}%
+	\vskip0pt%
 
 }
 \makeatother
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Custom Reference Formatting %%
@@ -142,7 +136,6 @@
 \newcommand{\algname}{Algo.}
 \newcommand{\algoref}[1]{\algname~\ref{#1}}
 \setbeamertemplate{caption}{\raggedright\centering\insertcaption\par}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Numbering of Captions %%
@@ -164,17 +157,13 @@
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Glossaries %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newglossary{nomen}{nom}{nomc}{Nomenclature}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Misc. %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \let\footnoterule\relax % Removes the horizontal line above footnotes
-
-
 

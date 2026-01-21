@@ -20,7 +20,7 @@
 \RequirePackage{array} % Enhances table formatting by allowing advanced column definitions
 \RequirePackage{hhline} % Improves control over horizontal lines in tables
 \RequirePackage{calc}
-\RequirePackage{xparse} 
+\RequirePackage{xparse}
 \RequirePackage{eurosym} % Provides the Euro currency symbol (€)
 \RequirePackage{animate} % Enables animated graphics in PDF output
 \RequirePackage[bookmarks=true]{hyperref}
@@ -31,16 +31,13 @@
 \RequirePackage{newfloat} % Defines new types of floating environments (e.g., for algorithms or figures)
 \RequirePackage{tikz} %presentation has packae tikzpeople
 \RequirePackage{pgfplots}
-\RequirePackage{hyperxmp} 
+\RequirePackage{hyperxmp}
 \RequirePackage{fontawesome} % For icon
 \RequirePackage{tikzpeople}
 \RequirePackage[european, smartlabels, americaninductor]{circuitikz}
 \RequirePackage[listings,theorems, skins, most, many]{tcolorbox}
 \RequirePackage[hang,flushmargin]{footmisc}
- \RequirePackage{csquotes} % For \enquote command
- 
-
-
+\RequirePackage{csquotes} % For \enquote command
 
 % Global declarations (always applied)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -58,14 +55,13 @@
 % allow fraction for values
 \sisetup{parse-numbers = false}
 
-
 \sisetup{
-  per-mode=fraction,
-  fraction-function=\tfrac,
-  input-digits = 0123456789\pi,
-  exponent-product=\ensuremath{\cdot},
-  inter-unit-product = {},
-  range-phrase=\,--\,
+	per-mode=fraction,
+	fraction-function=\tfrac,
+	input-digits = 0123456789\pi,
+	exponent-product=\ensuremath{\cdot},
+	inter-unit-product = {},
+	range-phrase=\,--\,
 }
 \DeclareSIUnit{\EUR}{\text{\euro}}
 
@@ -94,18 +90,17 @@
 \DeclareMathOperator*{\argmax}{arg\,max} % arg max
 \DeclareMathOperator*{\argmin}{arg\,min} % arg min
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% tikz and circuittikz%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- \usetikzlibrary{
-  arrows, arrows.meta, shapes, shapes.symbols, positioning, shadows, trees, matrix, backgrounds, fit, 
-  calc, math, intersections, overlay-beamer-styles, angles, quotes, patterns, decorations.pathmorphing, 
-  decorations.pathreplacing, decorations.shapes, decorations.text}
+\usetikzlibrary{
+	arrows, arrows.meta, shapes, shapes.symbols, positioning, shadows, trees, matrix, backgrounds, fit,
+	calc, math, intersections, overlay-beamer-styles, angles, quotes, patterns, decorations.pathmorphing,
+	decorations.pathreplacing, decorations.shapes, decorations.text}
 
 %% Tikz
 \pgfplotsset{compat=1.18}
-\usepgfplotslibrary{groupplots, fillbetween} 
+\usepgfplotslibrary{groupplots, fillbetween}
 \ctikzset{bipoles/cuteswitch/thickness=0.15} % Thickness of cute switch
 \ctikzset{multipoles/rotary/thickness=0.15} % Thickness of rotary switch
 \ctikzset{diodes/scale=0.65} % Scale of diodes
@@ -116,46 +111,34 @@
 \ctikzset{tripoles/mixer/width=0.4} % Scale of adder
 \tikzstyle{ctrlblock} = [draw, rectangle, minimum height = 2em, minimum width = 3em, thick]
 
-
-
-% Layered tree diagram
 \tikzset{
-  basic/.style  = {draw, text width=3cm, drop shadow, rectangle},
-  root/.style   = {basic, rounded corners=2pt, thin, align=center,
-                   fill=defaultcolor, text=white},
-  level 2/.style = {basic, rounded corners=4pt, thin,align=center, fill=defaultlightcolor,
-                   text width=8em},
-  level 3/.style = {basic, thin, align=left, fill=gray!25, text width=3cm}
+% Layered tree diagram
+basic/.style  = {draw, text width = 3cm, drop shadow, rectangle},
+root/.style   = {basic, rounded corners = 2pt, thin, align = center, fill = defaultcolor, text = white},
+level 2/.style = {basic, rounded corners = 4pt, thin,align = center, fill = defaultlightcolor, text width = 8em},
+level 3/.style = {basic, thin, align = left, fill = gray!25, text width = 3cm},
+% Same block diagram settings as in the lecture
+block/.style    = {draw, thick, rectangle, minimum height = 3em, minimum width = 4em},
+bubble/.style = {draw, ellipse, thick, minimum height = 3em, minimum width = 5em, fill = defaultcolor, text = white},
+dot/.style = {circle, draw, fill = black, minimum size = 3pt, inner sep = 0pt, outer sep = 0pt},
+input/.style    = {coordinate},
+output/.style   = {coordinate},
+> = {Latex[scale=1.25]}
 }
-
-% same block diagram settings as in the lecture
-\tikzset{%
-	block/.style    = {draw, thick, rectangle, minimum height = 3em,
-	  minimum width = 4em},
-    bubble/.style = {draw, ellipse, thick, minimum height = 3em,
-    minimum width = 5em, fill = defaultcolor, text = white},
-	dot/.style = {circle, draw, fill=black, minimum size=3pt, inner sep=0pt, outer sep=0pt},
-	input/.style    = {coordinate}, % Input
-	output/.style   = {coordinate}, % Output
-  >={Latex[scale=1.25]} % Make the arrow heads larger
-  }
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Hyperref setup %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hypersetup{colorlinks,
-            linkcolor=,
-            urlcolor=links,
-            bookmarksdepth=3,
-            pdfcopyright={\CCname},
-            pdflicenseurl={\CClink},
-            pdfauthor={\CCauthor},
-            pdfcontacturl={\CCcontacturl},
-            pdftitle={\CCtitle}
-            }
-
-
+	linkcolor=,
+	urlcolor=links,
+	bookmarksdepth=3,
+	pdfcopyright={\CCname},
+	pdflicenseurl={\CClink},
+	pdfauthor={\CCauthor},
+	pdfcontacturl={\CCcontacturl},
+	pdftitle={\CCtitle}
+}
 
 % Math. definitions %%% Definition Box
 \newtcbtheorem[number within=section, reset counter on overlays=true]{defi}{Definition}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = defaultcolor, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90,  width=1.02\textwidth}{defi}
@@ -163,16 +146,16 @@
 \newtcbtheorem[number within=section, reset counter on overlays=true]{theo}{Theorem}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = defaultcolor, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90}{theo}
 % Algorithms	%%Algorithm Box
 \newtcbtheorem[number within=section, reset counter on overlays=true]{algo}{Algorithm}{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = defaultcolor, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90,  width=1.02\textwidth}{algo}
- 
- % Footnote box with footnotesize text and minimal margins
- \newtcolorbox{footnotebox}[1][]{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = defaultcolor, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90, width=1.02\textwidth, fontupper=\footnotesize, #1}
+
+% Footnote box with footnotesize text and minimal margins
+\newtcolorbox{footnotebox}[1][]{enhanced, grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colbacktitle = defaultcolor, boxrule = 0pt, frame hidden, drop fuzzy shadow=black!90, width=1.02\textwidth, fontupper=\footnotesize, #1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- %% Captions for algorithm2e package (modify towards regular figure cap)  %%
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- \SetAlCapNameFnt{\small}
- \SetAlCapSty{}
- \SetAlCapFnt{\small}
+%% Captions for algorithm2e package (modify towards regular figure cap)  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\SetAlCapNameFnt{\small}
+\SetAlCapSty{}
+\SetAlCapFnt{\small}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Graphics path %%

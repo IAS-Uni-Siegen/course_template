@@ -4,7 +4,6 @@
 \ProvidesClass{exerciseClass}[IAS exercise LaTeX class]
 \LoadClass[a4paper, 12pt, notitlepage, oneside]{article}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Class options %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -12,16 +11,16 @@
 \DeclareOption{solution}{\solutiontrue}
 
 \DeclareOption{CC-BY}{
-   \newcommand{\CClink}{https://creativecommons.org/licenses/by/4.0/}
-   \newcommand{\CCname}{Creative Commons BY 4.0}
- } % Creative Commons license (default)
+	\newcommand{\CClink}{https://creativecommons.org/licenses/by/4.0/}
+	\newcommand{\CCname}{Creative Commons BY 4.0}
+} % Creative Commons license (default)
 \DeclareOption{CC-BY-NC-SA}{
-   \renewcommand{\CClink}{https://creativecommons.org/licenses/by-nc-sa/4.0/}
-   \renewcommand{\CCname}{Creative Commons BY-NC-SA 4.0}
- } % Creative Commons license (alternatve)
+	\renewcommand{\CClink}{https://creativecommons.org/licenses/by-nc-sa/4.0/}
+	\renewcommand{\CCname}{Creative Commons BY-NC-SA 4.0}
+} % Creative Commons license (alternatve)
 \newcommand{\selectedtheme}{unisiegen-IAS}
 \DeclareOption*{
-   \global\let\selectedtheme\CurrentOption
+	\global\let\selectedtheme\CurrentOption
 }
 \ExecuteOptions{CC-BY} % Default CC license
 \newcommand{\CCtitle}{Exercise sheets}
@@ -43,17 +42,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NewDocumentEnvironment{solutionblock}{+b}
 {
-    \ifsolution
-    \color{blue}
-    \setlength{\parskip}{0pt}%~\\
-    \FloatBarrier
-    \noindent\underline{Answer:}%~\\ %if you want the actual answer to start from the next line simply add ~\\ also
-    \FloatBarrier
-    #1
-    \FloatBarrier
-    \fi
+	\ifsolution
+		\color{blue}
+		\setlength{\parskip}{0pt}%~\\
+		\FloatBarrier
+		\noindent\underline{Answer:}%~\\ %if you want the actual answer to start from the next line simply add ~\\ also
+		\FloatBarrier
+		#1
+		\FloatBarrier
+	\fi
 }
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Solution table %%
@@ -65,8 +63,8 @@
 
 % Change autorefname of table to Tab.
 \addto\extrasenglish{%
-    \renewcommand{\tableautorefname}{Tab.}%
-    \renewcommand{\tablename}{Tab.}
+	\renewcommand{\tableautorefname}{Tab.}%
+	\renewcommand{\tablename}{Tab.}
 }
 
 % Color hook for solutiontable
@@ -78,8 +76,6 @@
 \AtBeginEnvironment{tabular}{\ifsolution\ifinsolutiontable\color{blue}\fi\fi}
 \AtBeginEnvironment{tabular*}{\ifsolution\ifinsolutiontable\color{blue}\fi\fi}
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Solution figure %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -90,10 +86,9 @@
 
 % Change autorefname of figure to Fig.
 \addto\extrasenglish{%
-    \renewcommand{\figureautorefname}{Fig.}%
-    \renewcommand{\figurename}{Fig.}
+	\renewcommand{\figureautorefname}{Fig.}%
+	\renewcommand{\figurename}{Fig.}
 }
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% exercise %%
@@ -102,51 +97,50 @@
 \setcounter{exerciseCount}{0}
 
 \newcommand{\ex}[1]{
-    \stepcounter{exerciseCount}
-    \pdfbookmark[0]{Exercise~\ifnum\value{exerciseCount}<10 0\fi\theexerciseCount: #1}{ex:\theexerciseCount}
-    \large
-    \ifnum\value{exerciseCount} < 10
-        \textbf{Exercise~0\theexerciseCount:} \textbf{#1}
-    \else
-        \textbf{Exercise~\theexerciseCount:} \textbf{#1}
-    \fi
-    \normalsize
-    \setlength{\parskip}{1em}
-    
-    % Reset task and subtask counters
-    \setcounter{taskCount}{0}
-    \setcounter{subtaskCount}{0}
+	\stepcounter{exerciseCount}
+	\pdfbookmark[0]{Exercise~\ifnum\value{exerciseCount}<10 0\fi\theexerciseCount: #1}{ex:\theexerciseCount}
+	\large
+	\ifnum\value{exerciseCount} < 10
+		\textbf{Exercise~0\theexerciseCount:} \textbf{#1}
+	\else
+		\textbf{Exercise~\theexerciseCount:} \textbf{#1}
+	\fi
+	\normalsize
+	\setlength{\parskip}{1em}
+
+	% Reset task and subtask counters
+	\setcounter{taskCount}{0}
+	\setcounter{subtaskCount}{0}
 }
 
 \titleformat*{\section}{\normalfont}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% task %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcounter{taskCount}[exerciseCount]                  
+\newcounter{taskCount}[exerciseCount]
 
-\renewcommand{\thesection}{\theexerciseCount.\thetaskCount} 
-\newcommand{\task}[1]{ 
-    \stepcounter{taskCount}
-    
-    \ifnum\value{taskCount}=1
-        \setlength{\parskip}{-12pt}
-    \else
-        \setlength{\parskip}{-12pt}
-    \fi
-    \ifnum\value{taskCount}>1
-    \vspace{1em} % Adjust the spacing value as needed
-    \fi
-    \normalsize
-    \setcounter{secnumdepth}{0}
-    \section{\textbf{Task~\theexerciseCount.\thetaskCount:~#1}} % Display "Subtask" without numbering
-    \refstepcounter{section} 
-    
-    \label{task:\theexerciseCount.\thetaskCount} % Unique label for each task
+\renewcommand{\thesection}{\theexerciseCount.\thetaskCount}
+\newcommand{\task}[1]{
+	\stepcounter{taskCount}
+
+	\ifnum\value{taskCount}=1
+		\setlength{\parskip}{-12pt}
+	\else
+		\setlength{\parskip}{-12pt}
+	\fi
+	\ifnum\value{taskCount}>1
+		\vspace{1em} % Adjust the spacing value as needed
+	\fi
+	\normalsize
+	\setcounter{secnumdepth}{0}
+	\section{\textbf{Task~\theexerciseCount.\thetaskCount:~#1}} % Display "Subtask" without numbering
+	\refstepcounter{section}
+
+	\label{task:\theexerciseCount.\thetaskCount} % Unique label for each task
 }
 \addto\extrasenglish{%
-\renewcommand{\sectionautorefname}{task}%
+	\renewcommand{\sectionautorefname}{task}%
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -156,21 +150,19 @@
 %\setcounter{subtaskCount}{0}
 
 \newcommand{\subtask}[1]{
-    {\stepcounter{subtaskCount}
-        
-        \vspace{-1em} %reduce spacing
-        \normalsize
-        \subsection*{} % Display "Subtask" without numbering
-        \refstepcounter{subsection}
-        \label{subtask:\theexerciseCount.\thetaskCount.\thesubtaskCount}
-         
-        \theexerciseCount.\thetaskCount.\thesubtaskCount \ #1
-    }
+	\begingroup
+	\stepcounter{subtaskCount}
+	\vspace{-1em} %reduce spacing
+	\normalsize
+	\subsection*{} % Display "Subtask" without numbering
+	\refstepcounter{subsection}
+	\label{subtask:\theexerciseCount.\thetaskCount.\thesubtaskCount}
+	\theexerciseCount.\thetaskCount.\thesubtaskCount \ #1
+	\endgroup
 }
 
-
 \addto\extrasenglish{%
-\renewcommand{\subsectionautorefname}{subtask}
+	\renewcommand{\subsectionautorefname}{subtask}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

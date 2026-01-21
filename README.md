@@ -110,3 +110,12 @@ This allows you to use the LaTeX classes provided in the course template reposit
 - All example themes contain a six-color palette designed to provide improved readability and accessibility for generated documents
 - This color palette is taken from ["Communicating Effectively in Color" by J. W. Kimball in IEEE Power Electronics Magazine](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10839151&isnumber=10839145).
 
+### Contributing
+
+- We recommend using [VSCode](https://code.visualstudio.com/) as code editor.
+- [Ruff](https://github.com/astral-sh/ruff) should be installed.
+
+    ```bash
+    pip install ruff
+    ```
+- It is expected that [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) and [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff) extensions are installed so that formatting of the code is achieved automatically.

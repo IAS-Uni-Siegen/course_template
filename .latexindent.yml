@@ -1,0 +1,47 @@
+onlyOneBackUp: 1
+maxNumberOfBackUps: 1
+backupExtension: .libak
+
+defaultIndent: "\t"
+lookAtTheseModifyLineBreaks:
+  environments: 1
+  commands: 0
+  ifElseFi: 1
+  items: 1
+  specialBeginEnd: 1
+
+indentAfterHeadings:
+  section:
+    indentAfterThisHeading: 1
+    level: 1
+  subsection:
+    indentAfterThisHeading: 1
+    level: 2
+  subsubsection:
+    indentAfterThisHeading: 1
+    level: 3
+
+alignAtAmpersand:
+  environments:
+    aligned: 1
+    matrix: 1
+    tabular: 1
+    array: 1
+  spacesAfterAmpersand: 1
+
+modifyLineBreaks:
+  yaml: 1
+  preserveBlankLines: 0
+  condenseMultipleBlankLinesInto: 1
+
+noAdditionalIndent:
+  comment: 1
+  verbatim: 1
+  lstlisting: 1
+
+preamble:
+  indentPreamble: 1
+
+maximumIndentation:
+  environments: 10
+  commands: 10

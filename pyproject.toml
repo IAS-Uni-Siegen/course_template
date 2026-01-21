@@ -1,0 +1,24 @@
+[tool.ruff]
+line-length = 88
+exclude = [
+    ".git",
+    ".venv",
+    "build",
+    "dist",
+    "__pycache__",
+    ".pytest_cache",
+]
+extend-include = ["*.ipynb"]
+
+[tool.ruff.format]
+quote-style = "double"
+skip-magic-trailing-comma = false
+docstring-code-format = false
+line-ending = "lf"
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint]
+select = ["I"]  # I = isort rules only
+ignore = []
