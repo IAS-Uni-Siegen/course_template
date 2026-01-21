@@ -50,7 +50,7 @@ jobs:
           echo "Checking .py files formatting..."
           PY_FAILED=0
           for file in $(find . -name "*.py" -not -path "*/.*"); do
-            if ! ruff format --check --config ./course_template/pyproject.toml "$file"; then
+            if ! ruff format --check --config ./pyproject.toml "$file"; then
               echo "::error file=$file::Formatting check failed for $file."
               PY_FAILED=1
             fi
