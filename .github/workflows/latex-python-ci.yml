@@ -59,10 +59,10 @@ jobs:
           echo "Checking .ipynb files formatting..."
           NB_FAILED=0
           for file in $(find . -name "*.ipynb" -not -path "*/.*"); do
-            if ! ruff format --check --config ./course_template/pyproject.toml "$file"; then
+            if ! ruff format --check --config ./pyproject.toml "$file"; then
               echo "::error file=$file::Formatting check failed for $file."
               echo "TIP: There is likely a trailing newline at the end of a code cell."
-              ruff format --diff --config ./course_template/pyproject.toml "$file"
+              ruff format --diff --config ./pyproject.toml "$file"
               NB_FAILED=1
             fi
           done
