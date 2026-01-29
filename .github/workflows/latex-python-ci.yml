@@ -28,7 +28,7 @@ jobs:
           tmp_file="tmp_check_file"
           for ext in tex sty cls; do
             find . -name "*.${ext}" -type f -not -name "$tmp_file" | while read -r file; do
-              latexindent -m -l=./course_template/.latexindent.yml -o="$tmp_file" "$file"
+              latexindent -m -l=.latexindent.yml -o="$tmp_file" "$file"
               if ! diff -qZb "$file" "$tmp_file.${ext}" > /dev/null; then
                 echo "::error file=$file::File is not properly formatted. Please run latexindent locally."
                 rm -f "$tmp_file.${ext}"
