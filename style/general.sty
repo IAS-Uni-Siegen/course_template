@@ -56,12 +56,12 @@
 \sisetup{parse-numbers = false}
 
 \sisetup{
-	per-mode=fraction,
-	fraction-function=\tfrac,
-	input-digits = 0123456789\pi,
-	exponent-product=\ensuremath{\cdot},
-	inter-unit-product = {},
-	range-phrase=\,--\,
+    per-mode=fraction,
+    fraction-function=\tfrac,
+    input-digits = 0123456789\pi,
+    exponent-product=\ensuremath{\cdot},
+    inter-unit-product = {},
+    range-phrase=\,--\,
 }
 \DeclareSIUnit{\EUR}{\text{\euro}}
 
@@ -94,9 +94,9 @@
 %% tikz and circuittikz%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usetikzlibrary{
-	arrows, arrows.meta, shapes, shapes.symbols, positioning, shadows, trees, matrix, backgrounds, fit,
-	calc, math, intersections, overlay-beamer-styles, angles, quotes, patterns, decorations.pathmorphing,
-	decorations.pathreplacing, decorations.shapes, decorations.text}
+    arrows, arrows.meta, shapes, shapes.symbols, positioning, shadows, trees, matrix, backgrounds, fit,
+    calc, math, intersections, overlay-beamer-styles, angles, quotes, patterns, decorations.pathmorphing,
+    decorations.pathreplacing, decorations.shapes, decorations.text}
 
 %% Tikz
 \pgfplotsset{compat=1.18}
@@ -110,6 +110,77 @@
 \ctikzset{tripoles/adder/width=0.4} % Scale of adder
 \ctikzset{tripoles/mixer/width=0.4} % Scale of adder
 \tikzstyle{ctrlblock} = [draw, rectangle, minimum height = 2em, minimum width = 3em, thick]
+
+%% Three-phase motor node (IEC circle symbol with M)
+%% Uses the same sizing system as CircuiTikZ converter blocks (tdcac, etc.)
+%% Three-phase west/east anchors on the circle border.
+\ctikzset{bipoles/threephasemotor/width/.initial=.7}
+\makeatletter
+\pgfcircdeclarebipolescaled{blocks}
+{
+    % Three-phase anchors on west — on the circle border
+    % For radius r and y=0.6r, x = sqrt(r^2 - (0.6r)^2) = 0.8r
+    \anchor{west up}{\northeast\pgf@x=-0.8\pgf@x\pgf@y=.6\pgf@y}
+    \anchor{west mid}{\northeast\pgf@x=-\pgf@x\pgf@y=0\pgf@y}
+    \anchor{west down}{\northeast\pgf@x=-0.8\pgf@x\pgf@y=-.6\pgf@y}
+    % Three-phase anchors on east — mirrored, on the circle border
+    \anchor{east up}{\northeast\pgf@x=0.8\pgf@x\pgf@y=.6\pgf@y}
+    \anchor{east mid}{\northeast\pgf@y=0\pgf@y}
+    \anchor{east down}{\northeast\pgf@x=0.8\pgf@x\pgf@y=-.6\pgf@y}
+}
+{\ctikzvalof{bipoles/threephasemotor/width}}
+{threephasemotor}
+{\ctikzvalof{bipoles/threephasemotor/width}}
+{\ctikzvalof{bipoles/threephasemotor/width}}
+{
+    % --- draw motor circle ---
+    \pgf@circ@setlinewidth{bipoles}{\pgfstartlinewidth}%
+    \pgfpathcircle{\pgfpointorigin}{min(\pgf@circ@res@right,\pgf@circ@res@up)}%
+    \pgf@circ@draworfill
+    % --- draw "M" label centered ---
+    \pgftext{\textsf{M}}%
+}
+\makeatother
+
+%% Three-phase motor with shaft (IEC circle symbol with M + shaft rectangle)
+%% Same as threephasemotor but with a shaft on the east side.
+\ctikzset{bipoles/threephasemotorshaft/width/.initial=.7}
+\makeatletter
+\pgfcircdeclarebipolescaled{blocks}
+{
+    % Three-phase anchors on west — on the circle border
+    \anchor{west up}{\northeast\pgf@x=-0.8\pgf@x\pgf@y=.6\pgf@y}
+    \anchor{west mid}{\northeast\pgf@x=-\pgf@x\pgf@y=0\pgf@y}
+    \anchor{west down}{\northeast\pgf@x=-0.8\pgf@x\pgf@y=-.6\pgf@y}
+    % Three-phase anchors on east — mirrored, on the circle border
+    \anchor{east up}{\northeast\pgf@x=0.8\pgf@x\pgf@y=.6\pgf@y}
+    \anchor{east mid}{\northeast\pgf@y=0\pgf@y}
+    \anchor{east down}{\northeast\pgf@x=0.8\pgf@x\pgf@y=-.6\pgf@y}
+    % Shaft center anchor (center of shaft rectangle: (r + 1.8r)/2 = 1.4r)
+    \anchor{shaft}{\northeast\pgf@x=1.4\pgf@x\pgf@y=0\pgf@y}
+    % Shaft tip anchor (right edge of shaft rectangle: r + 0.8r = 1.8r)
+    \anchor{shaft tip}{\northeast\pgf@x=1.8\pgf@x\pgf@y=0\pgf@y}
+}
+{\ctikzvalof{bipoles/threephasemotorshaft/width}}
+{threephasemotorshaft}
+{\ctikzvalof{bipoles/threephasemotorshaft/width}}
+{\ctikzvalof{bipoles/threephasemotorshaft/width}}
+{
+    % --- draw motor circle ---
+    \pgf@circ@setlinewidth{bipoles}{\pgfstartlinewidth}%
+    \pgfpathcircle{\pgfpointorigin}{min(\pgf@circ@res@right,\pgf@circ@res@up)}%
+    \pgf@circ@draworfill
+    % --- draw "M" label centered ---
+    \pgftext{\textsf{M}}%
+    % --- draw motor shaft on east side ---
+    % height = 1/5 of diameter = 2r/5, half-height = r/5 = 0.2r
+    % width  = 2/5 of diameter = 4r/5 = 0.8r
+    \pgfpathrectanglecorners
+    {\pgfpoint{\pgf@circ@res@up}{-0.2\pgf@circ@res@up}}
+    {\pgfpoint{1.8\pgf@circ@res@up}{0.2\pgf@circ@res@up}}%
+    \pgfusepath{draw, fill}%
+}
+\makeatother
 
 \tikzset{
 % Layered tree diagram
@@ -130,14 +201,14 @@ output/.style   = {coordinate},
 %% Hyperref setup %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hypersetup{colorlinks,
-	linkcolor=,
-	urlcolor=links,
-	bookmarksdepth=3,
-	pdfcopyright={\CCname},
-	pdflicenseurl={\CClink},
-	pdfauthor={\CCauthor},
-	pdfcontacturl={\CCcontacturl},
-	pdftitle={\CCtitle}
+    linkcolor=,
+    urlcolor=links,
+    bookmarksdepth=3,
+    pdfcopyright={\CCname},
+    pdflicenseurl={\CClink},
+    pdfauthor={\CCauthor},
+    pdfcontacturl={\CCcontacturl},
+    pdftitle={\CCtitle}
 }
 
 % Math. definitions %%% Definition Box
