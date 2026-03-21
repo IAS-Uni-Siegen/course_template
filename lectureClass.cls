@@ -7,18 +7,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \DeclareOption{CC-BY}{
-	\newcommand{\CCfig}{\href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[height=1cm]{../course_template/fig/CC-BY.pdf}}}
-	\newcommand{\CClink}{https://creativecommons.org/licenses/by/4.0/}
-	\newcommand{\CCname}{Creative Commons BY 4.0}
+    \newcommand{\CCfig}{\href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[height=1cm]{../course_template/fig/CC-BY.pdf}}}
+    \newcommand{\CClink}{https://creativecommons.org/licenses/by/4.0/}
+    \newcommand{\CCname}{Creative Commons BY 4.0}
 } % Creative Commons license (default)
 \DeclareOption{CC-BY-NC-SA}{
-	\renewcommand{\CCfig}{\href{https://creativecommons.org/licenses/by-nc-sa/4.0/}{\includegraphics[height=1cm]{../course_template/fig/CC-BY-NC-SA.pdf}}}
-	\renewcommand{\CClink}{https://creativecommons.org/licenses/by-nc-sa/4.0/}
-	\renewcommand{\CCname}{Creative Commons BY-NC-SA 4.0}
+    \renewcommand{\CCfig}{\href{https://creativecommons.org/licenses/by-nc-sa/4.0/}{\includegraphics[height=1cm]{../course_template/fig/CC-BY-NC-SA.pdf}}}
+    \renewcommand{\CClink}{https://creativecommons.org/licenses/by-nc-sa/4.0/}
+    \renewcommand{\CCname}{Creative Commons BY-NC-SA 4.0}
 } % Creative Commons license (alternatve)
 \newcommand{\selectedtheme}{unisiegen-IAS}
 \DeclareOption*{
-	\global\let\selectedtheme\CurrentOption
+    \global\let\selectedtheme\CurrentOption
 }
 \ExecuteOptions{CC-BY} % Default CC license
 % Marketing option (target audience: external partners)
@@ -34,8 +34,8 @@
 
 %% Custom table and figure title
 \AtBeginDocument{
-	\renewcommand{\tablename}{Tab.}%
-	\renewcommand{\figurename}{Fig.}%
+    \renewcommand{\tablename}{Tab.}%
+    \renewcommand{\figurename}{Fig.}%
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -44,9 +44,9 @@
 
 % Set logo and author information
 \titlegraphic{
-	\href{\CCcontacturl}{\includegraphics[height=1cm]{\CClogo}}
-	\hspace{2cm}
-	\CCfig
+    \href{\CCcontacturl}{\includegraphics[height=1cm]{\CClogo}}
+    \hspace{2cm}
+    \CCfig
 }
 \author{N.N.} % Default fallback - override in actual main tex file
 

@@ -111,6 +111,71 @@
 \ctikzset{tripoles/mixer/width=0.4} % Scale of adder
 \tikzstyle{ctrlblock} = [draw, rectangle, minimum height = 2em, minimum width = 3em, thick]
 
+% Configurable mixer block with optional symbols in the W/N/E/S sectors.
+% Example:
+% \node[signedmixer,
+%   tripoles/signedmixer/west={$+$},
+%   tripoles/signedmixer/south={$-$}
+% ] {};
+
+\ctikzset{
+    tripoles/signedmixer/width/.initial=\ctikzvalof{tripoles/mixer/width},
+    tripoles/signedmixer/font/.initial=\tiny,
+    tripoles/signedmixer/west/.initial=,
+    tripoles/signedmixer/north/.initial=,
+    tripoles/signedmixer/east/.initial=,
+    tripoles/signedmixer/south/.initial=
+}
+
+\makeatletter
+\def\pgf@circ@signedmixer@put#1#2{%
+    \edef\pgf@circ@temp{#2}%
+    \ifx\pgf@circ@temp\pgfutil@empty
+    \else
+        \pgftext[at={\pgfpointpolar{#1}{0.3\pgf@circ@res@step}}]{%
+            \begingroup
+            \ctikzvalof{tripoles/signedmixer/font}\pgf@circ@temp
+            \endgroup
+        }%
+    \fi
+}
+
+\pgfdeclareshape{signedmixer}
+{
+    \savedmacro{\ctikzclass}{\edef\ctikzclass{blocks}}
+    \saveddimen{\scaledRlen}{\pgfmathsetlength{\pgf@x}{\ctikzvalof{\ctikzclass/scale}\pgf@circ@Rlen}}
+    \savedmacro{\componentisboxed}{\edef\componentisboxed{\ifpgf@circuit@boxed 1\else 0\fi}}
+    \anchor{center}{\pgfpointorigin}
+    \pgf@circ@circular@rf@anchors{signedmixer}
+    \pgf@circ@draw@component{
+        \pgf@circ@setcolor
+        \pgf@circ@scaled@Rlen=\scaledRlen
+        \pgf@circ@res@step=\ctikzvalof{tripoles/signedmixer/width}\pgf@circ@scaled@Rlen
+        \pgfscope
+        \pgf@circ@circular@rf@box@circle
+        \ifpgf@circuit@full@dashed\else\pgfsetdash{}{0pt}\fi
+        \pgfsetlinewidth{\pgfstartlinewidth}
+        \pgfpathmoveto{\pgfpointpolar{135}{0.5\pgf@circ@res@step}}
+        \pgfpathlineto{\pgfpointpolar{-45}{0.5\pgf@circ@res@step}}
+        \pgfpathmoveto{\pgfpointpolar{45}{0.5\pgf@circ@res@step}}
+        \pgfpathlineto{\pgfpointpolar{-135}{0.5\pgf@circ@res@step}}
+        \pgfusepath{draw}
+        \pgf@circ@signedmixer@put{180}{\ctikzvalof{tripoles/signedmixer/west}}%
+        \pgf@circ@signedmixer@put{90}{\ctikzvalof{tripoles/signedmixer/north}}%
+        \pgf@circ@signedmixer@put{0}{\ctikzvalof{tripoles/signedmixer/east}}%
+        \pgf@circ@signedmixer@put{270}{\ctikzvalof{tripoles/signedmixer/south}}%
+        \endpgfscope
+    }
+}
+
+\tikzset{
+    tripoles/signedmixer/west/.code={\pgfkeysalso{/tikz/circuitikz/tripoles/signedmixer/west={#1}}},
+tripoles/signedmixer/north/.code={\pgfkeysalso{/tikz/circuitikz/tripoles/signedmixer/north={#1}}},
+tripoles/signedmixer/east/.code={\pgfkeysalso{/tikz/circuitikz/tripoles/signedmixer/east={#1}}},
+tripoles/signedmixer/south/.code={\pgfkeysalso{/tikz/circuitikz/tripoles/signedmixer/south={#1}}}
+}
+\makeatother
+
 %% Three-phase motor node (IEC circle symbol with M)
 %% Uses the same sizing system as CircuiTikZ converter blocks (tdcac, etc.)
 %% Three-phase west/east anchors on the circle border.
