@@ -75,18 +75,18 @@
 
 % Centered block with adjustable width
 \newenvironment<>{varblock}[2][.9\textwidth]{
-		\begin{center}
+	\begin{center}
 		\begin{minipage}{#1}
-		\begin{actionenv}#3%
-		\def\insertblocktitle{#2}%
-		\par%
-		\usebeamertemplate{block begin}}
-	{\par%
-		\usebeamertemplate{block end}%
-		\end{actionenv}
+			\begin{actionenv}#3%
+				\def\insertblocktitle{#2}%
+				\par%
+				\usebeamertemplate{block begin}}
+				{\par%
+				\usebeamertemplate{block end}%
+			\end{actionenv}
 		\end{minipage}
-		\end{center}
-	}
+	\end{center}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Footnote Without Numbering %%
