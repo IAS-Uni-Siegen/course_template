@@ -17,8 +17,9 @@ jobs:
 
           curl -fsSL https://miktex.org/download/key | sudo gpg --dearmor -o /usr/share/keyrings/miktex.gpg
 
-          echo "deb [arch=amd64 signed-by=/usr/share/keyrings/miktex.gpg] https://miktex.org/download/ubuntu jammy universe" | sudo tee /etc/apt/sources.list.d/miktex.list
-          
+          OS_CODENAME=$(lsb_release -cs)
+          echo "Detected GitHub Runner Ubuntu codename: ${OS_CODENAME}"
+          echo "deb [arch=amd64 signed-by=/usr/share/keyrings/miktex.gpg] https://miktex.org/download/ubuntu ${OS_CODENAME} universe" | sudo tee /etc/apt/sources.list.d/miktex.list
           sudo apt-get update -y -q
           sudo apt-get install -qq -y --no-install-recommends miktex
           sudo miktexsetup --shared=yes finish
