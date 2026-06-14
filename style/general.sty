@@ -32,6 +32,7 @@
 \RequirePackage{tikz} %presentation has packae tikzpeople
 \RequirePackage{tikz-3dplot}
 \RequirePackage{pgfplots}
+\RequirePackage{pgfplotstable}
 \RequirePackage{hyperxmp}
 \RequirePackage{fontawesome} % For icon
 \RequirePackage{tikzpeople}
@@ -250,6 +251,65 @@
     \pgfusepath{draw, fill}%
 }
 \makeatother
+
+
+% Hysteresis-controller twoport.
+\makeatletter
+\pgfcirc@define@twoports{blocks}
+{}
+{\ctikzvalof{bipoles/twoport/width}}
+{hystcontroller}
+{\ctikzvalof{bipoles/twoport/width}}
+{\ctikzvalof{bipoles/twoport/width}}
+{%
+    % Symmetric hysteresis icon.
+    % Icon bounds: x = +/-0.74, y = +/-0.60.
+    % Arrow / switching branch centers: x = +/-0.34.
+    \pgfscope
+    \pgfsetlinewidth{\pgfstartlinewidth}
+    \pgfsetroundcap
+    \pgfsetroundjoin
+
+    % bottom branch and right switching branch
+    \pgfpathmoveto{\pgfpoint{0.74\pgf@circ@res@left}{0.60\pgf@circ@res@down}}
+    \pgfpathlineto{\pgfpoint{0.34\pgf@circ@res@right}{0.60\pgf@circ@res@down}}
+    \pgfpathlineto{\pgfpoint{0.34\pgf@circ@res@right}{0.60\pgf@circ@res@up}}
+
+    % top branch
+    \pgfpathmoveto{\pgfpoint{0.34\pgf@circ@res@left}{0.60\pgf@circ@res@up}}
+    \pgfpathlineto{\pgfpoint{0.74\pgf@circ@res@right}{0.60\pgf@circ@res@up}}
+
+    % left switching branch
+    \pgfpathmoveto{\pgfpoint{0.34\pgf@circ@res@left}{0.60\pgf@circ@res@up}}
+    \pgfpathlineto{\pgfpoint{0.34\pgf@circ@res@left}{0.60\pgf@circ@res@down}}
+
+    \pgfusepath{draw}
+    \endpgfscope
+
+    % downward arrow, centered at x = -0.34
+    \pgfscope
+    \pgfpathmoveto{\pgfpoint{0.44\pgf@circ@res@left}{0.10\pgf@circ@res@up}}
+    \pgfpathlineto{\pgfpoint{0.24\pgf@circ@res@left}{0.10\pgf@circ@res@up}}
+    \pgfpathlineto{\pgfpoint{0.34\pgf@circ@res@left}{0.36\pgf@circ@res@down}}
+    \pgfpathclose
+    \pgfusepath{fill}
+    \endpgfscope
+
+    % upward arrow, centered at x = +0.34
+    \pgfscope
+    \pgfpathmoveto{\pgfpoint{0.24\pgf@circ@res@right}{0.10\pgf@circ@res@down}}
+    \pgfpathlineto{\pgfpoint{0.44\pgf@circ@res@right}{0.10\pgf@circ@res@down}}
+    \pgfpathlineto{\pgfpoint{0.34\pgf@circ@res@right}{0.36\pgf@circ@res@up}}
+    \pgfpathclose
+    \pgfusepath{fill}
+    \endpgfscope
+}
+
+% Public path-style name:
+\pgfcirc@activate@bipole{l}{hystcontroller}{hystcontroller}{hysteresis controller}
+\makeatother
+
+
 
 \tikzset{
     % Layered tree diagram
