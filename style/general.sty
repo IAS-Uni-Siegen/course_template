@@ -58,13 +58,13 @@
 \sisetup{parse-numbers = false}
 
 \sisetup{
-    per-mode=fraction,
-    fraction-function=\tfrac,
-    input-digits = 0123456789\pi,
-    exponent-product=\ensuremath{\cdot},
-    inter-unit-product = {},
-    range-units = single,
-    range-phrase=\,--\,
+	per-mode=fraction,
+	fraction-function=\tfrac,
+	input-digits = 0123456789\pi,
+	exponent-product=\ensuremath{\cdot},
+	inter-unit-product = {},
+	range-units = single,
+	range-phrase=\,--\,
 }
 \DeclareSIUnit{\EUR}{\text{\euro}}
 
@@ -98,9 +98,9 @@
 %% tikz and circuittikz%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usetikzlibrary{
-    arrows, arrows.meta, shapes, shapes.symbols, positioning, shadows, trees, matrix, backgrounds, fit,
-    calc, math, intersections, overlay-beamer-styles, angles, quotes, patterns, decorations.pathmorphing,
-    decorations.pathreplacing, decorations.shapes, decorations.text}
+	arrows, arrows.meta, shapes, shapes.symbols, positioning, shadows, trees, matrix, backgrounds, fit,
+	calc, math, intersections, overlay-beamer-styles, angles, quotes, patterns, decorations.pathmorphing,
+	decorations.pathreplacing, decorations.shapes, decorations.text}
 
 %% Tikz
 \pgfplotsset{compat=1.18}
@@ -124,60 +124,60 @@
 % ] {};
 
 \ctikzset{
-    tripoles/signedmixer/width/.initial=\ctikzvalof{tripoles/mixer/width},
-    tripoles/signedmixer/font/.initial=\tiny,
-    tripoles/signedmixer/west/.initial=,
-    tripoles/signedmixer/north/.initial=,
-    tripoles/signedmixer/east/.initial=,
-    tripoles/signedmixer/south/.initial=
+	tripoles/signedmixer/width/.initial=\ctikzvalof{tripoles/mixer/width},
+	tripoles/signedmixer/font/.initial=\tiny,
+	tripoles/signedmixer/west/.initial=,
+	tripoles/signedmixer/north/.initial=,
+	tripoles/signedmixer/east/.initial=,
+	tripoles/signedmixer/south/.initial=
 }
 
 \makeatletter
 \def\pgf@circ@signedmixer@put#1#2{%
-    \edef\pgf@circ@temp{#2}%
-    \ifx\pgf@circ@temp\pgfutil@empty
-    \else
-        \pgftext[at={\pgfpointpolar{#1}{0.3\pgf@circ@res@step}}]{%
-            \begingroup
-            \ctikzvalof{tripoles/signedmixer/font}\pgf@circ@temp
-            \endgroup
-        }%
-    \fi
+	\edef\pgf@circ@temp{#2}%
+	\ifx\pgf@circ@temp\pgfutil@empty
+	\else
+		\pgftext[at={\pgfpointpolar{#1}{0.3\pgf@circ@res@step}}]{%
+			\begingroup
+			\ctikzvalof{tripoles/signedmixer/font}\pgf@circ@temp
+			\endgroup
+		}%
+	\fi
 }
 
 \pgfdeclareshape{signedmixer}
 {
-    \savedmacro{\ctikzclass}{\edef\ctikzclass{blocks}}
-    \saveddimen{\scaledRlen}{\pgfmathsetlength{\pgf@x}{\ctikzvalof{\ctikzclass/scale}\pgf@circ@Rlen}}
-    \savedmacro{\componentisboxed}{\edef\componentisboxed{\ifpgf@circuit@boxed 1\else 0\fi}}
-    \anchor{center}{\pgfpointorigin}
-    \pgf@circ@circular@rf@anchors{signedmixer}
-    \pgf@circ@draw@component{
-        \pgf@circ@setcolor
-        \pgf@circ@scaled@Rlen=\scaledRlen
-        \pgf@circ@res@step=\ctikzvalof{tripoles/signedmixer/width}\pgf@circ@scaled@Rlen
-        \pgfscope
-        \pgf@circ@circular@rf@box@circle
-        \ifpgf@circuit@full@dashed\else\pgfsetdash{}{0pt}\fi
-        \pgfsetlinewidth{\pgfstartlinewidth}
-        \pgfpathmoveto{\pgfpointpolar{135}{0.5\pgf@circ@res@step}}
-        \pgfpathlineto{\pgfpointpolar{-45}{0.5\pgf@circ@res@step}}
-        \pgfpathmoveto{\pgfpointpolar{45}{0.5\pgf@circ@res@step}}
-        \pgfpathlineto{\pgfpointpolar{-135}{0.5\pgf@circ@res@step}}
-        \pgfusepath{draw}
-        \pgf@circ@signedmixer@put{180}{\ctikzvalof{tripoles/signedmixer/west}}%
-        \pgf@circ@signedmixer@put{90}{\ctikzvalof{tripoles/signedmixer/north}}%
-        \pgf@circ@signedmixer@put{0}{\ctikzvalof{tripoles/signedmixer/east}}%
-        \pgf@circ@signedmixer@put{270}{\ctikzvalof{tripoles/signedmixer/south}}%
-        \endpgfscope
-    }
+	\savedmacro{\ctikzclass}{\edef\ctikzclass{blocks}}
+	\saveddimen{\scaledRlen}{\pgfmathsetlength{\pgf@x}{\ctikzvalof{\ctikzclass/scale}\pgf@circ@Rlen}}
+	\savedmacro{\componentisboxed}{\edef\componentisboxed{\ifpgf@circuit@boxed 1\else 0\fi}}
+	\anchor{center}{\pgfpointorigin}
+	\pgf@circ@circular@rf@anchors{signedmixer}
+	\pgf@circ@draw@component{
+		\pgf@circ@setcolor
+		\pgf@circ@scaled@Rlen=\scaledRlen
+		\pgf@circ@res@step=\ctikzvalof{tripoles/signedmixer/width}\pgf@circ@scaled@Rlen
+		\pgfscope
+		\pgf@circ@circular@rf@box@circle
+		\ifpgf@circuit@full@dashed\else\pgfsetdash{}{0pt}\fi
+		\pgfsetlinewidth{\pgfstartlinewidth}
+		\pgfpathmoveto{\pgfpointpolar{135}{0.5\pgf@circ@res@step}}
+		\pgfpathlineto{\pgfpointpolar{-45}{0.5\pgf@circ@res@step}}
+		\pgfpathmoveto{\pgfpointpolar{45}{0.5\pgf@circ@res@step}}
+		\pgfpathlineto{\pgfpointpolar{-135}{0.5\pgf@circ@res@step}}
+		\pgfusepath{draw}
+		\pgf@circ@signedmixer@put{180}{\ctikzvalof{tripoles/signedmixer/west}}%
+		\pgf@circ@signedmixer@put{90}{\ctikzvalof{tripoles/signedmixer/north}}%
+		\pgf@circ@signedmixer@put{0}{\ctikzvalof{tripoles/signedmixer/east}}%
+		\pgf@circ@signedmixer@put{270}{\ctikzvalof{tripoles/signedmixer/south}}%
+		\endpgfscope
+	}
 }
 
 \tikzset{
-    tripoles/signedmixer/west/.code={\pgfkeysalso{/tikz/circuitikz/tripoles/signedmixer/west={#1}}},
-    tripoles/signedmixer/north/.code={\pgfkeysalso{/tikz/circuitikz/tripoles/signedmixer/north={#1}}},
-    tripoles/signedmixer/east/.code={\pgfkeysalso{/tikz/circuitikz/tripoles/signedmixer/east={#1}}},
-    tripoles/signedmixer/south/.code={\pgfkeysalso{/tikz/circuitikz/tripoles/signedmixer/south={#1}}}
+	tripoles/signedmixer/west/.code={\pgfkeysalso{/tikz/circuitikz/tripoles/signedmixer/west={#1}}},
+	tripoles/signedmixer/north/.code={\pgfkeysalso{/tikz/circuitikz/tripoles/signedmixer/north={#1}}},
+	tripoles/signedmixer/east/.code={\pgfkeysalso{/tikz/circuitikz/tripoles/signedmixer/east={#1}}},
+	tripoles/signedmixer/south/.code={\pgfkeysalso{/tikz/circuitikz/tripoles/signedmixer/south={#1}}}
 }
 \makeatother
 
@@ -188,27 +188,27 @@
 \makeatletter
 \pgfcircdeclarebipolescaled{blocks}
 {
-    % Three-phase anchors on west — on the circle border
-    % For radius r and y=0.6r, x = sqrt(r^2 - (0.6r)^2) = 0.8r
-    \anchor{west up}{\northeast\pgf@x=-0.8\pgf@x\pgf@y=.6\pgf@y}
-    \anchor{west mid}{\northeast\pgf@x=-\pgf@x\pgf@y=0\pgf@y}
-    \anchor{west down}{\northeast\pgf@x=-0.8\pgf@x\pgf@y=-.6\pgf@y}
-    % Three-phase anchors on east — mirrored, on the circle border
-    \anchor{east up}{\northeast\pgf@x=0.8\pgf@x\pgf@y=.6\pgf@y}
-    \anchor{east mid}{\northeast\pgf@y=0\pgf@y}
-    \anchor{east down}{\northeast\pgf@x=0.8\pgf@x\pgf@y=-.6\pgf@y}
+	% Three-phase anchors on west — on the circle border
+	% For radius r and y=0.6r, x = sqrt(r^2 - (0.6r)^2) = 0.8r
+	\anchor{west up}{\northeast\pgf@x=-0.8\pgf@x\pgf@y=.6\pgf@y}
+	\anchor{west mid}{\northeast\pgf@x=-\pgf@x\pgf@y=0\pgf@y}
+	\anchor{west down}{\northeast\pgf@x=-0.8\pgf@x\pgf@y=-.6\pgf@y}
+	% Three-phase anchors on east — mirrored, on the circle border
+	\anchor{east up}{\northeast\pgf@x=0.8\pgf@x\pgf@y=.6\pgf@y}
+	\anchor{east mid}{\northeast\pgf@y=0\pgf@y}
+	\anchor{east down}{\northeast\pgf@x=0.8\pgf@x\pgf@y=-.6\pgf@y}
 }
 {\ctikzvalof{bipoles/threephasemotor/width}}
 {threephasemotor}
 {\ctikzvalof{bipoles/threephasemotor/width}}
 {\ctikzvalof{bipoles/threephasemotor/width}}
 {
-    % --- draw motor circle ---
-    \pgf@circ@setlinewidth{bipoles}{\pgfstartlinewidth}%
-    \pgfpathcircle{\pgfpointorigin}{min(\pgf@circ@res@right,\pgf@circ@res@up)}%
-    \pgf@circ@draworfill
-    % --- draw "M" label centered ---
-    \pgftext{\textsf{M}}%
+	% --- draw motor circle ---
+	\pgf@circ@setlinewidth{bipoles}{\pgfstartlinewidth}%
+	\pgfpathcircle{\pgfpointorigin}{min(\pgf@circ@res@right,\pgf@circ@res@up)}%
+	\pgf@circ@draworfill
+	% --- draw "M" label centered ---
+	\pgftext{\textsf{M}}%
 }
 \makeatother
 
@@ -218,40 +218,39 @@
 \makeatletter
 \pgfcircdeclarebipolescaled{blocks}
 {
-    % Three-phase anchors on west — on the circle border
-    \anchor{west up}{\northeast\pgf@x=-0.8\pgf@x\pgf@y=.6\pgf@y}
-    \anchor{west mid}{\northeast\pgf@x=-\pgf@x\pgf@y=0\pgf@y}
-    \anchor{west down}{\northeast\pgf@x=-0.8\pgf@x\pgf@y=-.6\pgf@y}
-    % Three-phase anchors on east — mirrored, on the circle border
-    \anchor{east up}{\northeast\pgf@x=0.8\pgf@x\pgf@y=.6\pgf@y}
-    \anchor{east mid}{\northeast\pgf@y=0\pgf@y}
-    \anchor{east down}{\northeast\pgf@x=0.8\pgf@x\pgf@y=-.6\pgf@y}
-    % Shaft center anchor (center of shaft rectangle: (r + 1.8r)/2 = 1.4r)
-    \anchor{shaft}{\northeast\pgf@x=1.4\pgf@x\pgf@y=0\pgf@y}
-    % Shaft tip anchor (right edge of shaft rectangle: r + 0.8r = 1.8r)
-    \anchor{shaft tip}{\northeast\pgf@x=1.8\pgf@x\pgf@y=0\pgf@y}
+	% Three-phase anchors on west — on the circle border
+	\anchor{west up}{\northeast\pgf@x=-0.8\pgf@x\pgf@y=.6\pgf@y}
+	\anchor{west mid}{\northeast\pgf@x=-\pgf@x\pgf@y=0\pgf@y}
+	\anchor{west down}{\northeast\pgf@x=-0.8\pgf@x\pgf@y=-.6\pgf@y}
+	% Three-phase anchors on east — mirrored, on the circle border
+	\anchor{east up}{\northeast\pgf@x=0.8\pgf@x\pgf@y=.6\pgf@y}
+	\anchor{east mid}{\northeast\pgf@y=0\pgf@y}
+	\anchor{east down}{\northeast\pgf@x=0.8\pgf@x\pgf@y=-.6\pgf@y}
+	% Shaft center anchor (center of shaft rectangle: (r + 1.8r)/2 = 1.4r)
+	\anchor{shaft}{\northeast\pgf@x=1.4\pgf@x\pgf@y=0\pgf@y}
+	% Shaft tip anchor (right edge of shaft rectangle: r + 0.8r = 1.8r)
+	\anchor{shaft tip}{\northeast\pgf@x=1.8\pgf@x\pgf@y=0\pgf@y}
 }
 {\ctikzvalof{bipoles/threephasemotorshaft/width}}
 {threephasemotorshaft}
 {\ctikzvalof{bipoles/threephasemotorshaft/width}}
 {\ctikzvalof{bipoles/threephasemotorshaft/width}}
 {
-    % --- draw motor circle ---
-    \pgf@circ@setlinewidth{bipoles}{\pgfstartlinewidth}%
-    \pgfpathcircle{\pgfpointorigin}{min(\pgf@circ@res@right,\pgf@circ@res@up)}%
-    \pgf@circ@draworfill
-    % --- draw "M" label centered ---
-    \pgftext{\textsf{M}}%
-    % --- draw motor shaft on east side ---
-    % height = 1/5 of diameter = 2r/5, half-height = r/5 = 0.2r
-    % width  = 2/5 of diameter = 4r/5 = 0.8r
-    \pgfpathrectanglecorners
-    {\pgfpoint{\pgf@circ@res@up}{-0.2\pgf@circ@res@up}}
-    {\pgfpoint{1.8\pgf@circ@res@up}{0.2\pgf@circ@res@up}}%
-    \pgfusepath{draw, fill}%
+	% --- draw motor circle ---
+	\pgf@circ@setlinewidth{bipoles}{\pgfstartlinewidth}%
+	\pgfpathcircle{\pgfpointorigin}{min(\pgf@circ@res@right,\pgf@circ@res@up)}%
+	\pgf@circ@draworfill
+	% --- draw "M" label centered ---
+	\pgftext{\textsf{M}}%
+	% --- draw motor shaft on east side ---
+	% height = 1/5 of diameter = 2r/5, half-height = r/5 = 0.2r
+	% width  = 2/5 of diameter = 4r/5 = 0.8r
+	\pgfpathrectanglecorners
+	{\pgfpoint{\pgf@circ@res@up}{-0.2\pgf@circ@res@up}}
+	{\pgfpoint{1.8\pgf@circ@res@up}{0.2\pgf@circ@res@up}}%
+	\pgfusepath{draw, fill}%
 }
 \makeatother
-
 
 % Hysteresis-controller twoport.
 \makeatletter
@@ -262,82 +261,80 @@
 {\ctikzvalof{bipoles/twoport/width}}
 {\ctikzvalof{bipoles/twoport/width}}
 {%
-    % Symmetric hysteresis icon.
-    % Icon bounds: x = +/-0.74, y = +/-0.60.
-    % Arrow / switching branch centers: x = +/-0.34.
-    \pgfscope
-    \pgfsetlinewidth{\pgfstartlinewidth}
-    \pgfsetroundcap
-    \pgfsetroundjoin
+	% Symmetric hysteresis icon.
+	% Icon bounds: x = +/-0.74, y = +/-0.60.
+	% Arrow / switching branch centers: x = +/-0.34.
+	\pgfscope
+	\pgfsetlinewidth{\pgfstartlinewidth}
+	\pgfsetroundcap
+	\pgfsetroundjoin
 
-    % bottom branch and right switching branch
-    \pgfpathmoveto{\pgfpoint{0.74\pgf@circ@res@left}{0.60\pgf@circ@res@down}}
-    \pgfpathlineto{\pgfpoint{0.34\pgf@circ@res@right}{0.60\pgf@circ@res@down}}
-    \pgfpathlineto{\pgfpoint{0.34\pgf@circ@res@right}{0.60\pgf@circ@res@up}}
+	% bottom branch and right switching branch
+	\pgfpathmoveto{\pgfpoint{0.74\pgf@circ@res@left}{0.60\pgf@circ@res@down}}
+	\pgfpathlineto{\pgfpoint{0.34\pgf@circ@res@right}{0.60\pgf@circ@res@down}}
+	\pgfpathlineto{\pgfpoint{0.34\pgf@circ@res@right}{0.60\pgf@circ@res@up}}
 
-    % top branch
-    \pgfpathmoveto{\pgfpoint{0.34\pgf@circ@res@left}{0.60\pgf@circ@res@up}}
-    \pgfpathlineto{\pgfpoint{0.74\pgf@circ@res@right}{0.60\pgf@circ@res@up}}
+	% top branch
+	\pgfpathmoveto{\pgfpoint{0.34\pgf@circ@res@left}{0.60\pgf@circ@res@up}}
+	\pgfpathlineto{\pgfpoint{0.74\pgf@circ@res@right}{0.60\pgf@circ@res@up}}
 
-    % left switching branch
-    \pgfpathmoveto{\pgfpoint{0.34\pgf@circ@res@left}{0.60\pgf@circ@res@up}}
-    \pgfpathlineto{\pgfpoint{0.34\pgf@circ@res@left}{0.60\pgf@circ@res@down}}
+	% left switching branch
+	\pgfpathmoveto{\pgfpoint{0.34\pgf@circ@res@left}{0.60\pgf@circ@res@up}}
+	\pgfpathlineto{\pgfpoint{0.34\pgf@circ@res@left}{0.60\pgf@circ@res@down}}
 
-    \pgfusepath{draw}
-    \endpgfscope
+	\pgfusepath{draw}
+	\endpgfscope
 
-    % downward arrow, centered at x = -0.34
-    \pgfscope
-    \pgfpathmoveto{\pgfpoint{0.44\pgf@circ@res@left}{0.10\pgf@circ@res@up}}
-    \pgfpathlineto{\pgfpoint{0.24\pgf@circ@res@left}{0.10\pgf@circ@res@up}}
-    \pgfpathlineto{\pgfpoint{0.34\pgf@circ@res@left}{0.36\pgf@circ@res@down}}
-    \pgfpathclose
-    \pgfusepath{fill}
-    \endpgfscope
+	% downward arrow, centered at x = -0.34
+	\pgfscope
+	\pgfpathmoveto{\pgfpoint{0.44\pgf@circ@res@left}{0.10\pgf@circ@res@up}}
+	\pgfpathlineto{\pgfpoint{0.24\pgf@circ@res@left}{0.10\pgf@circ@res@up}}
+	\pgfpathlineto{\pgfpoint{0.34\pgf@circ@res@left}{0.36\pgf@circ@res@down}}
+	\pgfpathclose
+	\pgfusepath{fill}
+	\endpgfscope
 
-    % upward arrow, centered at x = +0.34
-    \pgfscope
-    \pgfpathmoveto{\pgfpoint{0.24\pgf@circ@res@right}{0.10\pgf@circ@res@down}}
-    \pgfpathlineto{\pgfpoint{0.44\pgf@circ@res@right}{0.10\pgf@circ@res@down}}
-    \pgfpathlineto{\pgfpoint{0.34\pgf@circ@res@right}{0.36\pgf@circ@res@up}}
-    \pgfpathclose
-    \pgfusepath{fill}
-    \endpgfscope
+	% upward arrow, centered at x = +0.34
+	\pgfscope
+	\pgfpathmoveto{\pgfpoint{0.24\pgf@circ@res@right}{0.10\pgf@circ@res@down}}
+	\pgfpathlineto{\pgfpoint{0.44\pgf@circ@res@right}{0.10\pgf@circ@res@down}}
+	\pgfpathlineto{\pgfpoint{0.34\pgf@circ@res@right}{0.36\pgf@circ@res@up}}
+	\pgfpathclose
+	\pgfusepath{fill}
+	\endpgfscope
 }
 
 % Public path-style name:
 \pgfcirc@activate@bipole{l}{hystcontroller}{hystcontroller}{hysteresis controller}
 \makeatother
 
-
-
 \tikzset{
-    % Layered tree diagram
-    basic/.style  = {draw, text width = 3cm, drop shadow, rectangle},
-    root/.style   = {basic, rounded corners = 2pt, thin, align = center, fill = defaultcolor, text = white},
-    level 2/.style = {basic, rounded corners = 4pt, thin,align = center, fill = defaultlightcolor, text width = 8em},
-    level 3/.style = {basic, thin, align = left, fill = gray!25, text width = 3cm},
-    % Same block diagram settings as in the lecture
-    block/.style    = {draw, thick, rectangle, minimum height = 3em, minimum width = 4em},
-    bubble/.style = {draw, ellipse, thick, minimum height = 3em, minimum width = 5em, fill = defaultcolor, text = white},
-    dot/.style = {circle, draw, fill = black, minimum size = 3pt, inner sep = 0pt, outer sep = 0pt},
-    input/.style    = {coordinate},
-    output/.style   = {coordinate},
-    > = {Latex[scale=1.25]}
+	% Layered tree diagram
+	basic/.style  = {draw, text width = 3cm, drop shadow, rectangle},
+	root/.style   = {basic, rounded corners = 2pt, thin, align = center, fill = defaultcolor, text = white},
+	level 2/.style = {basic, rounded corners = 4pt, thin,align = center, fill = defaultlightcolor, text width = 8em},
+	level 3/.style = {basic, thin, align = left, fill = gray!25, text width = 3cm},
+	% Same block diagram settings as in the lecture
+	block/.style    = {draw, thick, rectangle, minimum height = 3em, minimum width = 4em},
+	bubble/.style = {draw, ellipse, thick, minimum height = 3em, minimum width = 5em, fill = defaultcolor, text = white},
+	dot/.style = {circle, draw, fill = black, minimum size = 3pt, inner sep = 0pt, outer sep = 0pt},
+	input/.style    = {coordinate},
+	output/.style   = {coordinate},
+	> = {Latex[scale=1.25]}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Hyperref setup %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hypersetup{colorlinks,
-    linkcolor=,
-    urlcolor=links,
-    bookmarksdepth=3,
-    pdfcopyright={\CCname},
-    pdflicenseurl={\CClink},
-    pdfauthor={\CCauthor},
-    pdfcontacturl={\CCcontacturl},
-    pdftitle={\CCtitle}
+	linkcolor=,
+	urlcolor=links,
+	bookmarksdepth=3,
+	pdfcopyright={\CCname},
+	pdflicenseurl={\CClink},
+	pdfauthor={\CCauthor},
+	pdfcontacturl={\CCcontacturl},
+	pdftitle={\CCtitle}
 }
 
 % Math. definitions %%% Definition Box
