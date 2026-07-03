@@ -255,58 +255,120 @@
 
 % Hysteresis-controller twoport.
 \makeatletter
-\pgfcirc@define@twoports{blocks}
-{}
-{\ctikzvalof{bipoles/twoport/width}}
-{hystcontroller}
-{\ctikzvalof{bipoles/twoport/width}}
-{\ctikzvalof{bipoles/twoport/width}}
-{%
-    % Symmetric hysteresis icon.
-    % Icon bounds: x = +/-0.74, y = +/-0.60.
-    % Arrow / switching branch centers: x = +/-0.34.
-    \pgfscope
-    \pgfsetlinewidth{\pgfstartlinewidth}
-    \pgfsetroundcap
-    \pgfsetroundjoin
-
-    % bottom branch and right switching branch
-    \pgfpathmoveto{\pgfpoint{0.74\pgf@circ@res@left}{0.60\pgf@circ@res@down}}
-    \pgfpathlineto{\pgfpoint{0.34\pgf@circ@res@right}{0.60\pgf@circ@res@down}}
-    \pgfpathlineto{\pgfpoint{0.34\pgf@circ@res@right}{0.60\pgf@circ@res@up}}
-
-    % top branch
-    \pgfpathmoveto{\pgfpoint{0.34\pgf@circ@res@left}{0.60\pgf@circ@res@up}}
-    \pgfpathlineto{\pgfpoint{0.74\pgf@circ@res@right}{0.60\pgf@circ@res@up}}
-
-    % left switching branch
-    \pgfpathmoveto{\pgfpoint{0.34\pgf@circ@res@left}{0.60\pgf@circ@res@up}}
-    \pgfpathlineto{\pgfpoint{0.34\pgf@circ@res@left}{0.60\pgf@circ@res@down}}
-
-    \pgfusepath{draw}
-    \endpgfscope
-
-    % downward arrow, centered at x = -0.34
-    \pgfscope
-    \pgfpathmoveto{\pgfpoint{0.44\pgf@circ@res@left}{0.10\pgf@circ@res@up}}
-    \pgfpathlineto{\pgfpoint{0.24\pgf@circ@res@left}{0.10\pgf@circ@res@up}}
-    \pgfpathlineto{\pgfpoint{0.34\pgf@circ@res@left}{0.36\pgf@circ@res@down}}
-    \pgfpathclose
-    \pgfusepath{fill}
-    \endpgfscope
-
-    % upward arrow, centered at x = +0.34
-    \pgfscope
-    \pgfpathmoveto{\pgfpoint{0.24\pgf@circ@res@right}{0.10\pgf@circ@res@down}}
-    \pgfpathlineto{\pgfpoint{0.44\pgf@circ@res@right}{0.10\pgf@circ@res@down}}
-    \pgfpathlineto{\pgfpoint{0.34\pgf@circ@res@right}{0.36\pgf@circ@res@up}}
-    \pgfpathclose
-    \pgfusepath{fill}
-    \endpgfscope
+\tikzset{
+    hysteresisblock/.style={
+            draw,
+            line width=0.7pt,
+            rectangle,
+            minimum width=1.0cm,
+            minimum height=1.0cm,
+            inner sep=0pt,
+            outer sep=0pt
+        },
+    hystaxis/.style={
+            line width=0.45pt,
+            line cap=round,
+                -{Stealth[length=1.15mm,width=0.95mm]}
+        },
+    hystcurve/.style={
+            line width=0.75pt,
+            line cap=butt,
+            line join=miter
+        },
+    hystdir/.style={
+            line width=0.75pt,
+            line cap=round,
+                -{Stealth[length=1.05mm,width=0.85mm]}
+        },
+    twolevelhystcontrollershape/.style={
+            hysteresisblock,
+            path picture={
+                    % axes
+                    \draw[hystaxis]
+                    ([xshift=-0.40cm]path picture bounding box.center) --
+                        ([xshift=0.40cm]path picture bounding box.center);
+                    \draw[hystaxis]
+                    ([yshift=-0.46cm]path picture bounding box.center) --
+                        ([yshift=0.46cm]path picture bounding box.center);
+                    % relay with hysteresis: no zero dead zone
+                    \draw[hystcurve]
+                    ([xshift=-0.36cm,yshift=-0.27cm]path picture bounding box.center) --
+                        ([xshift=0.13cm,yshift=-0.27cm]path picture bounding box.center) --
+                        ([xshift=0.13cm,yshift=0.27cm]path picture bounding box.center) --
+                        ([xshift=0.36cm,yshift=0.27cm]path picture bounding box.center);
+                    \draw[hystcurve]
+                    ([xshift=0.36cm,yshift=0.27cm]path picture bounding box.center) --
+                        ([xshift=-0.13cm,yshift=0.27cm]path picture bounding box.center) --
+                        ([xshift=-0.13cm,yshift=-0.27cm]path picture bounding box.center) --
+                        ([xshift=-0.36cm,yshift=-0.27cm]path picture bounding box.center);
+                    % direction arrows
+                    \draw[hystdir]
+                    ([xshift=-0.30cm,yshift=-0.27cm]path picture bounding box.center) --
+                        ([xshift=-0.16cm,yshift=-0.27cm]path picture bounding box.center);
+                    \draw[hystdir]
+                    ([xshift=0.13cm,yshift=-0.13cm]path picture bounding box.center) --
+                        ([xshift=0.13cm,yshift=0.13cm]path picture bounding box.center);
+                    \draw[hystdir]
+                    ([xshift=0.28cm,yshift=0.27cm]path picture bounding box.center) --
+                        ([xshift=0.14cm,yshift=0.27cm]path picture bounding box.center);
+                    \draw[hystdir]
+                    ([xshift=-0.13cm,yshift=0.13cm]path picture bounding box.center) --
+                        ([xshift=-0.13cm,yshift=-0.13cm]path picture bounding box.center);
+                }
+        },
+    threelevelhystcontrollershape/.style={
+            hysteresisblock,
+            path picture={
+                    % axes
+                    \draw[hystaxis]
+                    ([xshift=-0.40cm]path picture bounding box.center) --
+                        ([xshift=0.40cm]path picture bounding box.center);
+                    \draw[hystaxis]
+                    ([yshift=-0.46cm]path picture bounding box.center) --
+                        ([yshift=0.46cm]path picture bounding box.center);
+                    % three-level relay: transitions to zero at x=0, transitions from zero at x\neq0
+                    \draw[hystcurve]
+                    ([xshift=-0.37cm,yshift=-0.28cm]path picture bounding box.center) --
+                        ([xshift=0.00cm,yshift=-0.28cm]path picture bounding box.center) --
+                        ([xshift=0.00cm,yshift=0.00cm]path picture bounding box.center) --
+                        ([xshift=0.17cm,yshift=0.00cm]path picture bounding box.center) --
+                        ([xshift=0.17cm,yshift=0.28cm]path picture bounding box.center) --
+                        ([xshift=0.37cm,yshift=0.28cm]path picture bounding box.center);
+                    \draw[hystcurve]
+                    ([xshift=0.37cm,yshift=0.28cm]path picture bounding box.center) --
+                        ([xshift=0.00cm,yshift=0.28cm]path picture bounding box.center) --
+                        ([xshift=0.00cm,yshift=0.00cm]path picture bounding box.center) --
+                        ([xshift=-0.17cm,yshift=0.00cm]path picture bounding box.center) --
+                        ([xshift=-0.17cm,yshift=-0.28cm]path picture bounding box.center) --
+                        ([xshift=-0.37cm,yshift=-0.28cm]path picture bounding box.center);
+                    % direction arrows
+                    \draw[hystdir]
+                    ([xshift=-0.33cm,yshift=-0.28cm]path picture bounding box.center) --
+                        ([xshift=-0.20cm,yshift=-0.28cm]path picture bounding box.center);
+                    \draw[hystdir]
+                    ([xshift=0.00cm,yshift=-0.18cm]path picture bounding box.center) --
+                        ([xshift=0.00cm,yshift=-0.05cm]path picture bounding box.center);
+                    \draw[hystdir]
+                    ([xshift=0.06cm,yshift=0.00cm]path picture bounding box.center) --
+                        ([xshift=0.14cm,yshift=0.00cm]path picture bounding box.center);
+                    \draw[hystdir]
+                    ([xshift=0.17cm,yshift=0.05cm]path picture bounding box.center) --
+                        ([xshift=0.17cm,yshift=0.18cm]path picture bounding box.center);
+                    \draw[hystdir]
+                    ([xshift=0.33cm,yshift=0.28cm]path picture bounding box.center) --
+                        ([xshift=0.20cm,yshift=0.28cm]path picture bounding box.center);
+                    \draw[hystdir]
+                    ([xshift=0.00cm,yshift=0.18cm]path picture bounding box.center) --
+                        ([xshift=0.00cm,yshift=0.05cm]path picture bounding box.center);
+                    \draw[hystdir]
+                    ([xshift=-0.06cm,yshift=0.00cm]path picture bounding box.center) --
+                        ([xshift=-0.14cm,yshift=0.00cm]path picture bounding box.center);
+                    \draw[hystdir]
+                    ([xshift=-0.17cm,yshift=-0.05cm]path picture bounding box.center) --
+                        ([xshift=-0.17cm,yshift=-0.18cm]path picture bounding box.center);
+                }
+        }
 }
-
-% Public path-style name:
-\pgfcirc@activate@bipole{l}{hystcontroller}{hystcontroller}{hysteresis controller}
 \makeatother
 
 
