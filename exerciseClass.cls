@@ -36,6 +36,8 @@
 \RequirePackage{mathtools}
 \RequirePackage{placeins}
 \RequirePackage{etoolbox} % for environment hooks
+\RequirePackage{tcolorbox}
+\tcbuselibrary{breakable,skins}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Solution block %%
@@ -177,3 +179,22 @@
 \renewcommand{\thesolutionfigure}{\theexerciseCount.\thetaskCount.\arabic{solutionfigure}}
 \renewcommand{\theequation}{\theexerciseCount.\thetaskCount.\arabic{equation}}
 \renewcommand{\thetable}{\theexerciseCount.\thetaskCount.\arabic{table}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Info block %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Usage: \begin{infoblock}[optional title] ... \end{infoblock}
+\newtcolorbox{infoblock}[1][Info]{
+	breakable,
+	enhanced,
+	colback=gray!8,
+	colframe=gray!60!black,
+	coltitle=white,
+	fonttitle=\bfseries\normalsize,
+	title={#1},
+	boxrule=0.6pt,
+	arc=2pt,
+	left=6pt, right=6pt, top=4pt, bottom=4pt,
+	before skip=1em, after skip=1em,
+	before upper={\setlength{\parindent}{0pt}\setlength{\parskip}{0.5em}\normalsize},
+}
