@@ -183,7 +183,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Info block %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Usage: \begin{infoblock}[optional title] ... \end{infoblock}
 \newtcolorbox{infoblock}[1][Info]{
 	breakable,
 	enhanced,
