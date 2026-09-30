@@ -36,8 +36,6 @@
 \RequirePackage{mathtools}
 \RequirePackage{placeins}
 \RequirePackage{etoolbox} % for environment hooks
-\RequirePackage{tcolorbox}
-\tcbuselibrary{breakable,skins}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Solution block %%
